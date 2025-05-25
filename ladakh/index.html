@@ -616,6 +616,60 @@
       .mobile-cards { display: block !important; }
       .table-container { display: none !important; }
     }
+
+    /* CSS for collapsible sections */
+    @media (max-width: 768px) {
+      .advice-section[open] > summary:before { content: '▼ '; }
+      .advice-section:not([open]) > summary:before { content: '▶ '; }
+      .advice-section { margin-bottom: 1em; }
+      .advice-section[open] { box-shadow: 0 2px 8px #0001; border-radius: 8px; }
+      .advice-section > summary { cursor: pointer; font-size: 1.1em; padding: 0.7em 1em; background: #f4f7f9; border-radius: 8px; font-weight: 600; }
+      .advice-section > div { padding: 0 1em 1em 1em; }
+      .advice-section { border: 1px solid #dce4ec; }
+      .advice-section:not([open]) > div { display: none; }
+      .advice-section { transition: box-shadow 0.2s; }
+      .advice-section[open] { box-shadow: 0 2px 8px #0002; }
+      .advice-section { background: #fff; }
+      .advice-section { max-width: 100vw; }
+      .advice-section { overflow: hidden; }
+      .advice-section { margin-top: 0.5em; }
+      .advice-section { margin-bottom: 1em; }
+      .advice-section { border-radius: 8px; }
+      .advice-section { border: 1px solid #dce4ec; }
+      .advice-section { box-shadow: 0 1px 4px #0001; }
+      .advice-section { font-size: 1em; }
+      .advice-section { background: #fff; }
+      .advice-section { padding: 0; }
+      .advice-section[open] > summary { background: #e9edf2; }
+      .advice-section > summary { outline: none; }
+      .advice-section > summary::-webkit-details-marker { display: none; }
+      .advice-section > summary { list-style: none; }
+      .advice-section > summary { border-bottom: 1px solid #dce4ec; }
+      .advice-section > summary { margin-bottom: 0; }
+      .advice-section > summary { user-select: none; }
+      .advice-section > summary { display: flex; align-items: center; }
+      .advice-section > summary b { margin-left: 0.5em; }
+      .advice-section > summary { color: #2c3e50; }
+      .advice-section > summary { font-family: var(--font-sans); }
+      .advice-section > summary { font-weight: 600; }
+      .advice-section > summary { font-size: 1.1em; }
+      .advice-section > summary { padding: 0.7em 1em; }
+      .advice-section > summary { border-radius: 8px 8px 0 0; }
+      .advice-section > summary { background: #f4f7f9; }
+      .advice-section > summary { border-bottom: 1px solid #dce4ec; }
+      .advice-section > summary { margin-bottom: 0; }
+      .advice-section > summary { user-select: none; }
+      .advice-section > summary { display: flex; align-items: center; }
+      .advice-section > summary b { margin-left: 0.5em; }
+    }
+    @media (min-width: 769px) {
+      .advice-section { margin-bottom: 1.5em; }
+      .advice-section[open] > summary:before { content: '▼ '; }
+      .advice-section:not([open]) > summary:before { content: '▼ '; }
+      .advice-section { border: none; box-shadow: none; background: none; padding: 0; }
+      .advice-section > summary { background: none; border: none; font-size: 1.2em; padding: 0; color: #2c3e50; }
+      .advice-section > div { padding: 0; }
+    }
   </style>
 </head>
 <body>
@@ -639,65 +693,84 @@
     </ul>
   </nav>
 
-  <h2 id="advice">Important General Advice for Your Ladakh Trip</h2>
-  <div class="advice callout">
-    <ol>
-      <li><b>Acclimatization is Key:</b> Leh is at approximately 11,500 ft. Spend your first day (ideally two full days) in Leh with <b>minimal physical exertion</b>. Avoid alcohol and smoking, especially in the initial days. Stay hydrated constantly by drinking plenty of water.</li>
-      <li><b>Inner Line Permits (ILP):</b> Required for Indian nationals to visit Nubra Valley, Pangong Tso, Tso Moriri, Hanle, Turtuk, and other restricted areas. Foreign nationals require a Protected Area Permit (PAP). <em>See Emergency & Practical Info callout below for details.</em></li>
-      <li><b>Acute Mountain Sickness (AMS):</b> Be aware of symptoms (headache, nausea, dizziness, fatigue, loss of appetite, shortness of breath). <em>See Emergency & Practical Info callout below for health, hospital, and insurance tips.</em></li>
-      <li><b>Cash & Connectivity:</b> ATMs can be unreliable; carry sufficient cash. <em>See Emergency & Practical Info callout below for SIM and connectivity details.</em></li>
-      <li><b>Packing:</b> Warm layers, sun protection, sturdy shoes, and a basic medical kit are essential. <em>See Packing Checklist and Emergency & Practical Info callouts below for full list.</em></li>
-      <li><b>Responsible Tourism:</b> <em>See Responsible Tourism callout below for etiquette and environmental tips.</em></li>
-      <li><b>Car and Driver:</b> Highly recommended for most routes. Local drivers are experienced with the terrain. Self-driving requires significant mountain driving experience.</li>
-      <li><b>Kargil/Drass Sector:</b> These itineraries do not cover Kargil, Drass, or Suru Valley. These require separate planning.</li>
-    </ol>
-    <p style="margin-top:1em;"><em>For more on etiquette, emergencies, and packing, see the callouts below.</em></p>
+  <!-- QUICK START CALLOUT -->
+  <div class="highlight callout" id="quick-start">
+    <b>Quick Start:</b> <span class="data-value">Start with your preferred itinerary below. Tap to expand travel tips and important advice.</span>
   </div>
 
-  <!-- BEGIN: Pro Tips & Optional Activities Callout -->
-  <div class="advice callout">
-    <b>Optional/Pro Tips for Your Ladakh Journey:</b>
-    <ul>
-      <li><b>Leh Local:</b> Consider visiting <strong>Spituk Monastery</strong>, <strong>Hall of Fame</strong> (war memorial), <strong>Stok Palace</strong>, or taking a <strong>Leh Old Town heritage walk</strong> for deeper cultural immersion.</li>
-      <li><b>Sham Valley:</b> If time allows, add <strong>Alchi Monastery</strong> (UNESCO, oldest murals) and <strong>Likir Monastery</strong> to your route.</li>
-      <li><b>Nubra Valley:</b> Optional experiences include <strong>Panamik hot springs</strong>, <strong>Sumur village</strong> (Samstanling Monastery), and adventure activities (ATV, ziplining) at Hunder.</li>
-      <li><b>Turtuk:</b> Visit the <strong>Turtuk Museum</strong> or <strong>Balti Heritage House</strong> for a unique cultural perspective.</li>
-      <li><b>Pangong/Tso Moriri:</b> Enjoy sunrise/sunset walks by the lake. At Tso Moriri, visit <strong>Korzok Monastery</strong> and look for migratory birds (Ramsar site).</li>
-      <li><b>Hanle:</b> Note that Hanle is extremely remote, with very basic facilities and sometimes no running water/electricity.</li>
-    </ul>
-  </div>
-  <!-- END: Pro Tips & Optional Activities Callout -->
-
-  <!-- BEGIN: Responsible Tourism Callout -->
-  <div class="summarybox callout">
-    <b>Responsible Tourism Reminders:</b>
-    <ul>
-      <li>Ask permission before photographing locals, especially monks and women.</li>
-      <li>Avoid single-use plastics. Bring back all non-biodegradable waste.</li>
-      <li>Dress modestly, especially at monasteries and in villages.</li>
-    </ul>
-  </div>
-  <!-- END: Responsible Tourism Callout -->
-
-  <!-- BEGIN: Emergency & Practical Info Callout -->
-  <div class="advice callout">
-    <b>Emergency & Practical Info:</b>
-    <ul>
-      <li><b>Medical:</b> Main hospital: <strong>SNM Hospital, Leh</strong>. Carry a basic first-aid kit and personal medications.</li>
-      <li><b>Travel Insurance:</b> Strongly recommended. Should cover high-altitude travel and medical evacuation.</li>
-      <li><b>Permits:</b> Carry multiple photocopies of permits and IDs for checkpoints.</li>
-      <li><b>Connectivity:</b> Only <strong>postpaid SIMs</strong> work in Ladakh. Prepaid Indian SIMs do not work.</li>
-      <li><b>Weather:</b> Nights at Pangong/Tso Moriri can be freezing, even in June. Snow at high passes is possible—be flexible with plans.</li>
-      <li><b>Roads:</b> Pangong–Tso Moriri–Hanle routes can be rough or closed due to weather/military activity. Self-drive only for experienced mountain drivers.</li>
-    </ul>
-  </div>
-  <!-- END: Emergency & Practical Info Callout -->
-
-  <!-- BEGIN: Packing Checklist Download (Placeholder) -->
-  <div class="highlight callout">
-    <b>Packing Checklist:</b> <span class="data-value">Download a <a href="#" target="_blank" rel="noopener">comprehensive Ladakh packing checklist (PDF)</a> to ensure you're fully prepared for all conditions.</span>
-  </div>
-  <!-- END: Packing Checklist Download -->
+  <!-- COLLAPSIBLE ADVICE SECTIONS -->
+  <details class="advice-section" open>
+    <summary>🧭 <b>General Advice</b></summary>
+    <div>
+      <!-- Move the General Advice callout content here -->
+      <div class="advice callout">
+        <ol>
+          <li><b>Acclimatization is Key:</b> Leh is at approximately 11,500 ft. Spend your first day (ideally two full days) in Leh with <b>minimal physical exertion</b>. Avoid alcohol and smoking, especially in the initial days. Stay hydrated constantly by drinking plenty of water.</li>
+          <li><b>Inner Line Permits (ILP):</b> Required for Indian nationals to visit Nubra Valley, Pangong Tso, Tso Moriri, Hanle, Turtuk, and other restricted areas. Foreign nationals require a Protected Area Permit (PAP). <em>See Emergency & Practical Info callout below for details.</em></li>
+          <li><b>Acute Mountain Sickness (AMS):</b> Be aware of symptoms (headache, nausea, dizziness, fatigue, loss of appetite, shortness of breath). <em>See Emergency & Practical Info callout below for health, hospital, and insurance tips.</em></li>
+          <li><b>Cash & Connectivity:</b> ATMs can be unreliable; carry sufficient cash. <em>See Emergency & Practical Info callout below for SIM and connectivity details.</em></li>
+          <li><b>Packing:</b> Warm layers, sun protection, sturdy shoes, and a basic medical kit are essential. <em>See Packing Checklist and Emergency & Practical Info callouts below for full list.</em></li>
+          <li><b>Responsible Tourism:</b> <em>See Responsible Tourism callout below for etiquette and environmental tips.</em></li>
+          <li><b>Car and Driver:</b> Highly recommended for most routes. Local drivers are experienced with the terrain. Self-driving requires significant mountain driving experience.</li>
+          <li><b>Kargil/Drass Sector:</b> These itineraries do not cover Kargil, Drass, or Suru Valley. These require separate planning.</li>
+        </ol>
+        <p style="margin-top:1em;"><em>For more on etiquette, emergencies, and packing, see the callouts below.</em></p>
+      </div>
+    </div>
+  </details>
+  <details class="advice-section">
+    <summary>💡 <b>Pro Tips & Optional Activities</b></summary>
+    <div>
+      <div class="advice callout">
+        <b>Optional/Pro Tips for Your Ladakh Journey:</b>
+        <ul>
+          <li><b>Leh Local:</b> Consider visiting <strong>Spituk Monastery</strong>, <strong>Hall of Fame</strong> (war memorial), <strong>Stok Palace</strong>, or taking a <strong>Leh Old Town heritage walk</strong> for deeper cultural immersion.</li>
+          <li><b>Sham Valley:</b> If time allows, add <strong>Alchi Monastery</strong> (UNESCO, oldest murals) and <strong>Likir Monastery</strong> to your route.</li>
+          <li><b>Nubra Valley:</b> Optional experiences include <strong>Panamik hot springs</strong>, <strong>Sumur village</strong> (Samstanling Monastery), and adventure activities (ATV, ziplining) at Hunder.</li>
+          <li><b>Turtuk:</b> Visit the <strong>Turtuk Museum</strong> or <strong>Balti Heritage House</strong> for a unique cultural perspective.</li>
+          <li><b>Pangong/Tso Moriri:</b> Enjoy sunrise/sunset walks by the lake. At Tso Moriri, visit <strong>Korzok Monastery</strong> and look for migratory birds (Ramsar site).</li>
+          <li><b>Hanle:</b> Note that Hanle is extremely remote, with very basic facilities and sometimes no running water/electricity.</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+  <details class="advice-section">
+    <summary>🌱 <b>Responsible Tourism</b></summary>
+    <div>
+      <div class="summarybox callout">
+        <b>Responsible Tourism Reminders:</b>
+        <ul>
+          <li>Ask permission before photographing locals, especially monks and women.</li>
+          <li>Avoid single-use plastics. Bring back all non-biodegradable waste.</li>
+          <li>Dress modestly, especially at monasteries and in villages.</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+  <details class="advice-section">
+    <summary>🚑 <b>Emergency & Practical Info</b></summary>
+    <div>
+      <div class="advice callout">
+        <b>Emergency & Practical Info:</b>
+        <ul>
+          <li><b>Medical:</b> Main hospital: <strong>SNM Hospital, Leh</strong>. Carry a basic first-aid kit and personal medications.</li>
+          <li><b>Travel Insurance:</b> Strongly recommended. Should cover high-altitude travel and medical evacuation.</li>
+          <li><b>Permits:</b> Carry multiple photocopies of permits and IDs for checkpoints.</li>
+          <li><b>Connectivity:</b> Only <strong>postpaid SIMs</strong> work in Ladakh. Prepaid Indian SIMs do not work.</li>
+          <li><b>Weather:</b> Nights at Pangong/Tso Moriri can be freezing, even in June. Snow at high passes is possible—be flexible with plans.</li>
+          <li><b>Roads:</b> Pangong–Tso Moriri–Hanle routes can be rough or closed due to weather/military activity. Self-drive only for experienced mountain drivers.</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+  <details class="advice-section">
+    <summary>🎒 <b>Packing Checklist</b></summary>
+    <div>
+      <div class="highlight callout">
+        <b>Packing Checklist:</b> <span class="data-value">Download a <a href="#" target="_blank" rel="noopener">comprehensive Ladakh packing checklist (PDF)</a> to ensure you're fully prepared for all conditions.</span>
+      </div>
+    </div>
+  </details>
 
   <h2 id="option1">🌽 Option 1: June 18 – 23 (5 Nights) - The Express Tour</h2>
   <div class="danger callout">
