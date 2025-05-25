@@ -14,21 +14,21 @@
       --font-serif: 'Lora', Georgia, serif;
 
       /* Core Colors - Sophisticated & Natural Palette */
-      --color-primary: #2d3a4b;  /* Dark Slate Blue - Main headings, strong accents */
-      --color-primary-light: #4a5c75; /* Lighter Slate - Secondary headings */
-      --color-secondary: #7a8aa0; /* Muted Slate Gray - Borders, muted text */
-      --color-accent: #0097a7;  /* Calming Cyan/Teal - Links, interactive elements */
-      --color-accent-hover: #007a87; /* Darker Cyan/Teal */
+      --color-primary: #2d3a4b;
+      --color-primary-light: #4a5c75;
+      --color-secondary: #7a8aa0;
+      --color-accent: #0097a7;
+      --color-accent-hover: #007a87;
 
       /* Background Colors */
-      --color-bg-body: #f8f9fa;    /* Very Light Off-White/Gray - Subtle texture */
-      --color-bg-container: #ffffff; /* Clean White for content */
-      --color-bg-subtle: #eef1f5;  /* Subtle Gray for elements like nav, table headers */
+      --color-bg-body: #f8f9fa;
+      --color-bg-container: #ffffff;
+      --color-bg-subtle: #eef1f5;
       --color-bg-card-header-mobile: var(--color-bg-subtle);
 
       /* Text Colors */
-      --color-text-base: #3f4e63;     /* Primary text color - Darker, readable */
-      --color-text-muted: #8696a7;   /* Muted text */
+      --color-text-base: #3f4e63;
+      --color-text-muted: #8696a7;
       --color-text-headings: var(--color-primary);
       --color-text-on-accent-bg: #ffffff;
       --color-text-label-mobile: var(--color-primary-light);
@@ -47,13 +47,15 @@
       --spacing-base: 1rem;
       --spacing-xs: calc(var(--spacing-base) * 0.35);
       --spacing-sm: calc(var(--spacing-base) * 0.65);
-      --spacing-md: var(--spacing-base);
+      --spacing-md: var(--spacing-base); /* Base for padding */
+      --spacing-table-cell-padding-y-desktop: calc(var(--spacing-base) * 0.75); /* Reduced padding */
+      --spacing-table-cell-padding-x-desktop: var(--spacing-base);        /* Reduced padding */
       --spacing-lg: calc(var(--spacing-base) * 1.75);
       --spacing-xl: calc(var(--spacing-base) * 2.75);
       --spacing-xxl: calc(var(--spacing-base) * 4.5);
 
       /* Borders */
-      --border-radius: 8px; /* Slightly more rounded */
+      --border-radius: 8px;
       --border-radius-large: 12px;
       --border-color: #d8dfe6;
       --border-width: 1px;
@@ -72,14 +74,14 @@
       font-family: var(--font-sans);
       color: var(--color-text-base);
       background-color: var(--color-bg-body);
-      line-height: 1.75; /* Increased for better readability */
+      line-height: 1.75;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       padding-bottom: var(--spacing-xl);
     }
 
     .content-wrapper {
-      max-width: 1100px; /* Slightly reduced for better line lengths */
+      max-width: 1100px;
       margin: var(--spacing-lg) auto;
       padding: var(--spacing-xl);
       background-color: var(--color-bg-container);
@@ -102,16 +104,16 @@
       line-height: 1.35;
       margin-bottom: var(--spacing-lg);
     }
-    h1 { /* Main Page Title */
-      font-size: clamp(2rem, 4.5vw, 2.8rem); /* Responsive, slightly smaller max */
-      font-weight: 600; /* Less heavy for a more refined look */
+    h1 {
+      font-size: clamp(2rem, 4.5vw, 2.8rem);
+      font-weight: 600;
       margin-top: 0;
       padding-bottom: var(--spacing-md);
       border-bottom: var(--border-width) solid var(--border-color);
-      text-align: center; /* Center title for impact */
+      text-align: center;
       margin-bottom: var(--spacing-xl);
     }
-    h2 { /* Section Titles */
+    h2 {
       font-size: clamp(1.7rem, 3.8vw, 2.2rem);
       font-weight: 500;
       margin-top: var(--spacing-xxl);
@@ -119,7 +121,7 @@
       border-bottom: var(--border-width) solid var(--border-color);
     }
     h2:first-of-type { margin-top: var(--spacing-xl); }
-    h3 { /* Sub-Section Titles */
+    h3 {
       font-family: var(--font-sans);
       font-size: clamp(1.25rem, 2.8vw, 1.5rem);
       color: var(--color-primary-light);
@@ -141,7 +143,7 @@
       transition: color 0.2s ease, text-decoration-color 0.2s ease;
       text-decoration: underline;
       text-decoration-color: transparent;
-      text-underline-offset: 4px; /* Increased offset */
+      text-underline-offset: 4px;
     }
     a:hover, a:focus { color: var(--color-accent-hover); text-decoration-color: var(--color-accent-hover); }
     a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; border-radius: var(--border-radius); }
@@ -159,52 +161,76 @@
       margin: 0;
       padding: 0;
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center; /* Center main nav items */
+      flex-wrap: wrap; /* Allow items to wrap on smaller desktop screens */
+      align-items: flex-start; /* Align to start for multi-line wrapping */
+      justify-content: center;
       gap: var(--spacing-sm);
     }
-    nav ul li { margin: 0; position: relative; /* For potential dropdowns */ }
-    nav a {
+    nav ul li { margin: 0; position: relative; }
+    nav > ul > li > a { /* Main navigation links */
       color: var(--color-primary-light);
-      font-size: 1rem; /* Slightly larger nav links */
+      font-size: 1rem;
       font-weight: 500;
       text-decoration: none;
       padding: var(--spacing-sm) var(--spacing-md);
       border-radius: var(--border-radius);
       transition: background-color 0.2s ease, color 0.2s ease;
-      display: block; /* Make links block for easier clicking */
+      display: block;
     }
-    nav a:hover, nav a:focus, nav a.active { /* Active state for scroll-spy */
+    nav > ul > li > a:hover, nav > ul > li > a:focus, nav > ul > li > a.active {
       background-color: var(--color-accent);
       color: var(--color-text-on-accent-bg);
     }
     /* Submenu Styling */
-    nav .submenu {
-        display: flex; /* Default visible, can be hidden by JS */
-        flex-direction: column;
-        background-color: var(--color-bg-container); /* Slightly different bg for dropdown */
-        border-radius: var(--border-radius);
-        padding: var(--spacing-sm);
+    nav .has-submenu { /* Container for main link + submenu */
+        display: flex;
+        flex-direction: column; /* Stack main link and submenu */
+        align-items: center; /* Center if nav ul is centered */
+    }
+    nav .has-submenu > a { /* The "Option 3" link */
+        /* Styles already applied by nav > ul > li > a */
+    }
+    nav .arrow { font-size: 0.7em; margin-left: var(--spacing-xs); display: inline-block; }
+
+    nav .submenu { /* The nested UL */
+        list-style: none;
+        padding: 0;
         margin-top: var(--spacing-xs);
+        display: flex; /* Default to visible, column layout */
+        flex-direction: column;
+        align-items: stretch; /* Make sub-items take full width of their container */
+        background-color: var(--color-bg-container);
+        border-radius: var(--border-radius);
+        min-width: 180px; /* Give submenu a decent width */
         box-shadow: var(--box-shadow-sm);
-        /* For actual dropdown: position: absolute; left: 0; top: 100%; z-index: 10; min-width: 200px; */
+        /* For JS-driven dropdown, this would be initially display: none;
+           and positioned absolutely relative to parent li.has-submenu */
     }
     nav .submenu li a {
         padding: var(--spacing-xs) var(--spacing-sm);
         font-size: 0.9rem;
         color: var(--color-primary);
+        text-align: left; /* Align submenu text left */
+        border-radius: 0; /* No individual radius if part of a list */
     }
+    nav .submenu li:first-child a { border-top-left-radius: var(--border-radius); border-top-right-radius: var(--border-radius); }
+    nav .submenu li:last-child a { border-bottom-left-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius); }
+
     nav .submenu li a:hover, nav .submenu li a:focus, nav .submenu li a.active {
         background-color: var(--color-accent-hover);
+        color: var(--color-text-on-accent-bg);
     }
      @media (max-width: 768px) { /* Mobile Nav */
         nav ul { flex-direction: column; align-items: stretch; }
+        nav .has-submenu { align-items: stretch; } /* Stretch for full width */
         nav .submenu {
-            background-color: transparent; /* Blend submenu on mobile */
+            background-color: transparent;
             box-shadow: none;
             padding-left: var(--spacing-md); /* Indent submenu items */
+            margin-top: 0;
+            min-width: auto; /* Allow it to be full width */
         }
+        nav .submenu li a { font-size: 0.95rem; }
     }
 
 
@@ -214,7 +240,7 @@
       margin-top: var(--spacing-lg);
       margin-bottom: var(--spacing-lg);
       border-radius: var(--border-radius);
-      border-left-width: 6px; /* Thicker accent border */
+      border-left-width: 6px;
       border-left-style: solid;
       box-shadow: var(--box-shadow-sm);
       font-size: 1.05rem;
@@ -232,7 +258,7 @@
     .miss { border-left-color: var(--color-danger); background-color: var(--color-danger-bg); font-weight: 500; }
     .miss strong, .miss b { color: var(--color-danger); }
     .summarybox { border-left-color: var(--color-primary); background-color: var(--color-bg-subtle); }
-    .summarybox strong, .summarybox b { color: var(--color-primary); display: block; margin-bottom: var(--spacing-xs); } /* Stack bold items */
+    .summarybox strong, .summarybox b { color: var(--color-primary); display: block; margin-bottom: var(--spacing-xs); }
     .summarybox > strong:first-of-type, .summarybox > b:first-of-type { margin-top: 0; }
 
     /* --- Desktop Table Styles --- */
@@ -247,14 +273,14 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.95rem; /* Slightly larger table font */
+      font-size: 0.9rem; /* Slightly smaller for tighter table */
       table-layout: auto;
     }
     table caption {
-      font-size: 1.25rem; /* Larger caption */
+      font-size: 1.25rem;
       font-family: var(--font-serif);
       color: var(--color-primary);
-      padding: var(--spacing-md) 0; /* Padding above/below only */
+      padding: var(--spacing-md) 0;
       text-align: left;
       caption-side: top;
       margin-bottom: var(--spacing-md);
@@ -262,24 +288,24 @@
     table thead th {
       background-color: var(--color-bg-subtle);
       color: var(--color-primary-light);
-      font-weight: 600; /* Bolder headers */
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.06em; /* Wider spacing */
-      padding: var(--spacing-md) var(--spacing-lg);
+      letter-spacing: 0.06em;
+      padding: var(--spacing-table-cell-padding-y-desktop) var(--spacing-table-cell-padding-x-desktop); /* REDUCED PADDING */
       text-align: left;
       vertical-align: middle;
-      border-bottom: var(--border-width-strong) solid var(--color-secondary); /* Stronger bottom border */
-      white-space: normal; /* Allow headers to wrap */
+      border-bottom: var(--border-width-strong) solid var(--color-secondary);
+      white-space: normal; /* Allow headers to wrap naturally */
     }
     table tbody td {
-      padding: var(--spacing-md) var(--spacing-lg);
+      padding: var(--spacing-table-cell-padding-y-desktop) var(--spacing-table-cell-padding-x-desktop); /* REDUCED PADDING */
       text-align: left;
       vertical-align: top;
       border-bottom: var(--border-width) solid var(--border-color);
       color: var(--color-text-base);
-      line-height: 1.65; /* Adjusted line height */
+      line-height: 1.6; /* Adjusted for tighter cells */
       white-space: normal;
-      overflow-wrap: break-word;
+      overflow-wrap: break-word; /* Prefer this for breaking words */
       hyphens: auto;
     }
     table tbody tr:nth-child(even) td {
@@ -290,81 +316,86 @@
     }
     .hotel5, .hotel4, .permit, .healthcell { font-weight: 500; }
     .healthcell b, .healthcell strong,
-    .permit b, .permit strong { color: var(--color-danger); font-weight: 600; } /* Emphasize important permit/health notes */
+    .permit b, .permit strong { color: var(--color-danger); font-weight: 600; }
 
     /* --- Mobile Table Styles (Card View) --- */
     @media (max-width: 768px) {
+      /* Restore table cell padding for mobile card items if it was reduced for desktop */
+      table tbody td, table thead th {
+          padding: var(--spacing-md) var(--spacing-lg); /* Or mobile specific padding */
+      }
+
       .table-container { border: none; overflow-x: visible; }
-      table { border: none; font-size: 1rem; /* Larger base font for mobile cards */ }
+      table { border: none; font-size: 1rem; }
       table caption { text-align: center; font-size: 1.4rem; margin-bottom: var(--spacing-lg); }
       table thead { display: none; }
       table tbody, table tr, table td { display: block; }
-      table tr { /* Card styling */
+      table tr {
         margin-bottom: var(--spacing-xl);
         border-radius: var(--border-radius-large);
         box-shadow: var(--box-shadow-card-mobile);
         background-color: var(--color-bg-container);
         overflow: hidden;
       }
-      table td { /* Card item styling */
-        padding: var(--spacing-md) var(--spacing-lg); /* More padding in card items */
+      table td {
+        padding: var(--spacing-md) var(--spacing-lg);
         border-bottom: var(--border-width) solid var(--border-color);
         text-align: left;
+        line-height: 1.6;
       }
       table td:last-child { border-bottom: none; }
 
-      table td::before { /* Label */
+      table td::before {
         content: attr(data-label);
         display: block;
         font-weight: 600;
         color: var(--color-text-label-mobile);
-        margin-bottom: var(--spacing-sm); /* More space between label and value */
-        font-size: 0.8rem; /* Smaller, distinct label */
+        margin-bottom: var(--spacing-sm);
+        font-size: 0.8rem;
         text-transform: uppercase;
         letter-spacing: 0.05em;
       }
-      /* Card Header: Day X */
       table tr td:first-child {
         background-color: var(--color-bg-card-header-mobile);
         color: var(--color-primary);
         border-top-left-radius: var(--border-radius-large);
         border-top-right-radius: var(--border-radius-large);
-        padding: var(--spacing-md) var(--spacing-lg); /* Consistent padding */
-        border-bottom: var(--border-width-strong) solid var(--border-color); /* Stronger separator */
+        padding: var(--spacing-md) var(--spacing-lg);
+        border-bottom: var(--border-width-strong) solid var(--border-color);
       }
-      table tr td:first-child::before { /* "Day: " label part */
-        display: inline-block; /* Keep label and number on same line if space allows */
-        font-weight: 500; /* Less emphasis on "Day:" itself */
+      table tr td:first-child::before {
+        display: inline-block;
+        font-weight: 500;
         font-size: 0.9rem;
         text-transform: none;
         margin-right: var(--spacing-xs);
-        margin-bottom: 0; /* No bottom margin when inline */
-        color: var(--color-secondary); /* Muted label */
+        margin-bottom: 0;
+        color: var(--color-secondary);
       }
-      table tr td:first-child .data-value { /* The Day number */
+      table tr td:first-child .data-value {
         display: inline;
-        font-size: 1.3rem; /* Prominent day number */
+        font-size: 1.3rem;
         font-weight: 700;
         color: var(--color-primary);
       }
-      .data-value { /* The actual data content in other cells */
+      .data-value {
         display: block;
-        font-size: 1rem; /* Ensure data is clearly readable */
+        font-size: 1rem;
         color: var(--color-text-base);
         word-break: break-word;
         overflow-wrap: break-word;
       }
       .data-value b, .data-value strong {
-        color: var(--color-primary-light); /* Slightly softer bold for mobile cards */
+        color: var(--color-primary-light);
       }
-      .data-value:empty::after { /* For empty cells */
+      .data-value:empty::after {
         content: "—";
         color: var(--color-text-muted);
         font-style: italic;
       }
     }
 
-    @media (max-width: 480px) { /* Further tweaks for very small screens */
+    @media (max-width: 480px) {
         .content-wrapper { padding: var(--spacing-md); }
         h1 { font-size: 1.8rem; }
         h2 { font-size: 1.5rem; }
@@ -391,26 +422,25 @@
 
 <div class="content-wrapper">
 
-  <h1>Ladakh: Ultimate Itinerary Guide (2025)</h1> <!-- Updated title -->
-  <nav id="page-nav"> <!-- Added ID for scroll-spy JS -->
+  <h1>Ladakh: Ultimate Itinerary Guide (2025)</h1>
+  <nav id="page-nav">
     <ul>
       <li><a href="#advice" class="nav-link">General Advice</a></li>
       <li><a href="#option1" class="nav-link">Option 1: Express</a></li>
       <li><a href="#option2" class="nav-link">Option 2: Balanced</a></li>
       <li class="has-submenu">
-        <a href="#option3a" class="nav-link">Option 3 <span class="arrow">&#9662;</span></a> <!-- Added arrow, href to first sub-item -->
+        <a href="#option3a" class="nav-link">Option 3 <span class="arrow">&#9662;</span></a>
         <ul class="submenu">
-          <li><a href="#option3a" class="nav-link">3A: Classic</a></li>
-          <li><a href="#option3b" class="nav-link">3B: Stargazer</a></li>
+          <li><a href="#option3a" class="nav-link sub-nav-link">3A: Classic</a></li>
+          <li><a href="#option3b" class="nav-link sub-nav-link">3B: Stargazer</a></li>
         </ul>
       </li>
       <li><a href="#recommend" class="nav-link">Recommendation</a></li>
     </ul>
   </nav>
 
-  <!-- ... rest of your HTML content ... -->
-  <!-- Ensure all <td> content (except Day number) is wrapped in <span class="data-value"> -->
-
+  <!-- HTML Content remains the same, ensure <td> data is wrapped in <span class="data-value"> -->
+  <!-- ... (Your existing HTML for sections and tables) ... -->
   <h2 id="advice">Important General Advice for Your Ladakh Trip</h2>
   <div class="advice callout">
     <ol>
@@ -955,25 +985,62 @@
 
 </div> <!-- end .content-wrapper -->
 
-<!-- Basic JavaScript for Submenu Toggle (Example) -->
+<!-- Basic JavaScript for Submenu Toggle & Scroll Spy (Example) -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const hasSubmenuItems = document.querySelectorAll('.has-submenu > a');
-    hasSubmenuItems.forEach(item => {
-      item.addEventListener('click', function(event) {
-        // Prevent default if the main link itself shouldn't navigate
-        // For this example, we allow it to navigate to #option3a
-        // event.preventDefault(); 
-        const submenu = this.nextElementSibling;
-        if (submenu && submenu.classList.contains('submenu')) {
-          submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
-        }
-      });
+    // Submenu Toggle
+    const submenuToggles = document.querySelectorAll('.has-submenu > a');
+    submenuToggles.forEach(toggle => {
+      // Check if there's actually a submenu to toggle
+      const submenu = toggle.nextElementSibling;
+      if (submenu && submenu.classList.contains('submenu')) {
+        // Initially hide submenus if we want them to be toggleable
+        // submenu.style.display = 'none'; // Uncomment to hide by default
+
+        toggle.addEventListener('click', function(event) {
+          // Allow navigation for the main link if its href is a section
+          if (!this.getAttribute('href').startsWith('#')) {
+            event.preventDefault(); // Prevent navigation if main link is just a toggle
+          }
+          
+          // Toggle the display of the direct next sibling if it's a submenu
+          if (submenu.style.display === 'flex' || submenu.style.display === 'block') { // Check for flex or block
+              submenu.style.display = 'none';
+              toggle.querySelector('.arrow').innerHTML = '&#9662;'; // Down arrow
+          } else {
+              submenu.style.display = 'flex'; // Or 'block' if you prefer
+              toggle.querySelector('.arrow').innerHTML = '&#9652;'; // Up arrow
+          }
+
+          // Close other open submenus (optional)
+          document.querySelectorAll('.submenu').forEach(otherSubmenu => {
+            if (otherSubmenu !== submenu) {
+              otherSubmenu.style.display = 'none';
+              const otherToggle = otherSubmenu.previousElementSibling;
+              if(otherToggle && otherToggle.querySelector('.arrow')) {
+                otherToggle.querySelector('.arrow').innerHTML = '&#9662;';
+              }
+            }
+          });
+          event.stopPropagation(); // Prevent event from bubbling up to document click
+        });
+      }
     });
 
-    // Basic Scroll Spy (Example - needs robust implementation for production)
-    // This is a very simplified version.
-    const navLinks = document.querySelectorAll('#page-nav .nav-link');
+     // Close submenus if clicking outside
+    // document.addEventListener('click', function() {
+    //     document.querySelectorAll('.submenu').forEach(submenu => {
+    //         submenu.style.display = 'none';
+    //         const toggle = submenu.previousElementSibling;
+    //         if (toggle && toggle.querySelector('.arrow')) {
+    //             toggle.querySelector('.arrow').innerHTML = '&#9662;';
+    //         }
+    //     });
+    // });
+
+
+    // Scroll Spy
+    const navLinks = document.querySelectorAll('#page-nav a.nav-link'); // Target all nav links including sub-nav
     const sections = [];
     navLinks.forEach(link => {
       const sectionId = link.getAttribute('href');
@@ -987,28 +1054,46 @@
 
     function highlightNavLink() {
       let currentSectionId = '';
+      const scrollPosition = pageYOffset;
+
       sections.forEach(item => {
-        const sectionTop = item.section.offsetTop - 150; // Offset for better timing
-        const sectionHeight = item.section.offsetHeight;
-        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+        const sectionTop = item.section.offsetTop - 100; // Adjust offset as needed
+        // Check if the scroll position is within the current section
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + item.section.offsetHeight) {
           currentSectionId = item.section.id;
         }
       });
+      
+      // If no section is "current" (e.g., at the very top or bottom of page beyond sections)
+      // try to find the closest one above the scroll position
+      if (!currentSectionId && sections.length > 0) {
+          for (let i = sections.length - 1; i >= 0; i--) {
+              if (scrollPosition >= sections[i].section.offsetTop - 100) {
+                  currentSectionId = sections[i].section.id;
+                  break;
+              }
+          }
+      }
+
 
       navLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === `#${currentSectionId}`) {
+        const linkHref = link.getAttribute('href');
+        if (linkHref === `#${currentSectionId}`) {
           link.classList.add('active');
-          // If part of a submenu, ensure parent is also somehow indicated (more complex)
-          const parentLi = link.closest('.has-submenu');
-          if (parentLi) {
-            parentLi.querySelector('a').classList.add('active'); // Highlight main "Option 3" too
+          // If this active link is in a submenu, also activate its parent
+          const parentSubmenu = link.closest('.submenu');
+          if (parentSubmenu) {
+            const parentToggleLink = parentSubmenu.previousElementSibling;
+            if (parentToggleLink && parentToggleLink.classList.contains('nav-link')) {
+              parentToggleLink.classList.add('active');
+            }
           }
         }
       });
     }
-    window.addEventListener('scroll', highlightNavLink);
-    highlightNavLink(); // Initial check
+    window.addEventListener('scroll', highlightNavLink, { passive: true }); // Use passive listener for scroll
+    highlightNavLink(); // Initial check on load
   });
 </script>
 </body>
