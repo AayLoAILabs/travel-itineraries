@@ -2,66 +2,67 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Ladakh: The Ultimate Itinerary Guide (2025 Edition)</title>
+  <title>Ladakh: Ultimate Itinerary Guide (2025) – Expertly Crafted</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       /* Font Families */
       --font-sans: 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
       --font-serif: 'Lora', Georgia, serif;
 
-      /* Core Colors */
-      --color-primary: #2c3e50; /* Deep Slate Blue */
-      --color-primary-light: #34495e; /* Slightly Lighter Slate */
-      --color-secondary: #7f8c8d; /* Cool Gray */
-      --color-accent: #1abc9c; /* Turquoise/Teal */
-      --color-accent-hover: #16a085; /* Darker Turquoise/Teal */
+      /* Core Colors - Sophisticated & Natural Palette */
+      --color-primary: #2d3a4b;  /* Dark Slate Blue - Main headings, strong accents */
+      --color-primary-light: #4a5c75; /* Lighter Slate - Secondary headings */
+      --color-secondary: #7a8aa0; /* Muted Slate Gray - Borders, muted text */
+      --color-accent: #0097a7;  /* Calming Cyan/Teal - Links, interactive elements */
+      --color-accent-hover: #007a87; /* Darker Cyan/Teal */
 
       /* Background Colors */
-      --color-bg-body: #f7f9fb;
-      --color-bg-container: #ffffff;
-      --color-bg-subtle: #ecf0f1;
-      --color-bg-card-header-mobile: #e9eef2;
+      --color-bg-body: #f8f9fa;    /* Very Light Off-White/Gray - Subtle texture */
+      --color-bg-container: #ffffff; /* Clean White for content */
+      --color-bg-subtle: #eef1f5;  /* Subtle Gray for elements like nav, table headers */
+      --color-bg-card-header-mobile: var(--color-bg-subtle);
 
       /* Text Colors */
-      --color-text-base: #34495e;
-      --color-text-muted: #95a5a6;
+      --color-text-base: #3f4e63;     /* Primary text color - Darker, readable */
+      --color-text-muted: #8696a7;   /* Muted text */
       --color-text-headings: var(--color-primary);
-      --color-text-on-primary-bg: #ffffff;
+      --color-text-on-accent-bg: #ffffff;
       --color-text-label-mobile: var(--color-primary-light);
 
       /* Semantic Colors */
-      --color-info: #3498db;
-      --color-info-bg: #eaf5fc;
-      --color-success: #2ecc71;
-      --color-success-bg: #eafaf1;
+      --color-info: #2693c9;
+      --color-info-bg: #e9f4fa;
+      --color-success: #27ae60;
+      --color-success-bg: #e9f7ef;
       --color-warning: #f39c12;
-      --color-warning-bg: #fef5e7;
-      --color-danger: #e74c3c;
-      --color-danger-bg: #fdedec;
+      --color-warning-bg: #fef6e7;
+      --color-danger: #c0392b;
+      --color-danger-bg: #faea_e8;
 
       /* Spacing & Sizing */
       --spacing-base: 1rem;
-      --spacing-xs: calc(var(--spacing-base) * 0.25);
-      --spacing-sm: calc(var(--spacing-base) * 0.5);
+      --spacing-xs: calc(var(--spacing-base) * 0.35);
+      --spacing-sm: calc(var(--spacing-base) * 0.65);
       --spacing-md: var(--spacing-base);
-      --spacing-lg: calc(var(--spacing-base) * 1.5);
-      --spacing-xl: calc(var(--spacing-base) * 2.5);
-      --spacing-xxl: calc(var(--spacing-base) * 4);
+      --spacing-lg: calc(var(--spacing-base) * 1.75);
+      --spacing-xl: calc(var(--spacing-base) * 2.75);
+      --spacing-xxl: calc(var(--spacing-base) * 4.5);
 
       /* Borders */
-      --border-radius: 6px;
-      --border-radius-large: 10px;
-      --border-color: #dde4e8;
+      --border-radius: 8px; /* Slightly more rounded */
+      --border-radius-large: 12px;
+      --border-color: #d8dfe6;
       --border-width: 1px;
+      --border-width-strong: 2px;
 
       /* Shadows */
-      --box-shadow-sm: 0 2px 4px rgba(44, 62, 80, 0.08);
-      --box-shadow-md: 0 5px 15px rgba(44, 62, 80, 0.1);
-      --box-shadow-card-mobile: 0 4px 10px rgba(44, 62, 80, 0.12);
+      --box-shadow-sm: 0 3px 6px rgba(45,58,75, 0.07);
+      --box-shadow-md: 0 6px 18px rgba(45,58,75, 0.1);
+      --box-shadow-card-mobile: 0 5px 15px rgba(45,58,75, 0.1);
     }
 
     /* Base & Reset */
@@ -71,26 +72,19 @@
       font-family: var(--font-sans);
       color: var(--color-text-base);
       background-color: var(--color-bg-body);
-      line-height: 1.7;
+      line-height: 1.75; /* Increased for better readability */
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       padding-bottom: var(--spacing-xl);
     }
 
     .content-wrapper {
-      max-width: 1200px;
+      max-width: 1100px; /* Slightly reduced for better line lengths */
       margin: var(--spacing-lg) auto;
       padding: var(--spacing-xl);
       background-color: var(--color-bg-container);
-      border-radius: calc(var(--border-radius) * 2);
+      border-radius: var(--border-radius-large);
       box-shadow: var(--box-shadow-md);
-    }
-    @media (max-width: 1280px) {
-      .content-wrapper {
-        margin-left: var(--spacing-md);
-        margin-right: var(--spacing-md);
-        padding: var(--spacing-lg);
-      }
     }
      @media (max-width: 768px) { /* Mobile Breakpoint */
       .content-wrapper {
@@ -105,37 +99,39 @@
     h1, h2, h3 {
       font-family: var(--font-serif);
       color: var(--color-text-headings);
-      line-height: 1.3;
+      line-height: 1.35;
       margin-bottom: var(--spacing-lg);
     }
-    h1 {
-      font-size: clamp(2.2rem, 5vw, 3rem);
-      font-weight: 700;
+    h1 { /* Main Page Title */
+      font-size: clamp(2rem, 4.5vw, 2.8rem); /* Responsive, slightly smaller max */
+      font-weight: 600; /* Less heavy for a more refined look */
       margin-top: 0;
       padding-bottom: var(--spacing-md);
       border-bottom: var(--border-width) solid var(--border-color);
+      text-align: center; /* Center title for impact */
+      margin-bottom: var(--spacing-xl);
     }
-    h2 {
-      font-size: clamp(1.8rem, 4vw, 2.4rem);
-      font-weight: 600;
+    h2 { /* Section Titles */
+      font-size: clamp(1.7rem, 3.8vw, 2.2rem);
+      font-weight: 500;
       margin-top: var(--spacing-xxl);
       padding-bottom: var(--spacing-sm);
       border-bottom: var(--border-width) solid var(--border-color);
     }
     h2:first-of-type { margin-top: var(--spacing-xl); }
-    h3 {
+    h3 { /* Sub-Section Titles */
       font-family: var(--font-sans);
-      font-size: clamp(1.3rem, 3vw, 1.6rem);
+      font-size: clamp(1.25rem, 2.8vw, 1.5rem);
       color: var(--color-primary-light);
       font-weight: 600;
       margin-top: var(--spacing-xl);
       margin-bottom: var(--spacing-md);
     }
-    p { margin-bottom: var(--spacing-md); }
+    p { margin-bottom: var(--spacing-md); font-size: 1.05rem; }
     ul, ol { margin-bottom: var(--spacing-md); padding-left: var(--spacing-lg); }
     ul ul, ol ol, ul ol, ol ul { margin-top: var(--spacing-sm); margin-bottom: var(--spacing-sm); }
     li { margin-bottom: var(--spacing-sm); }
-    strong, b { font-weight: 600; color: var(--color-primary); }
+    strong, b { font-weight: 700; color: var(--color-primary); }
 
     /* Links */
     a {
@@ -145,32 +141,72 @@
       transition: color 0.2s ease, text-decoration-color 0.2s ease;
       text-decoration: underline;
       text-decoration-color: transparent;
-      text-underline-offset: 3px;
+      text-underline-offset: 4px; /* Increased offset */
     }
     a:hover, a:focus { color: var(--color-accent-hover); text-decoration-color: var(--color-accent-hover); }
     a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; border-radius: var(--border-radius); }
     .delta { color: var(--color-success); }
 
-    /* Navigation */
+    /* Navigation (Table of Contents) */
     nav {
       background-color: var(--color-bg-subtle);
-      padding: var(--spacing-md) 0;
+      padding: var(--spacing-md);
       margin-bottom: var(--spacing-xl);
       border-radius: var(--border-radius);
     }
-    nav ul { list-style: none; margin: 0; padding: 0 var(--spacing-md); display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--spacing-sm); }
-    nav ul li { margin: 0; }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center; /* Center main nav items */
+      gap: var(--spacing-sm);
+    }
+    nav ul li { margin: 0; position: relative; /* For potential dropdowns */ }
     nav a {
       color: var(--color-primary-light);
-      font-size: 0.95rem;
-      font-weight: 600;
+      font-size: 1rem; /* Slightly larger nav links */
+      font-weight: 500;
       text-decoration: none;
       padding: var(--spacing-sm) var(--spacing-md);
       border-radius: var(--border-radius);
       transition: background-color 0.2s ease, color 0.2s ease;
-      display: inline-block;
+      display: block; /* Make links block for easier clicking */
     }
-    nav a:hover, nav a:focus, nav a.active { background-color: var(--color-accent); color: var(--color-text-on-primary-bg); text-decoration: none; }
+    nav a:hover, nav a:focus, nav a.active { /* Active state for scroll-spy */
+      background-color: var(--color-accent);
+      color: var(--color-text-on-accent-bg);
+    }
+    /* Submenu Styling */
+    nav .submenu {
+        display: flex; /* Default visible, can be hidden by JS */
+        flex-direction: column;
+        background-color: var(--color-bg-container); /* Slightly different bg for dropdown */
+        border-radius: var(--border-radius);
+        padding: var(--spacing-sm);
+        margin-top: var(--spacing-xs);
+        box-shadow: var(--box-shadow-sm);
+        /* For actual dropdown: position: absolute; left: 0; top: 100%; z-index: 10; min-width: 200px; */
+    }
+    nav .submenu li a {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: 0.9rem;
+        color: var(--color-primary);
+    }
+    nav .submenu li a:hover, nav .submenu li a:focus, nav .submenu li a.active {
+        background-color: var(--color-accent-hover);
+    }
+     @media (max-width: 768px) { /* Mobile Nav */
+        nav ul { flex-direction: column; align-items: stretch; }
+        nav .submenu {
+            background-color: transparent; /* Blend submenu on mobile */
+            box-shadow: none;
+            padding-left: var(--spacing-md); /* Indent submenu items */
+        }
+    }
+
 
     /* Callouts */
     .callout {
@@ -178,32 +214,32 @@
       margin-top: var(--spacing-lg);
       margin-bottom: var(--spacing-lg);
       border-radius: var(--border-radius);
-      border-left-width: 5px;
+      border-left-width: 6px; /* Thicker accent border */
       border-left-style: solid;
       box-shadow: var(--box-shadow-sm);
+      font-size: 1.05rem;
     }
     .callout > *:last-child { margin-bottom: 0; }
     .callout ul, .callout ol { margin-top: var(--spacing-sm); padding-left: var(--spacing-md); }
-    .advice { border-left-color: var(--color-info); background-color: var(--color-info-bg); color: var(--color-text-base); }
+    .advice { border-left-color: var(--color-info); background-color: var(--color-info-bg); }
     .advice strong, .advice b { color: var(--color-info); }
-    .danger { border-left-color: var(--color-danger); background-color: var(--color-danger-bg); color: var(--color-text-base); }
+    .danger { border-left-color: var(--color-danger); background-color: var(--color-danger-bg); }
     .danger strong, .danger b { color: var(--color-danger); }
-    .recommend { border-left-color: var(--color-success); background-color: var(--color-success-bg); color: var(--color-text-base); }
+    .recommend { border-left-color: var(--color-success); background-color: var(--color-success-bg); }
     .recommend strong, .recommend b { color: var(--color-success); }
-    .highlight { border-left-color: var(--color-warning); background-color: var(--color-warning-bg); color: var(--color-text-base); }
+    .highlight { border-left-color: var(--color-warning); background-color: var(--color-warning-bg); }
     .highlight strong, .highlight b { color: var(--color-warning); }
-    .miss { border-left-color: var(--color-danger); background-color: var(--color-danger-bg); color: var(--color-text-base); font-weight: 500; }
+    .miss { border-left-color: var(--color-danger); background-color: var(--color-danger-bg); font-weight: 500; }
     .miss strong, .miss b { color: var(--color-danger); }
-    .summarybox { border-left-color: var(--color-primary); background-color: var(--color-bg-subtle); color: var(--color-text-base); }
-    .summarybox strong, .summarybox b { color: var(--color-primary); display: inline-block; margin-bottom: var(--spacing-xs); }
+    .summarybox { border-left-color: var(--color-primary); background-color: var(--color-bg-subtle); }
+    .summarybox strong, .summarybox b { color: var(--color-primary); display: block; margin-bottom: var(--spacing-xs); } /* Stack bold items */
     .summarybox > strong:first-of-type, .summarybox > b:first-of-type { margin-top: 0; }
-    .summarybox > strong + br + strong, .summarybox > b + br + b { margin-top: var(--spacing-sm); }
 
     /* --- Desktop Table Styles --- */
     .table-container {
       margin-top: var(--spacing-lg);
       margin-bottom: var(--spacing-lg);
-      overflow-x: auto; /* Critical for responsive tables if content is too wide */
+      overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       border: var(--border-width) solid var(--border-color);
       border-radius: var(--border-radius);
@@ -211,40 +247,40 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.9rem;
-      table-layout: auto; /* Let browser decide column widths */
+      font-size: 0.95rem; /* Slightly larger table font */
+      table-layout: auto;
     }
     table caption {
-      font-size: 1.2rem;
+      font-size: 1.25rem; /* Larger caption */
       font-family: var(--font-serif);
       color: var(--color-primary);
-      padding: var(--spacing-md);
+      padding: var(--spacing-md) 0; /* Padding above/below only */
       text-align: left;
       caption-side: top;
-      margin-bottom: var(--spacing-sm);
+      margin-bottom: var(--spacing-md);
     }
-    table thead th { /* Styles for header cells */
+    table thead th {
       background-color: var(--color-bg-subtle);
       color: var(--color-primary-light);
-      font-weight: 600;
+      font-weight: 600; /* Bolder headers */
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em; /* Wider spacing */
       padding: var(--spacing-md) var(--spacing-lg);
       text-align: left;
-      vertical-align: middle; /* Vertically align header text */
-      border-bottom: 2px solid var(--color-secondary);
+      vertical-align: middle;
+      border-bottom: var(--border-width-strong) solid var(--color-secondary); /* Stronger bottom border */
       white-space: normal; /* Allow headers to wrap */
     }
-    table tbody td { /* Styles for data cells */
+    table tbody td {
       padding: var(--spacing-md) var(--spacing-lg);
       text-align: left;
       vertical-align: top;
       border-bottom: var(--border-width) solid var(--border-color);
       color: var(--color-text-base);
-      line-height: 1.7;
-      white-space: normal; /* Allow cell content to wrap */
-      overflow-wrap: break-word; /* Break long words if they would overflow */
-      hyphens: auto; /* Enable hyphenation */
+      line-height: 1.65; /* Adjusted line height */
+      white-space: normal;
+      overflow-wrap: break-word;
+      hyphens: auto;
     }
     table tbody tr:nth-child(even) td {
         background-color: var(--color-bg-body);
@@ -254,83 +290,75 @@
     }
     .hotel5, .hotel4, .permit, .healthcell { font-weight: 500; }
     .healthcell b, .healthcell strong,
-    .permit b, .permit strong { color: var(--color-danger); }
+    .permit b, .permit strong { color: var(--color-danger); font-weight: 600; } /* Emphasize important permit/health notes */
 
     /* --- Mobile Table Styles (Card View) --- */
     @media (max-width: 768px) {
-      .table-container {
-        border: none;
-        overflow-x: visible; /* Cards flow, no scroll on container */
-      }
-      table {
-        border: none;
-        font-size: 0.9rem;
-      }
-      table caption {
-        text-align: center;
-        font-size: 1.3rem;
-        margin-bottom: var(--spacing-lg);
-      }
-      table thead {
-        display: none; /* Hide table headers */
-      }
-      table tbody, table tr, table td {
-        display: block; /* Make everything block for card layout */
-      }
-      table tr { /* Each TR is a card */
+      .table-container { border: none; overflow-x: visible; }
+      table { border: none; font-size: 1rem; /* Larger base font for mobile cards */ }
+      table caption { text-align: center; font-size: 1.4rem; margin-bottom: var(--spacing-lg); }
+      table thead { display: none; }
+      table tbody, table tr, table td { display: block; }
+      table tr { /* Card styling */
         margin-bottom: var(--spacing-xl);
         border-radius: var(--border-radius-large);
         box-shadow: var(--box-shadow-card-mobile);
         background-color: var(--color-bg-container);
         overflow: hidden;
       }
-      table td { /* Each TD is a row in the card */
-        padding: var(--spacing-md);
+      table td { /* Card item styling */
+        padding: var(--spacing-md) var(--spacing-lg); /* More padding in card items */
         border-bottom: var(--border-width) solid var(--border-color);
         text-align: left;
       }
-      table td:last-child {
-        border-bottom: none;
-      }
-      table td::before { /* The label from data-label attribute */
+      table td:last-child { border-bottom: none; }
+
+      table td::before { /* Label */
         content: attr(data-label);
         display: block;
         font-weight: 600;
         color: var(--color-text-label-mobile);
-        margin-bottom: var(--spacing-xs);
-        font-size: 0.85em;
+        margin-bottom: var(--spacing-sm); /* More space between label and value */
+        font-size: 0.8rem; /* Smaller, distinct label */
         text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
-      /* Special styling for the first TD in a card (usually "Day") */
+      /* Card Header: Day X */
       table tr td:first-child {
         background-color: var(--color-bg-card-header-mobile);
         color: var(--color-primary);
         border-top-left-radius: var(--border-radius-large);
         border-top-right-radius: var(--border-radius-large);
-        padding: var(--spacing-sm) var(--spacing-md);
+        padding: var(--spacing-md) var(--spacing-lg); /* Consistent padding */
+        border-bottom: var(--border-width-strong) solid var(--border-color); /* Stronger separator */
       }
-      table tr td:first-child::before { /* Label for "Day" cell */
-        display: inline; /* "Day: " */
-        font-weight: 700;
-        font-size: 1em;
+      table tr td:first-child::before { /* "Day: " label part */
+        display: inline-block; /* Keep label and number on same line if space allows */
+        font-weight: 500; /* Less emphasis on "Day:" itself */
+        font-size: 0.9rem;
         text-transform: none;
         margin-right: var(--spacing-xs);
-        color: var(--color-text-label-mobile);
+        margin-bottom: 0; /* No bottom margin when inline */
+        color: var(--color-secondary); /* Muted label */
       }
       table tr td:first-child .data-value { /* The Day number */
         display: inline;
-        font-size: 1.1em;
+        font-size: 1.3rem; /* Prominent day number */
         font-weight: 700;
         color: var(--color-primary);
       }
-      .data-value { /* General class for the actual data in a cell */
-        display: block; /* Ensures it's on its own line after the ::before label */
+      .data-value { /* The actual data content in other cells */
+        display: block;
+        font-size: 1rem; /* Ensure data is clearly readable */
+        color: var(--color-text-base);
         word-break: break-word;
         overflow-wrap: break-word;
       }
-       /* Handle empty data values cleanly */
-      .data-value:empty::after {
-        content: "—"; /* Display an em-dash for empty cells */
+      .data-value b, .data-value strong {
+        color: var(--color-primary-light); /* Slightly softer bold for mobile cards */
+      }
+      .data-value:empty::after { /* For empty cells */
+        content: "—";
         color: var(--color-text-muted);
         font-style: italic;
       }
@@ -338,11 +366,13 @@
 
     @media (max-width: 480px) { /* Further tweaks for very small screens */
         .content-wrapper { padding: var(--spacing-md); }
-        table { font-size: 0.85rem; }
-        table td { padding: var(--spacing-sm); }
-        table td::before { font-size: 0.8em; }
+        h1 { font-size: 1.8rem; }
+        h2 { font-size: 1.5rem; }
+        table { font-size: 0.9rem; }
+        table td { padding: var(--spacing-sm) var(--spacing-md); }
+        table td::before { font-size: 0.75rem; }
+        table tr td:first-child .data-value { font-size: 1.2rem; }
     }
-
 
     /* Footer */
     footer {
@@ -361,17 +391,25 @@
 
 <div class="content-wrapper">
 
-  <h1>Ladakh: The Ultimate Itinerary Guide (2025 Edition)</h1>
-  <nav>
+  <h1>Ladakh: Ultimate Itinerary Guide (2025)</h1> <!-- Updated title -->
+  <nav id="page-nav"> <!-- Added ID for scroll-spy JS -->
     <ul>
-      <li><a href="#advice">General Advice</a></li>
-      <li><a href="#option1">Option 1: Express</a></li>
-      <li><a href="#option2">Option 2: Balanced</a></li>
-      <li><a href="#option3a">Option 3A: Classic</a></li>
-      <li><a href="#option3b">Option 3B: Stargazer</a></li>
-      <li><a href="#recommend">Recommendation</a></li>
+      <li><a href="#advice" class="nav-link">General Advice</a></li>
+      <li><a href="#option1" class="nav-link">Option 1: Express</a></li>
+      <li><a href="#option2" class="nav-link">Option 2: Balanced</a></li>
+      <li class="has-submenu">
+        <a href="#option3a" class="nav-link">Option 3 <span class="arrow">&#9662;</span></a> <!-- Added arrow, href to first sub-item -->
+        <ul class="submenu">
+          <li><a href="#option3a" class="nav-link">3A: Classic</a></li>
+          <li><a href="#option3b" class="nav-link">3B: Stargazer</a></li>
+        </ul>
+      </li>
+      <li><a href="#recommend" class="nav-link">Recommendation</a></li>
     </ul>
   </nav>
+
+  <!-- ... rest of your HTML content ... -->
+  <!-- Ensure all <td> content (except Day number) is wrapped in <span class="data-value"> -->
 
   <h2 id="advice">Important General Advice for Your Ladakh Trip</h2>
   <div class="advice callout">
@@ -917,5 +955,62 @@
 
 </div> <!-- end .content-wrapper -->
 
+<!-- Basic JavaScript for Submenu Toggle (Example) -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const hasSubmenuItems = document.querySelectorAll('.has-submenu > a');
+    hasSubmenuItems.forEach(item => {
+      item.addEventListener('click', function(event) {
+        // Prevent default if the main link itself shouldn't navigate
+        // For this example, we allow it to navigate to #option3a
+        // event.preventDefault(); 
+        const submenu = this.nextElementSibling;
+        if (submenu && submenu.classList.contains('submenu')) {
+          submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+        }
+      });
+    });
+
+    // Basic Scroll Spy (Example - needs robust implementation for production)
+    // This is a very simplified version.
+    const navLinks = document.querySelectorAll('#page-nav .nav-link');
+    const sections = [];
+    navLinks.forEach(link => {
+      const sectionId = link.getAttribute('href');
+      if (sectionId && sectionId.startsWith('#')) {
+        const section = document.querySelector(sectionId);
+        if (section) {
+          sections.push({link: link, section: section});
+        }
+      }
+    });
+
+    function highlightNavLink() {
+      let currentSectionId = '';
+      sections.forEach(item => {
+        const sectionTop = item.section.offsetTop - 150; // Offset for better timing
+        const sectionHeight = item.section.offsetHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          currentSectionId = item.section.id;
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSectionId}`) {
+          link.classList.add('active');
+          // If part of a submenu, ensure parent is also somehow indicated (more complex)
+          const parentLi = link.closest('.has-submenu');
+          if (parentLi) {
+            parentLi.querySelector('a').classList.add('active'); // Highlight main "Option 3" too
+          }
+        }
+      });
+    }
+    window.addEventListener('scroll', highlightNavLink);
+    highlightNavLink(); // Initial check
+  });
+</script>
 </body>
 </html>
+
