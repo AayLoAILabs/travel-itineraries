@@ -1833,5 +1833,19 @@
 
 </div> <!-- end .content-wrapper -->
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.card-toggle-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var details = btn.parentElement.querySelector('.card-details');
+        if (details) {
+          details.classList.toggle('expanded');
+          btn.textContent = details.classList.contains('expanded') ? 'Hide Details' : 'Show Details';
+        }
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
