@@ -545,33 +545,22 @@
         table tr td:first-child .data-value { font-size: 1.2rem; }
     }
 
-    /* Custom styles to help Option 2, 3A, 3B tables fit better on desktop */
-    /* Target TH and TD elements using their classes */
+    /* --- CUSTOM TABLE FIX FOR OPTIONS 2, 3A, 3B --- */
+    @media (min-width: 769px) { /* Apply only on desktop screens */
+      /* Uniformly reduce cell horizontal padding for tables in Options 2, 3A, 3B */
+      /* to help them fit without horizontal scrolling, like Option 1's table. */
 
-    /* For Option 2 table */
-    #option2 + .table-container th.healthcell,
-    #option2 + .table-container td.healthcell,
-    #option2 + .table-container th.permit,
-    #option2 + .table-container td.permit,
-
-    /* For Option 3A table */
-    #option3a + .table-container th.healthcell,
-    #option3a + .table-container td.healthcell,
-    #option3a + .table-container th.permit,
-    #option3a + .table-container td.permit,
-
-    /* For Option 3B table */
-    #option3b + .table-container th.hotel4,    /* Targets Hotel (4★)/Basic header */
-    #option3b + .table-container td.hotel4,    /* Targets Hotel (4★)/Basic cells */
-    #option3b + .table-container th.healthcell,
-    #option3b + .table-container td.healthcell,
-    #option3b + .table-container th.permit,
-    #option3b + .table-container td.permit {
-      /* Original horizontal padding is var(--spacing-table-cell-padding-x-desktop) which is 0.8rem */
-      /* We reduce it to make these columns narrower */
-      padding-left: calc(var(--spacing-base) * 0.5); /* Adjusted reduced padding */
-      padding-right: calc(var(--spacing-base) * 0.5); /* Adjusted reduced padding */
+      #option2 + .table-container thead th,
+      #option2 + .table-container tbody td,
+      #option3a + .table-container thead th,
+      #option3a + .table-container tbody td,
+      #option3b + .table-container thead th,
+      #option3b + .table-container tbody td {
+        padding-left: 0.6rem;  /* Original desktop horizontal padding is 0.8rem */
+        padding-right: 0.6rem; /* Original desktop horizontal padding is 0.8rem */
+      }
     }
+    /* --- END CUSTOM TABLE FIX --- */
 
     /* Footer */
     footer {
