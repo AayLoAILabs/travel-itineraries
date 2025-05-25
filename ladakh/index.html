@@ -588,6 +588,41 @@
     }
     footer a { color: var(--color-secondary); }
     footer a:hover { color: var(--color-primary); }
+
+    @media (max-width: 768px) {
+      table { display: none !important; }
+      .mobile-cards { display: block; }
+      .mobile-card {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px #0001;
+        margin-bottom: 1.2em;
+        padding: 1em;
+        font-size: 1em;
+      }
+      .card-header { font-weight: 600; margin-bottom: 0.5em; }
+      .card-header .card-day { font-size: 1.1em; color: #00a896; margin-right: 0.5em; }
+      .card-header .card-date { color: #34495e; margin-right: 0.5em; }
+      .card-header .card-activity { color: #2c3e50; }
+      .card-main { margin-bottom: 0.5em; }
+      .card-main > div { margin-bottom: 0.3em; }
+      .card-details { display: none; margin-top: 0.5em; }
+      .card-details.expanded { display: block; }
+      .card-toggle-btn {
+        background: #e9edf2;
+        border: none;
+        color: #34495e;
+        padding: 0.4em 1em;
+        border-radius: 4px;
+        margin-top: 0.5em;
+        cursor: pointer;
+        font-size: 0.95em;
+      }
+      .icon { margin-right: 0.4em; }
+    }
+    @media (min-width: 769px) {
+      .mobile-cards { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -1365,6 +1400,16 @@
     setTimeout(() => {
         highlightNavLink();
     }, 150);
+
+    document.querySelectorAll('.mobile-card .card-toggle-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const details = this.nextElementSibling;
+        if (details) {
+          details.classList.toggle('expanded');
+          this.textContent = details.classList.contains('expanded') ? 'Hide Details ▲' : 'Show More ▼';
+        }
+      });
+    });
   });
 </script>
 
