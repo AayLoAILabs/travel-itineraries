@@ -545,6 +545,30 @@
         table tr td:first-child .data-value { font-size: 1.2rem; }
     }
 
+    /* Custom styles to help Option 2, 3A, 3B tables fit better */
+    #option2 + .table-container th.healthcell,
+    #option2 + .table-container td:nth-child(10), /* Health column cells in Option 2 table */
+    #option2 + .table-container th.permit,
+    #option2 + .table-container td:nth-child(11), /* Permit column cells in Option 2 table */
+
+    #option3a + .table-container th.healthcell,
+    #option3a + .table-container td:nth-child(10), /* Health column cells in Option 3A table */
+    #option3a + .table-container th.permit,
+    #option3a + .table-container td:nth-child(11), /* Permit column cells in Option 3A table */
+
+    #option3b + .table-container th.hotel4,        /* Hotel (4★)/Basic header in Option 3B table */
+    #option3b + .table-container td:nth-child(7),   /* Hotel (4★)/Basic cells in Option 3B table */
+    #option3b + .table-container th.healthcell,
+    #option3b + .table-container td:nth-child(10), /* Health column cells in Option 3B table */
+    #option3b + .table-container th.permit,
+    #option3b + .table-container td:nth-child(11) /* Permit column cells in Option 3B table */
+    {
+      /* Original horizontal padding is var(--spacing-table-cell-padding-x-desktop) which is 0.8rem */
+      /* We reduce it to make these columns narrower */
+      padding-left: calc(var(--spacing-base) * 0.45); /* New, reduced padding */
+      padding-right: calc(var(--spacing-base) * 0.45); /* New, reduced padding */
+    }
+
     /* Footer */
     footer {
       margin-top: var(--spacing-xxl);
