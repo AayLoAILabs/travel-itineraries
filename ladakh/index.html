@@ -670,6 +670,60 @@
       .advice-section > summary { background: none; border: none; font-size: 1.2em; padding: 0; color: #2c3e50; }
       .advice-section > div { padding: 0; }
     }
+
+    /* Floating Back to Top Button */
+    #backToTop {
+      position: fixed; bottom: 2em; right: 1em; z-index: 1000;
+      background: #00a896; color: #fff; border: none; border-radius: 50%;
+      width: 2.5em; height: 2.5em; font-size: 1.5em; display: none;
+      box-shadow: 0 2px 8px #0002; cursor: pointer; transition: background 0.2s;
+    }
+    #backToTop.show { display: block; }
+    #backToTop:active, #backToTop:focus { background: #007e70; outline: none; }
+
+    /* Floating Section Jump Menu */
+    #sectionJumpMenu {
+      position: fixed; top: 1em; left: 50%; transform: translateX(-50%);
+      z-index: 1001; background: #fff; border-radius: 2em; box-shadow: 0 2px 8px #0002;
+      display: flex; gap: 0.5em; padding: 0.5em 1em; align-items: center;
+      font-size: 1em; transition: box-shadow 0.2s;
+    }
+    #sectionJumpMenu a {
+      color: #00a896; text-decoration: none; font-weight: 600; padding: 0.3em 0.9em;
+      border-radius: 1em; transition: background 0.2s, color 0.2s;
+    }
+    #sectionJumpMenu a.active, #sectionJumpMenu a:focus {
+      background: #e9edf2; color: #2c3e50;
+    }
+    #sectionJumpMenu .menu-toggle {
+      display: none; background: none; border: none; font-size: 1.5em; margin-right: 0.5em; cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      #sectionJumpMenu {
+        flex-direction: column; align-items: flex-start; padding: 0.5em 0.7em; left: 1em; right: 1em; width: auto; top: auto; bottom: 1em; transform: none;
+        box-shadow: 0 2px 8px #0003;
+      }
+      #sectionJumpMenu.collapsed a { display: none; }
+      #sectionJumpMenu.collapsed .menu-toggle { display: block; }
+      #sectionJumpMenu .menu-toggle { display: block; }
+    }
+
+    /* Accordion Animations & Highlight */
+    .advice-section > div {
+      max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(.4,0,.2,1), background 0.2s;
+      background: #fff;
+    }
+    .advice-section[open] > div {
+      max-height: 2000px; /* large enough for content */
+      background: #e9edf2;
+      border-left: 4px solid #00a896;
+    }
+    .advice-section > summary {
+      outline: none;
+    }
+    .advice-section:focus-within > summary, .advice-section > summary:focus {
+      background: #dce4ec;
+    }
   </style>
 </head>
 <body>
@@ -1805,206 +1859,77 @@
 
 </div> <!-- end .content-wrapper -->
 
+<!-- Floating Back to Top Button -->
+<button id="backToTop" aria-label="Back to top">↑</button>
+<nav id="sectionJumpMenu"></nav>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Submenu Toggle for Navigation
-    const submenuToggles = document.querySelectorAll('#page-nav .has-submenu > a');
-    submenuToggles.forEach(toggle => {
-      const submenu = toggle.nextElementSibling;
-      if (submenu && submenu.classList.contains('submenu')) {
-         if (window.innerWidth <= 768) { // Mobile: JS toggle, hide by default
-            submenu.style.display = 'none'; 
-         } else { // Desktop: CSS hover/focus, so ensure it's not display:none from JS
-            submenu.style.display = ''; 
-         }
-        let arrow = toggle.querySelector('.arrow');
-        if (arrow) arrow.innerHTML = '&#9662;'; 
+// Back to Top Button
+window.addEventListener('scroll', function() {
+  document.getElementById('backToTop').classList.toggle('show', window.scrollY > 300);
+});
+document.getElementById('backToTop').onclick = () => window.scrollTo({top:0,behavior:'smooth'});
 
-        toggle.addEventListener('click', function(event) {
-          if (window.innerWidth <= 768 ) { 
-            event.preventDefault(); 
-            const isSubmenuVisible = submenu.style.display === 'flex' || submenu.style.display === 'block';
-            
-            document.querySelectorAll('#page-nav .submenu').forEach(otherSubmenu => {
-              if (otherSubmenu !== submenu) {
-                otherSubmenu.style.display = 'none';
-                const otherToggle = otherSubmenu.previousElementSibling;
-                let otherArrow = otherToggle ? otherToggle.querySelector('.arrow') : null;
-                if(otherArrow) otherArrow.innerHTML = '&#9662;';
-              }
-            });
-
-            if (isSubmenuVisible) {
-                submenu.style.display = 'none';
-                if(arrow) arrow.innerHTML = '&#9662;'; 
-            } else {
-                submenu.style.display = 'flex'; 
-                if(arrow) arrow.innerHTML = '&#9652;'; 
-            }
-            event.stopPropagation(); 
-          } 
-          else if (this.getAttribute('href') === '#') { 
-             event.preventDefault();
-          }
-        });
-      }
-    });
-    
-    // Mobile Card Expand/Collapse
-    document.querySelectorAll('table tr').forEach(row => {
-        const toggleBtn = row.querySelector('.card-toggle-btn');
-        if (!toggleBtn) return; // Only for rows with a toggle button (mobile cards)
-
-        // Wrap all td elements except the first one (header) in a collapsible div
-        let contentToCollapse = [];
-        let foundHeader = false;
-        row.querySelectorAll('td').forEach(td => {
-            if (td.getAttribute('data-label') === 'Day') {
-                foundHeader = true;
-            } else if (foundHeader) {
-                contentToCollapse.push(td);
-            }
-        });
-        
-        if (contentToCollapse.length > 0) {
-            const wrapper = document.createElement('div');
-            wrapper.classList.add('card-content-collapsible');
-            // Move the content TDs into the wrapper
-            contentToCollapse.forEach(td => wrapper.appendChild(td));
-            // Append the wrapper after the first TD (the header)
-            row.querySelector('td[data-label="Day"]').insertAdjacentElement('afterend', wrapper);
-
-            // Set initial state based on screen width
-            if (window.innerWidth <= 768) {
-                 wrapper.style.maxHeight = '0'; // Start collapsed on mobile
-                 toggleBtn.textContent = 'Show Details';
-            } else {
-                 wrapper.style.maxHeight = null; // Expanded on desktop
-                 toggleBtn.style.display = 'none'; // Hide button on desktop
-            }
-
-
-            toggleBtn.addEventListener('click', function() {
-                const isExpanded = wrapper.classList.toggle('is-expanded');
-                if (isExpanded) {
-                    wrapper.style.maxHeight = wrapper.scrollHeight + "px";
-                    this.textContent = 'Hide Details';
-                } else {
-                    wrapper.style.maxHeight = '0';
-                    this.textContent = 'Show Details';
-                }
-            });
-        }
-    });
-
-
-    // Scroll Spy
-    const navLinks = document.querySelectorAll('#page-nav a.nav-link');
-    const sections = [];
-    const navElement = document.getElementById('page-nav');
-    const navHeight = navElement ? navElement.getBoundingClientRect().height + 40 : 80; 
-
-    navLinks.forEach(link => {
-      const sectionId = link.getAttribute('href');
-      if (sectionId && sectionId.startsWith('#') && sectionId.length > 1) {
-        try {
-          const section = document.querySelector(sectionId);
-          if (section) {
-            sections.push({link: link, section: section});
-          }
-        } catch (e) {
-          console.error("Invalid selector for scroll-spy:", sectionId, e);
-        }
-      }
-    });
-
-    function highlightNavLink() {
-      let currentSectionId = '';
-      const scrollPosition = window.pageYOffset;
-
-      sections.forEach(item => {
-        const sectionTop = item.section.offsetTop - navHeight; 
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + item.section.offsetHeight) {
-          currentSectionId = item.section.id;
-        }
-      });
-      
-      if (!currentSectionId && sections.length > 0 && scrollPosition < sections[0].section.offsetTop - navHeight) {
-          currentSectionId = ''; 
-      } else if (!currentSectionId && sections.length > 0) {
-          for (let i = sections.length - 1; i >= 0; i--) {
-              if (scrollPosition >= sections[i].section.offsetTop - navHeight) {
-                  currentSectionId = sections[i].section.id;
-                  break;
-              }
-          }
-          if (!currentSectionId && scrollPosition + window.innerHeight >= document.body.scrollHeight - 20) { 
-             currentSectionId = sections[sections.length-1].section.id;
-          }
-      }
-
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        const linkHref = link.getAttribute('href');
-        if (linkHref === `#${currentSectionId}`) {
-          link.classList.add('active');
-          const parentLiWithSubmenu = link.closest('li.has-submenu');
-          if (parentLiWithSubmenu) {
-            const parentToggleLink = parentLiWithSubmenu.querySelector('a.nav-link:not(.sub-nav-link)');
-            if (parentToggleLink) {
-              parentToggleLink.classList.add('active');
-            }
-          }
-        }
-      });
-    }
-    let scrollTimeout;
-    window.addEventListener('scroll', () => {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(highlightNavLink, 50); 
-    }, { passive: true });
-
-    setTimeout(() => {
-        highlightNavLink();
-    }, 150);
-
-    document.querySelectorAll('.mobile-card .card-toggle-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const details = this.nextElementSibling;
-        if (details) {
-          details.classList.toggle('expanded');
-          this.textContent = details.classList.contains('expanded') ? 'Hide Details ▲' : 'Show More ▼';
-        }
-      });
-    });
-
-    // Mobile card toggle functionality
-    const toggleButtons = document.querySelectorAll('.card-toggle-btn');
-    toggleButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        const card = this.closest('.mobile-card');
-        const details = card.querySelector('.card-details');
-        const isExpanded = details.classList.contains('expanded');
-        
-        // Toggle the expanded class
-        details.classList.toggle('expanded');
-        
-        // Update button text
-        this.textContent = isExpanded ? 'Show Details' : 'Hide Details';
-        
-        // Update button icon
-        const icon = this.querySelector('.toggle-icon');
-        if (icon) {
-          icon.textContent = isExpanded ? '▼' : '▲';
-        }
-      });
-    });
-
-    // Initialize all cards as collapsed
-    document.querySelectorAll('.card-details').forEach(details => {
-      details.classList.remove('expanded');
-    });
+// Section Jump Menu
+const sectionJumpMenu = document.getElementById('sectionJumpMenu');
+sectionJumpMenu.innerHTML = `
+  <button class="menu-toggle" aria-label="Show section menu">☰</button>
+  <a href="#option1" class="jump-link">Option 1</a>
+  <a href="#option2" class="jump-link">Option 2</a>
+  <a href="#option3a" class="jump-link">Option 3A</a>
+  <a href="#option3b" class="jump-link">Option 3B</a>
+  <a href="#recommend" class="jump-link">Recommendation</a>
+`;
+const jumpLinks = sectionJumpMenu.querySelectorAll('.jump-link');
+jumpLinks.forEach(link => {
+  link.addEventListener('click', function() {
+    jumpLinks.forEach(l => l.classList.remove('active'));
+    this.classList.add('active');
+    if(window.innerWidth <= 768) sectionJumpMenu.classList.add('collapsed');
   });
+});
+// Highlight active section on scroll
+const sectionIds = ['option1','option2','option3a','option3b','recommend'];
+window.addEventListener('scroll', function() {
+  let current = '';
+  for(const id of sectionIds) {
+    const el = document.getElementById(id);
+    if(el && window.scrollY + 120 >= el.offsetTop) current = id;
+  }
+  jumpLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
+});
+// Hamburger toggle for mobile
+const menuToggle = sectionJumpMenu.querySelector('.menu-toggle');
+if(menuToggle) {
+  menuToggle.addEventListener('click', function(e) {
+    sectionJumpMenu.classList.toggle('collapsed');
+    e.stopPropagation();
+  });
+  sectionJumpMenu.classList.add('collapsed');
+  document.body.addEventListener('click', function() {
+    if(window.innerWidth <= 768) sectionJumpMenu.classList.add('collapsed');
+  });
+  sectionJumpMenu.addEventListener('click', function(e) { e.stopPropagation(); });
+}
+
+// Accordion ARIA attributes
+Array.from(document.querySelectorAll('.advice-section')).forEach((details, i) => {
+  const summary = details.querySelector('summary');
+  details.setAttribute('aria-expanded', details.open);
+  details.setAttribute('aria-controls', 'advice' + i);
+  summary.setAttribute('aria-controls', 'advice' + i);
+  summary.setAttribute('tabindex', '0');
+  details.id = 'advice' + i;
+  summary.addEventListener('click', function() {
+    details.setAttribute('aria-expanded', details.open);
+  });
+  summary.addEventListener('keydown', function(e) {
+    if(e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      details.open = !details.open;
+      details.setAttribute('aria-expanded', details.open);
+    }
+  });
+});
 </script>
 
 </body>
