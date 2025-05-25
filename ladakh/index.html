@@ -13,35 +13,33 @@
       --font-sans: 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
       --font-serif: 'Lora', Georgia, serif;
 
-      /* Core Colors */
-      --color-primary: #2c3e50; 
-      --color-primary-light: #34495e;
-      --color-secondary: #8ca0b3; 
-      --color-accent: #00a896;  
-      --color-accent-hover: #007e70;
-
-      /* Background Colors */
-      --color-bg-body: #f4f7f9; 
-      --color-bg-container: #ffffff;
-      --color-bg-subtle: #e9edf2; 
+      /* Modern Ladakh-Inspired Colors */
+      --color-primary: #232946;
+      --color-primary-light: #4f8cff;
+      --color-secondary: #b8c1ec;
+      --color-accent: #ff6b35;
+      --color-accent-hover: #ff3b00;
+      --color-bg-body: #f7f8fa;
+      --color-bg-container: #fff;
+      --color-bg-subtle: #f0f1f6;
       --color-bg-card-header-mobile: var(--color-bg-subtle);
       --color-bg-nav-dropdown: var(--color-bg-container);
 
       /* Text Colors */
-      --color-text-base: #333f50; 
-      --color-text-muted: #6c7a89;
-      --color-text-headings: var(--color-primary);
-      --color-text-on-accent-bg: #ffffff;
+      --color-text-base: #232946;
+      --color-text-muted: #6e7a90;
+      --color-text-headings: #232946;
+      --color-text-on-accent-bg: #fff;
       --color-text-label-mobile: var(--color-primary);
 
       /* Semantic Colors */
-      --color-info: #2693c9;
+      --color-info: #4f8cff;
       --color-info-bg: #e9f4fa;
-      --color-success: #27ae60;
+      --color-success: #3ecf8e;
       --color-success-bg: #e9f7ef;
-      --color-warning: #f39c12;
-      --color-warning-bg: #fef6e7;
-      --color-danger: #c0392b;
+      --color-warning: #ffd166;
+      --color-warning-bg: #fff7e0;
+      --color-danger: #ff3864;
       --color-danger-bg: #fdedec;
 
       /* Spacing & Sizing */
@@ -58,15 +56,15 @@
       /* Borders */
       --border-radius: 6px; 
       --border-radius-large: 8px;
-      --border-color: #dce4ec; 
+      --border-color: #e0e3eb; /* sand-inspired border */
       --border-width: 1px;
       --border-width-strong: 2px;
 
       /* Shadows */
-      --box-shadow-sm: 0 2px 5px rgba(44, 62, 80, 0.08);
-      --box-shadow-md: 0 4px 12px rgba(44, 62, 80, 0.1);
-      --box-shadow-card-mobile: 0 3px 10px rgba(44, 62, 80, 0.1);
-      --box-shadow-dropdown: 0 5px 15px rgba(44, 62, 80, 0.15);
+      --box-shadow-sm: 0 2px 5px rgba(45, 58, 74, 0.08);
+      --box-shadow-md: 0 4px 24px rgba(35, 41, 70, 0.08);
+      --box-shadow-card-mobile: 0 3px 10px rgba(45, 58, 74, 0.10);
+      --box-shadow-dropdown: 0 5px 15px rgba(45, 58, 74, 0.15);
     }
 
     /* Base & Reset */
@@ -671,59 +669,36 @@
       .advice-section > div { padding: 0; }
     }
 
-    /* Floating Back to Top Button */
-    #backToTop {
-      position: fixed; bottom: 2em; right: 1em; z-index: 1000;
-      background: #00a896; color: #fff; border: none; border-radius: 50%;
-      width: 2.5em; height: 2.5em; font-size: 1.5em; display: none;
-      box-shadow: 0 2px 8px #0002; cursor: pointer; transition: background 0.2s;
-    }
-    #backToTop.show { display: block; }
-    #backToTop:active, #backToTop:focus { background: #007e70; outline: none; }
-
-    /* Floating Section Jump Menu */
-    #sectionJumpMenu {
-      position: fixed; top: 1em; left: 50%; transform: translateX(-50%);
-      z-index: 1001; background: #fff; border-radius: 2em; box-shadow: 0 2px 8px #0002;
-      display: flex; gap: 0.5em; padding: 0.5em 1em; align-items: center;
-      font-size: 1em; transition: box-shadow 0.2s;
-    }
-    #sectionJumpMenu a {
-      color: #00a896; text-decoration: none; font-weight: 600; padding: 0.3em 0.9em;
-      border-radius: 1em; transition: background 0.2s, color 0.2s;
-    }
-    #sectionJumpMenu a.active, #sectionJumpMenu a:focus {
-      background: #e9edf2; color: #2c3e50;
-    }
-    #sectionJumpMenu .menu-toggle {
-      display: none; background: none; border: none; font-size: 1.5em; margin-right: 0.5em; cursor: pointer;
-    }
-    @media (max-width: 768px) {
-      #sectionJumpMenu {
-        flex-direction: column; align-items: flex-start; padding: 0.5em 0.7em; left: 1em; right: 1em; width: auto; top: auto; bottom: 1em; transform: none;
-        box-shadow: 0 2px 8px #0003;
-      }
-      #sectionJumpMenu.collapsed a { display: none; }
-      #sectionJumpMenu.collapsed .menu-toggle { display: block; }
-      #sectionJumpMenu .menu-toggle { display: block; }
-    }
-
     /* Accordion Animations & Highlight */
     .advice-section > div {
-      max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(.4,0,.2,1), background 0.2s;
-      background: #fff;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(.4,0,.2,1);
+      background: none;
+      border-left: none;
     }
     .advice-section[open] > div {
-      max-height: 2000px; /* large enough for content */
-      background: #e9edf2;
-      border-left: 4px solid #00a896;
+      max-height: 2000px;
+      background: none;
+      border-left: none;
     }
     .advice-section > summary {
       outline: none;
     }
-    .advice-section:focus-within > summary, .advice-section > summary:focus {
-      background: #dce4ec;
+    @media (max-width: 768px) {
+      .advice-section[open] > summary:before { content: '▼ '; }
+      .advice-section:not([open]) > summary:before { content: '▶ '; }
     }
+    @media (min-width: 769px) {
+      .advice-section[open] > summary:before,
+      .advice-section:not([open]) > summary:before {
+        content: none;
+      }
+    }
+
+    /* Remove floating section jump menu styles */
+    #sectionJumpMenu { display: none !important; }
+
   </style>
 </head>
 <body>
@@ -839,8 +814,7 @@
           <th>Start</th>
           <th>Activities</th>
           <th>Day Summary</th>
-          <th class="hotel5"><a href="https://www.thegranddragonladakh.com/" target="_blank" rel="noopener">The Grand Dragon Leh</a></th>
-          <th class="hotel4"><a href="https://www.theabduz.com/" target="_blank" rel="noopener">The Abduz, Leh</a></th>
+          <th class="hotel5"><a href="https://www.thegranddragonladakh.com/" target="_blank" rel="noopener">The Grand Dragon Leh</a></th><th class="hotel4"><a href="https://www.theabduz.com/" target="_blank" rel="noopener">The Abduz, Leh</a></th>
           <th>Food</th>
           <th>Car</th>
           <th class="healthcell">Health Tip</th>
@@ -1261,7 +1235,7 @@
       </div>
       <div class="card-details">
         <div><span class="icon">💡</span> Early start, high pass. Descend to Leh for better sleep.</div>
-        <div><span class="icon">🍽️</span> Ladakhi thali at Chopsticks Noodle Bar</div>
+        <div><span class="icon">🍽️</span> Local platter at Namza Dining</div>
       </div>
       <button class="card-toggle-btn">Show Details</button>
     </div>
@@ -1450,7 +1424,7 @@
       </div>
       <div class="card-details">
         <div><span class="icon">💡</span> Active day. Pace yourself. Avoid overexertion. Keep hydrating.</div>
-        <div><span class="icon">🍽️</span> Ladakhi butter tea, fried rice</div>
+        <div><span class="icon">🍽️</span> Ladakhi butter tea, fried rice at a local eatery</div>
       </div>
       <button class="card-toggle-btn">Show Details</button>
     </div>
@@ -1466,8 +1440,8 @@
         <div><span class="icon">🚗</span> Driver recommended</div>
       </div>
       <div class="card-details">
-        <div><span class="icon">💡</span> Ascend to Khardung La. Don't linger. Descend into Nubra.</div>
-        <div><span class="icon">🍽️</span> Mutton momos or thukpa</div>
+        <div><span class="icon">💡</span> Ascend to Khardung La. Don't linger. Nubra is lower than Leh.</div>
+        <div><span class="icon">🍽️</span> Yarkandi pulao</div>
       </div>
       <button class="card-toggle-btn">Show Details</button>
     </div>
@@ -1483,7 +1457,7 @@
         <div><span class="icon">🚗</span> Driver only</div>
       </div>
       <div class="card-details">
-        <div><span class="icon">💡</span> Long driving. Enjoy the scenic beauty and culture.</div>
+        <div><span class="icon">💡</span> Long driving. Enjoy the unique culture.</div>
         <div><span class="icon">🍽️</span> Buckwheat pancakes (Kisir) with apricot jam</div>
       </div>
       <button class="card-toggle-btn">Show Details</button>
@@ -1517,7 +1491,7 @@
         <div><span class="icon">🚗</span> Driver or self-drive</div>
       </div>
       <div class="card-details">
-        <div><span class="icon">💡</span> Early start, high pass. Descend to Leh.</div>
+        <div><span class="icon">💡</span> Early start, high pass. Descend to Leh for better sleep.</div>
         <div><span class="icon">🍽️</span> Local platter at Namza Dining</div>
       </div>
       <button class="card-toggle-btn">Show Details</button>
@@ -1728,8 +1702,8 @@
         <div><span class="icon">🚗</span> Driver recommended</div>
       </div>
       <div class="card-details">
-        <div><span class="icon">💡</span> Ascend to Khardung La. Don't linger. Descend into Nubra.</div>
-        <div><span class="icon">🍽️</span> Mutton momos or thukpa</div>
+        <div><span class="icon">💡</span> Ascend to Khardung La. Don't linger. Nubra is lower than Leh.</div>
+        <div><span class="icon">🍽️</span> Yarkandi pulao</div>
       </div>
       <button class="card-toggle-btn">Show Details</button>
     </div>
@@ -1858,79 +1832,6 @@
   </footer>
 
 </div> <!-- end .content-wrapper -->
-
-<!-- Floating Back to Top Button -->
-<button id="backToTop" aria-label="Back to top">↑</button>
-<nav id="sectionJumpMenu"></nav>
-<script>
-// Back to Top Button
-window.addEventListener('scroll', function() {
-  document.getElementById('backToTop').classList.toggle('show', window.scrollY > 300);
-});
-document.getElementById('backToTop').onclick = () => window.scrollTo({top:0,behavior:'smooth'});
-
-// Section Jump Menu
-const sectionJumpMenu = document.getElementById('sectionJumpMenu');
-sectionJumpMenu.innerHTML = `
-  <button class="menu-toggle" aria-label="Show section menu">☰</button>
-  <a href="#option1" class="jump-link">Option 1</a>
-  <a href="#option2" class="jump-link">Option 2</a>
-  <a href="#option3a" class="jump-link">Option 3A</a>
-  <a href="#option3b" class="jump-link">Option 3B</a>
-  <a href="#recommend" class="jump-link">Recommendation</a>
-`;
-const jumpLinks = sectionJumpMenu.querySelectorAll('.jump-link');
-jumpLinks.forEach(link => {
-  link.addEventListener('click', function() {
-    jumpLinks.forEach(l => l.classList.remove('active'));
-    this.classList.add('active');
-    if(window.innerWidth <= 768) sectionJumpMenu.classList.add('collapsed');
-  });
-});
-// Highlight active section on scroll
-const sectionIds = ['option1','option2','option3a','option3b','recommend'];
-window.addEventListener('scroll', function() {
-  let current = '';
-  for(const id of sectionIds) {
-    const el = document.getElementById(id);
-    if(el && window.scrollY + 120 >= el.offsetTop) current = id;
-  }
-  jumpLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
-});
-// Hamburger toggle for mobile
-const menuToggle = sectionJumpMenu.querySelector('.menu-toggle');
-if(menuToggle) {
-  menuToggle.addEventListener('click', function(e) {
-    sectionJumpMenu.classList.toggle('collapsed');
-    e.stopPropagation();
-  });
-  sectionJumpMenu.classList.add('collapsed');
-  document.body.addEventListener('click', function() {
-    if(window.innerWidth <= 768) sectionJumpMenu.classList.add('collapsed');
-  });
-  sectionJumpMenu.addEventListener('click', function(e) { e.stopPropagation(); });
-}
-
-// Accordion ARIA attributes
-Array.from(document.querySelectorAll('.advice-section')).forEach((details, i) => {
-  const summary = details.querySelector('summary');
-  details.setAttribute('aria-expanded', details.open);
-  details.setAttribute('aria-controls', 'advice' + i);
-  summary.setAttribute('aria-controls', 'advice' + i);
-  summary.setAttribute('tabindex', '0');
-  details.id = 'advice' + i;
-  summary.addEventListener('click', function() {
-    details.setAttribute('aria-expanded', details.open);
-  });
-  summary.addEventListener('keydown', function(e) {
-    if(e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      details.open = !details.open;
-      details.setAttribute('aria-expanded', details.open);
-    }
-  });
-});
-</script>
 
 </body>
 </html>
