@@ -14,35 +14,35 @@
       --font-serif: 'Lora', Georgia, serif;
 
       /* Core Colors - Inspired by Ladakh's landscapes */
-      --color-primary: #2c3e50; /* Deep Slate Blue - for headings, accents */
+      --color-primary: #2c3e50; /* Deep Slate Blue */
       --color-primary-light: #34495e; /* Slightly Lighter Slate */
-      --color-secondary: #7f8c8d; /* Cool Gray - for subtext, borders */
-      --color-accent: #1abc9c; /* Turquoise/Teal - for links, highlights */
+      --color-secondary: #7f8c8d; /* Cool Gray */
+      --color-accent: #1abc9c; /* Turquoise/Teal */
       --color-accent-hover: #16a085; /* Darker Turquoise/Teal */
 
       /* Background Colors */
-      --color-bg-body: #f7f9fb;    /* Very Light Off-White/Gray */
-      --color-bg-container: #ffffff; /* Clean White for content */
-      --color-bg-subtle: #ecf0f1;  /* Subtle Gray for alternate backgrounds */
+      --color-bg-body: #f7f9fb;
+      --color-bg-container: #ffffff;
+      --color-bg-subtle: #ecf0f1;
 
       /* Text Colors */
-      --color-text-base: #34495e;     /* Primary text color - slightly softer than black */
-      --color-text-muted: #95a5a6;   /* Muted text for less important info */
+      --color-text-base: #34495e;
+      --color-text-muted: #95a5a6;
       --color-text-headings: var(--color-primary);
       --color-text-on-primary-bg: #ffffff;
 
       /* Semantic Colors */
-      --color-info: #3498db;         /* Bright Blue for information */
+      --color-info: #3498db;
       --color-info-bg: #eaf5fc;
-      --color-success: #2ecc71;       /* Emerald Green for recommendations */
+      --color-success: #2ecc71;
       --color-success-bg: #eafaf1;
-      --color-warning: #f39c12;       /* Warm Orange for highlights/mild warnings */
+      --color-warning: #f39c12;
       --color-warning-bg: #fef5e7;
-      --color-danger: #e74c3c;        /* Alizarin Crimson for strong warnings */
+      --color-danger: #e74c3c;
       --color-danger-bg: #fdedec;
 
       /* Spacing & Sizing */
-      --spacing-base: 1rem; /* 16px if base font-size is 16px */
+      --spacing-base: 1rem;
       --spacing-xs: calc(var(--spacing-base) * 0.25);
       --spacing-sm: calc(var(--spacing-base) * 0.5);
       --spacing-md: var(--spacing-base);
@@ -52,7 +52,7 @@
 
       /* Borders */
       --border-radius: 6px;
-      --border-color: #dde4e8; /* Softer border color */
+      --border-color: #dde4e8;
       --border-width: 1px;
 
       /* Shadows */
@@ -61,17 +61,8 @@
     }
 
     /* Base & Reset */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      font-size: 100%; /* Typically 16px */
-      scroll-behavior: smooth;
-    }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 100%; scroll-behavior: smooth; }
     body {
       font-family: var(--font-sans);
       color: var(--color-text-base);
@@ -106,23 +97,20 @@
       }
     }
 
-
     /* Typography */
     h1, h2, h3 {
-      font-family: var(--font-serif); /* Serif for headings for a classic touch */
+      font-family: var(--font-serif);
       color: var(--color-text-headings);
       line-height: 1.3;
       margin-bottom: var(--spacing-lg);
     }
-
     h1 {
-      font-size: clamp(2.2rem, 5vw, 3rem); /* Responsive font size */
+      font-size: clamp(2.2rem, 5vw, 3rem);
       font-weight: 700;
       margin-top: 0;
       padding-bottom: var(--spacing-md);
       border-bottom: var(--border-width) solid var(--border-color);
     }
-
     h2 {
       font-size: clamp(1.8rem, 4vw, 2.4rem);
       font-weight: 600;
@@ -130,41 +118,20 @@
       padding-bottom: var(--spacing-sm);
       border-bottom: var(--border-width) solid var(--border-color);
     }
-    h2:first-of-type {
-        margin-top: var(--spacing-xl);
-    }
-
-
+    h2:first-of-type { margin-top: var(--spacing-xl); }
     h3 {
-      font-family: var(--font-sans); /* Sans-serif for H3 for differentiation */
+      font-family: var(--font-sans);
       font-size: clamp(1.3rem, 3vw, 1.6rem);
       color: var(--color-primary-light);
       font-weight: 600;
       margin-top: var(--spacing-xl);
       margin-bottom: var(--spacing-md);
     }
-
-    p {
-      margin-bottom: var(--spacing-md);
-    }
-
-    ul, ol {
-      margin-bottom: var(--spacing-md);
-      padding-left: var(--spacing-lg);
-    }
-    ul ul, ol ol, ul ol, ol ul {
-        margin-top: var(--spacing-sm);
-        margin-bottom: var(--spacing-sm);
-    }
-
-    li {
-      margin-bottom: var(--spacing-sm);
-    }
-
-    strong, b {
-      font-weight: 600;
-      color: var(--color-primary);
-    }
+    p { margin-bottom: var(--spacing-md); }
+    ul, ol { margin-bottom: var(--spacing-md); padding-left: var(--spacing-lg); }
+    ul ul, ol ol, ul ol, ol ul { margin-top: var(--spacing-sm); margin-bottom: var(--spacing-sm); }
+    li { margin-bottom: var(--spacing-sm); }
+    strong, b { font-weight: 600; color: var(--color-primary); }
 
     /* Links */
     a {
@@ -176,15 +143,8 @@
       text-decoration-color: transparent;
       text-underline-offset: 3px;
     }
-    a:hover, a:focus {
-      color: var(--color-accent-hover);
-      text-decoration-color: var(--color-accent-hover);
-    }
-    a:focus-visible {
-      outline: 2px solid var(--color-accent);
-      outline-offset: 2px;
-      border-radius: var(--border-radius);
-    }
+    a:hover, a:focus { color: var(--color-accent-hover); text-decoration-color: var(--color-accent-hover); }
+    a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; border-radius: var(--border-radius); }
     .delta { color: var(--color-success); }
 
     /* Navigation */
@@ -194,36 +154,21 @@
       margin-bottom: var(--spacing-xl);
       border-radius: var(--border-radius);
     }
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0 var(--spacing-md);
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: var(--spacing-sm);
-    }
-    nav ul li {
-      margin: 0;
-    }
+    nav ul { list-style: none; margin: 0; padding: 0 var(--spacing-md); display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--spacing-sm); }
+    nav ul li { margin: 0; }
     nav a {
       color: var(--color-primary-light);
       font-size: 0.95rem;
       font-weight: 600;
-      text-decoration: none; /* Override global link style */
+      text-decoration: none;
       padding: var(--spacing-sm) var(--spacing-md);
       border-radius: var(--border-radius);
       transition: background-color 0.2s ease, color 0.2s ease;
       display: inline-block;
     }
-    nav a:hover, nav a:focus, nav a.active { /* Consider an active state */
-      background-color: var(--color-accent);
-      color: var(--color-text-on-primary-bg);
-      text-decoration: none;
-    }
+    nav a:hover, nav a:focus, nav a.active { background-color: var(--color-accent); color: var(--color-text-on-primary-bg); text-decoration: none; }
 
-    /* Informational Boxes (Callouts) */
+    /* Callouts */
     .callout {
       padding: var(--spacing-lg);
       margin-top: var(--spacing-lg);
@@ -234,76 +179,48 @@
       box-shadow: var(--box-shadow-sm);
     }
     .callout > *:last-child { margin-bottom: 0; }
-    .callout ul, .callout ol {
-      margin-top: var(--spacing-sm);
-      padding-left: var(--spacing-md); /* Reduce padding inside callouts slightly */
-    }
-
-    .advice {
-      border-left-color: var(--color-info);
-      background-color: var(--color-info-bg);
-      color: var(--color-text-base);
-    }
+    .callout ul, .callout ol { margin-top: var(--spacing-sm); padding-left: var(--spacing-md); }
+    .advice { border-left-color: var(--color-info); background-color: var(--color-info-bg); color: var(--color-text-base); }
     .advice strong, .advice b { color: var(--color-info); }
-
-    .danger {
-      border-left-color: var(--color-danger);
-      background-color: var(--color-danger-bg);
-      color: var(--color-text-base); /* Keep text readable, use border/bg for severity */
-    }
+    .danger { border-left-color: var(--color-danger); background-color: var(--color-danger-bg); color: var(--color-text-base); }
     .danger strong, .danger b { color: var(--color-danger); }
-
-    .recommend {
-      border-left-color: var(--color-success);
-      background-color: var(--color-success-bg);
-      color: var(--color-text-base);
-    }
+    .recommend { border-left-color: var(--color-success); background-color: var(--color-success-bg); color: var(--color-text-base); }
     .recommend strong, .recommend b { color: var(--color-success); }
-
-    .highlight {
-      border-left-color: var(--color-warning);
-      background-color: var(--color-warning-bg);
-      color: var(--color-text-base);
-    }
+    .highlight { border-left-color: var(--color-warning); background-color: var(--color-warning-bg); color: var(--color-text-base); }
     .highlight strong, .highlight b { color: var(--color-warning); }
-
-    .miss {
-      border-left-color: var(--color-danger); /* Use danger palette for missed items */
-      background-color: var(--color-danger-bg);
-      color: var(--color-text-base);
-      font-weight: 500;
-    }
+    .miss { border-left-color: var(--color-danger); background-color: var(--color-danger-bg); color: var(--color-text-base); font-weight: 500; }
     .miss strong, .miss b { color: var(--color-danger); }
-
-    .summarybox {
-      border-left-color: var(--color-primary);
-      background-color: var(--color-bg-subtle);
-      color: var(--color-text-base);
-    }
+    .summarybox { border-left-color: var(--color-primary); background-color: var(--color-bg-subtle); color: var(--color-text-base); }
     .summarybox strong, .summarybox b { color: var(--color-primary); display: inline-block; margin-bottom: var(--spacing-xs); }
     .summarybox > strong:first-of-type, .summarybox > b:first-of-type { margin-top: 0; }
-    .summarybox > strong + br + strong, .summarybox > b + br + b { margin-top: var(--spacing-sm); } /* Space grouped bold items */
+    .summarybox > strong + br + strong, .summarybox > b + br + b { margin-top: var(--spacing-sm); }
 
     /* Tables */
-    .table-container { /* Wrapper for responsive horizontal scroll */
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
+    .table-container {
+      overflow-x: auto; /* This enables horizontal scrolling */
+      -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
       margin-top: var(--spacing-lg);
       margin-bottom: var(--spacing-lg);
       border: var(--border-width) solid var(--border-color);
       border-radius: var(--border-radius);
     }
     table {
-      width: 100%;
-      min-width: 900px; /* Ensure table has a minimum width before scrolling */
+      width: 100%; /* Table tries to take 100% of .table-container */
+      /* REMOVED min-width from table element itself.
+         Its width will be determined by its content, up to 100% of container.
+         If content is wider, .table-container scrolls. */
       border-collapse: collapse;
       font-size: 0.9rem;
+      table-layout: auto; /* Default, but good to be explicit. Columns size based on content. */
     }
     th, td {
       border-bottom: var(--border-width) solid var(--border-color);
       padding: var(--spacing-md) var(--spacing-lg);
       text-align: left;
       vertical-align: top;
+      white-space: normal; /* Allow content to wrap by default */
+      overflow-wrap: break-word; /* Helps break long words/URLs to prevent overflow */
+      word-break: break-word; /* Additional safety for word breaking */
     }
     th { /* Table Header */
       background-color: var(--color-bg-subtle);
@@ -311,37 +228,36 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      border-bottom-width: 2px; /* Thicker border under header */
+      border-bottom-width: 2px;
       border-bottom-color: var(--color-secondary);
+      white-space: nowrap; /* Headers can be nowrap if they are reasonably short */
     }
-    td {
-      color: var(--color-text-base);
-    }
-    /* Remove specific column background colors */
-    .hotel5, .hotel4, .permit, .healthcell {
-      font-weight: 500;
-      /* If emphasis is needed, consider subtle text color or icons */
-      /* For now, rely on table structure and clear headers */
-    }
-    /* Make specific cells bold if they contain key info, instead of backgrounds */
-    .healthcell b, .healthcell strong,
-    .permit b, .permit strong {
-        color: var(--color-danger); /* Example of highlighting critical info within cell */
+    /* Specific columns that might benefit from nowrap or specific min-widths for readability of short data */
+    th:nth-child(1), td:nth-child(1), /* Day */
+    th:nth-child(2), td:nth-child(2), /* Date */
+    th:nth-child(3), td:nth-child(3)  /* Start */
+    {
+        white-space: nowrap; /* Keep these short items on one line */
     }
 
-    tbody tr:nth-child(even) td {
-      background-color: var(--color-bg-body); /* Subtle striping */
+    /* Columns that should definitely wrap and might need more space */
+    td:nth-child(4), /* Activities */
+    td:nth-child(5)  /* Day Summary */
+    {
+        min-width: 150px; /* Suggest a minimum width for content-heavy cells */
     }
-    tbody tr:hover td {
-      background-color: var(--color-warning-bg); /* Use a highlight color on hover */
-      transition: background-color 0.2s ease;
+     @media (max-width: 768px) {
+        td:nth-child(4), td:nth-child(5) { min-width: 120px; }
     }
-    tbody tr td:first-child, tbody tr th:first-child {
-      border-left: none;
-    }
-    tbody tr td:last-child, tbody tr th:last-child {
-      border-right: none;
-    }
+
+
+    td { color: var(--color-text-base); }
+    .hotel5, .hotel4, .permit, .healthcell { font-weight: 500; }
+    .healthcell b, .healthcell strong,
+    .permit b, .permit strong { color: var(--color-danger); }
+
+    tbody tr:nth-child(even) td { background-color: var(--color-bg-body); }
+    tbody tr:hover td { background-color: var(--color-warning-bg); transition: background-color 0.2s ease; }
     table caption {
       font-size: 1.2rem;
       font-family: var(--font-serif);
@@ -352,7 +268,6 @@
       margin-bottom: var(--spacing-sm);
     }
 
-
     /* Footer */
     footer {
       margin-top: var(--spacing-xxl);
@@ -362,38 +277,31 @@
       color: var(--color-text-muted);
       font-size: 0.9rem;
     }
-    footer a {
-      color: var(--color-secondary);
-    }
-    footer a:hover {
-      color: var(--color-primary);
-    }
+    footer a { color: var(--color-secondary); }
+    footer a:hover { color: var(--color-primary); }
 
-    /* Responsive Adjustments */
+    /* Responsive Adjustments for smaller screens */
     @media (max-width: 960px) {
-        /* table min-width might be adjusted if needed */
+        /* On medium screens, if table still too wide, horizontal scroll will activate.
+           This is better than squishing content too much. */
     }
     @media (max-width: 768px) {
-      body {
-        font-size: 0.95rem;
-      }
-      nav ul {
-        flex-direction: column;
-        align-items: stretch;
-        gap: var(--spacing-xs);
-      }
-      nav ul li a {
-        display: block;
-        text-align: center;
-      }
-      table {
-        font-size: 0.85rem;
-        min-width: 700px; /* Adjust for smaller screens if still too wide */
-      }
+      body { font-size: 0.95rem; }
+      nav ul { flex-direction: column; align-items: stretch; gap: var(--spacing-xs); }
+      nav ul li a { display: block; text-align: center; }
+      table { font-size: 0.85rem; } /* Slightly smaller font in tables on mobile */
       th, td {
-        padding: var(--spacing-sm) var(--spacing-md);
+        padding: var(--spacing-sm) var(--spacing-md); /* Reduced padding on mobile */
       }
+      /* Ensure even nowrap headers can wrap if absolutely necessary on tiny screens */
+      th { white-space: normal; }
     }
+    @media (max-width: 480px) {
+        /* Further reduction in padding or font for very small screens if needed */
+        th, td { padding: var(--spacing-xs) var(--spacing-sm); }
+        table { font-size: 0.8rem; }
+    }
+
   </style>
 </head>
 <body>
@@ -851,7 +759,7 @@
   </div>
 
   <footer>
-    Ladakh Itinerary Guide © 2025 – Designed for safe, joyful journeys | <a href="https://www.instagram.com/lokis_planet/" target="_blank" rel="noopener noreferrer">lokis_planet</a>
+    Ladakh Itinerary Guide © 2025 – Designed for safe, joyful journeys 
   </footer>
 
 </div> <!-- end .content-wrapper -->
