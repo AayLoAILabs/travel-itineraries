@@ -199,11 +199,11 @@
     .summarybox > strong:first-of-type, .summarybox > b:first-of-type { margin-top: 0; }
     .summarybox > strong + br + strong, .summarybox > b + br + b { margin-top: var(--spacing-sm); }
 
-    /* Tables - Default (Desktop) Styles */
+    /* --- Desktop Table Styles --- */
     .table-container {
       margin-top: var(--spacing-lg);
       margin-bottom: var(--spacing-lg);
-      overflow-x: auto; /* Enable horizontal scroll ONLY if content overflows */
+      overflow-x: auto; /* Critical for responsive tables if content is too wide */
       -webkit-overflow-scrolling: touch;
       border: var(--border-width) solid var(--border-color);
       border-radius: var(--border-radius);
@@ -212,7 +212,7 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 0.9rem;
-      table-layout: auto;
+      table-layout: auto; /* Let browser decide column widths */
     }
     table caption {
       font-size: 1.2rem;
@@ -223,68 +223,47 @@
       caption-side: top;
       margin-bottom: var(--spacing-sm);
     }
-    table thead {
-        display: table-header-group;
-    }
-    table tr {
-        display: table-row;
-        background: none;
-        box-shadow: none;
-        border-radius: 0;
-        margin-bottom: 0;
-    }
-    table th, table td {
-      border-bottom: var(--border-width) solid var(--border-color);
-      padding: var(--spacing-md) var(--spacing-lg);
-      text-align: left;
-      vertical-align: top;
-      white-space: normal;
-      word-wrap: break-word; /* For older browsers */
-      overflow-wrap: break-word; /* Standard */
-      hyphens: auto; /* Allow hyphenation for cleaner breaks */
-      display: table-cell;
-    }
-    table th {
+    table thead th { /* Styles for header cells */
       background-color: var(--color-bg-subtle);
       color: var(--color-primary-light);
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      border-bottom-width: 2px;
-      border-bottom-color: var(--color-secondary);
-      white-space: nowrap;
+      padding: var(--spacing-md) var(--spacing-lg);
+      text-align: left;
+      vertical-align: middle; /* Vertically align header text */
+      border-bottom: 2px solid var(--color-secondary);
+      white-space: normal; /* Allow headers to wrap */
     }
-    table td {
-        color: var(--color-text-base);
-        line-height: 1.7;
-    }
-    table td::before { /* Hide mobile labels on desktop */
-        display: none;
+    table tbody td { /* Styles for data cells */
+      padding: var(--spacing-md) var(--spacing-lg);
+      text-align: left;
+      vertical-align: top;
+      border-bottom: var(--border-width) solid var(--border-color);
+      color: var(--color-text-base);
+      line-height: 1.7;
+      white-space: normal; /* Allow cell content to wrap */
+      overflow-wrap: break-word; /* Break long words if they would overflow */
+      hyphens: auto; /* Enable hyphenation */
     }
     table tbody tr:nth-child(even) td {
         background-color: var(--color-bg-body);
     }
     table tbody tr:hover td {
         background-color: var(--color-warning-bg);
-        transition: background-color 0.2s ease;
     }
     .hotel5, .hotel4, .permit, .healthcell { font-weight: 500; }
     .healthcell b, .healthcell strong,
     .permit b, .permit strong { color: var(--color-danger); }
 
-
-    /* Mobile-Specific Styles (Breakpoint: 768px) */
+    /* --- Mobile Table Styles (Card View) --- */
     @media (max-width: 768px) {
-      body { font-size: 0.95rem; } /* Slightly adjust base font for mobile */
-      nav ul { flex-direction: column; align-items: stretch; gap: var(--spacing-xs); }
-      nav ul li a { display: block; text-align: center; }
-
       .table-container {
-        border: none; /* Remove border around table container on mobile */
-        overflow-x: visible; /* Let cards flow */
+        border: none;
+        overflow-x: visible; /* Cards flow, no scroll on container */
       }
       table {
-        border: none; /* Remove table border for card view */
+        border: none;
         font-size: 0.9rem;
       }
       table caption {
@@ -293,86 +272,89 @@
         margin-bottom: var(--spacing-lg);
       }
       table thead {
-        display: none; /* Hide desktop headers */
+        display: none; /* Hide table headers */
       }
-      table tbody {
-        display: block; /* Allow tr to be block */
+      table tbody, table tr, table td {
+        display: block; /* Make everything block for card layout */
       }
-      table tr { /* Each row becomes a card */
-        display: block;
+      table tr { /* Each TR is a card */
         margin-bottom: var(--spacing-xl);
         border-radius: var(--border-radius-large);
         box-shadow: var(--box-shadow-card-mobile);
         background-color: var(--color-bg-container);
-        overflow: hidden; /* For rounded corners and containing children */
+        overflow: hidden;
       }
-      table td { /* Each cell becomes a list item in the card */
-        display: block; /* Stack label and data */
+      table td { /* Each TD is a row in the card */
         padding: var(--spacing-md);
         border-bottom: var(--border-width) solid var(--border-color);
-        line-height: 1.6;
-        text-align: left; /* Ensure text aligns left */
-        white-space: normal; /* Ensure content wraps */
-        word-wrap: break-word;
-        overflow-wrap: break-word;
+        text-align: left;
       }
-      table tr td:first-child { /* "Day X" styled as card header */
-        background-color: var(--color-bg-card-header-mobile);
-        font-weight: 700;
-        color: var(--color-primary);
-        border-top-left-radius: var(--border-radius-large);
-        border-top-right-radius: var(--border-radius-large);
-        padding: var(--spacing-sm) var(--spacing-md);
-        /* display: flex; /* If label and number need to be side-by-side */
-        /* align-items: baseline; */
+      table td:last-child {
+        border-bottom: none;
       }
-      table td::before { /* Display data-label as a block above the data */
+      table td::before { /* The label from data-label attribute */
         content: attr(data-label);
         display: block;
         font-weight: 600;
         color: var(--color-text-label-mobile);
         margin-bottom: var(--spacing-xs);
-        font-size: 0.85em; /* Slightly smaller label */
+        font-size: 0.85em;
         text-transform: uppercase;
-        letter-spacing: 0.03em;
       }
-      table tr td:first-child::before { /* Specific for Day label */
+      /* Special styling for the first TD in a card (usually "Day") */
+      table tr td:first-child {
+        background-color: var(--color-bg-card-header-mobile);
+        color: var(--color-primary);
+        border-top-left-radius: var(--border-radius-large);
+        border-top-right-radius: var(--border-radius-large);
+        padding: var(--spacing-sm) var(--spacing-md);
+      }
+      table tr td:first-child::before { /* Label for "Day" cell */
         display: inline; /* "Day: " */
+        font-weight: 700;
+        font-size: 1em;
+        text-transform: none;
         margin-right: var(--spacing-xs);
-        text-transform: none; /* No uppercase for "Day: " */
-        font-size: 1em; /* Normal size for "Day: " */
+        color: var(--color-text-label-mobile);
       }
-      table tr td:first-child span.data-value { /* The day number itself */
+      table tr td:first-child .data-value { /* The Day number */
+        display: inline;
         font-size: 1.1em;
         font-weight: 700;
         color: var(--color-primary);
       }
-      .data-value { /* The actual data content in the cell */
-        display: block; /* Ensure it takes its own line if label is above */
+      .data-value { /* General class for the actual data in a cell */
+        display: block; /* Ensures it's on its own line after the ::before label */
         word-break: break-word;
         overflow-wrap: break-word;
       }
-      /* If the data value itself is just a dash, make it less prominent */
-      .data-value:empty,
-      td span.data-value:empty {
-          color: var(--color-text-muted);
-      }
-      td span.data-value:only-child:empty::after { /* Show dash for empty cells */
-        content: "—";
+       /* Handle empty data values cleanly */
+      .data-value:empty::after {
+        content: "—"; /* Display an em-dash for empty cells */
         color: var(--color-text-muted);
-      }
-
-
-      table td:last-of-type { /* No border for the last item in a card */
-        border-bottom: none;
+        font-style: italic;
       }
     }
-    @media (max-width: 480px) {
+
+    @media (max-width: 480px) { /* Further tweaks for very small screens */
+        .content-wrapper { padding: var(--spacing-md); }
         table { font-size: 0.85rem; }
-        table td { padding: var(--spacing-sm) var(--spacing-md); }
+        table td { padding: var(--spacing-sm); }
         table td::before { font-size: 0.8em; }
     }
 
+
+    /* Footer */
+    footer {
+      margin-top: var(--spacing-xxl);
+      padding: var(--spacing-lg) 0;
+      border-top: var(--border-width) solid var(--border-color);
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: 0.9rem;
+    }
+    footer a { color: var(--color-secondary); }
+    footer a:hover { color: var(--color-primary); }
   </style>
 </head>
 <body>
