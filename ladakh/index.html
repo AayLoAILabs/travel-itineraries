@@ -24,12 +24,15 @@
       --color-bg-body: #f7f9fb;
       --color-bg-container: #ffffff;
       --color-bg-subtle: #ecf0f1;
+      --color-bg-card-header: #e9eef2; /* Subtle header for cards */
+
 
       /* Text Colors */
       --color-text-base: #34495e;
       --color-text-muted: #95a5a6;
       --color-text-headings: var(--color-primary);
       --color-text-on-primary-bg: #ffffff;
+      --color-text-label-mobile: var(--color-primary-light);
 
       /* Semantic Colors */
       --color-info: #3498db;
@@ -52,12 +55,14 @@
 
       /* Borders */
       --border-radius: 6px;
+      --border-radius-large: 10px; /* For cards */
       --border-color: #dde4e8;
       --border-width: 1px;
 
       /* Shadows */
       --box-shadow-sm: 0 2px 4px rgba(44, 62, 80, 0.08);
       --box-shadow-md: 0 5px 15px rgba(44, 62, 80, 0.1);
+      --box-shadow-card-mobile: 0 4px 10px rgba(44, 62, 80, 0.12);
     }
 
     /* Base & Reset */
@@ -92,7 +97,7 @@
       .content-wrapper {
         margin: 0;
         border-radius: 0;
-        padding: var(--spacing-md) var(--spacing-sm);
+        padding: var(--spacing-lg) var(--spacing-md); /* Increased padding slightly for mobile content */
         box-shadow: none;
       }
     }
@@ -197,13 +202,11 @@
 
     /* Tables - Desktop First Approach */
     .table-container {
-      /* On desktop, this container isn't strictly necessary if tables are well-behaved,
-         but it can be useful for consistency or if horizontal scroll is a fallback. */
       margin-top: var(--spacing-lg);
       margin-bottom: var(--spacing-lg);
-      border: var(--border-width) solid var(--border-color); /* Optional border for desktop container */
+      border: var(--border-width) solid var(--border-color);
       border-radius: var(--border-radius);
-      overflow: hidden; /* Prevents content from spilling if table is too wide temporarily */
+      overflow: hidden;
     }
     table {
       width: 100%;
@@ -265,61 +268,113 @@
       nav ul li a { display: block; text-align: center; }
 
       .table-container {
-        border: none; /* Remove container border on mobile if using card style */
-        overflow: visible; /* Allow cards to flow naturally */
+        border: none;
+        overflow: visible;
       }
       table {
-        border: none; /* Remove table border */
-        font-size: 0.9rem; /* Slightly larger font for cards */
+        border: none;
+        font-size: 0.9rem;
+      }
+      table caption { /* Style caption for mobile cards */
+        text-align: center;
+        font-size: 1.3rem;
+        margin-bottom: var(--spacing-lg);
       }
       table thead {
-        display: none; /* Hide traditional table headers */
+        display: none;
       }
-      table tr {
+      table tr { /* Each row becomes a card */
         display: block;
-        margin-bottom: var(--spacing-lg); /* Space between cards */
-        border: var(--border-width) solid var(--border-color);
-        border-radius: var(--border-radius);
-        box-shadow: var(--box-shadow-sm);
-        background-color: var(--color-bg-container); /* Each row is a card */
+        margin-bottom: var(--spacing-xl); /* More space between cards */
+        border: none; /* Remove individual row border, rely on shadow */
+        border-radius: var(--border-radius-large);
+        box-shadow: var(--box-shadow-card-mobile);
+        background-color: var(--color-bg-container);
+        overflow: hidden; /* To contain floated elements and rounded corners */
       }
-      table td {
-        display: block;
-        text-align: right; /* Align data to the right */
-        padding: var(--spacing-sm) var(--spacing-md);
-        border-bottom: var(--border-width) dashed var(--border-color); /* Lighter separator between items in a card */
-        position: relative; /* For pseudo-element positioning */
-        white-space: normal; /* Ensure text wraps */
+      table td { /* Each cell becomes a row in the card */
+        display: flex; /* Use flex for better alignment of label and data */
+        justify-content: space-between; /* Pushes label and data apart */
+        align-items: flex-start; /* Align items to the top if they wrap */
+        padding: var(--spacing-md);
+        border-bottom: var(--border-width) solid var(--border-color);
+        text-align: left; /* Data text aligns left now */
+        line-height: 1.5; /* Slightly tighter line height for card items */
       }
-      table td:last-child {
-        border-bottom: none; /* No border for the last item in a card */
-      }
-      table td::before {
-        content: attr(data-label); /* Get label from data-label attribute */
-        float: left; /* Position label to the left */
-        font-weight: 600;
+      table tr td:first-child { /* Special styling for the "Day X" as a card header */
+        background-color: var(--color-bg-card-header);
+        font-weight: 700;
         color: var(--color-primary);
-        text-align: left; /* Align label text to the left */
-        margin-right: var(--spacing-md);
-        white-space: normal; /* Allow label to wrap if too long */
+        padding-top: var(--spacing-md);
+        padding-bottom: var(--spacing-md);
+        border-top-left-radius: var(--border-radius-large);
+        border-top-right-radius: var(--border-radius-large);
       }
-       /* Clearfix for the floating pseudo-element */
-      table td::after {
-        content: "";
-        display: table;
-        clear: both;
+      table tr td:first-child::before { /* Label for the first cell (Day) */
+        /* No label needed if the data itself is "Day X" or similar.
+           If data-label is "Day", and data is "1", it becomes "Day: 1"
+           Let's make the "Day X" the prominent part. */
+        content: attr(data-label) ": "; /* Keep the label for consistency */
+        font-weight: 700; /* Make "Day:" bold */
+        color: var(--color-text-label-mobile);
+        margin-right: var(--spacing-xs);
+        /* No float needed with flex */
       }
-      /* If some data is naturally short and looks better centered or left on mobile */
-      /* table td[data-label="Day"],
-      table td[data-label="Date"],
-      table td[data-label="Start"] {
+      table tr td:first-child span { /* Assuming the actual day number is wrapped in a span in HTML if needed, or just style td */
+        font-size: 1.2em; /* Make day number larger */
+        color: var(--color-primary);
+      }
+
+      table td:not(:first-child)::before { /* Labels for other cells */
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--color-text-label-mobile);
+        flex-basis: 40%; /* Give label a fixed basis */
+        margin-right: var(--spacing-sm);
         text-align: left;
-      } */
+        padding-right: var(--spacing-xs); /* Space between label and data */
+        white-space: normal;
+        overflow-wrap: break-word;
+      }
+      table td > *:not(::before) { /* Style for the actual data part of the cell */
+        flex-basis: 60%; /* Data takes remaining space */
+        text-align: right; /* Align data to the right */
+        white-space: normal;
+        overflow-wrap: break-word;
+      }
+
+      table td:last-of-type { /* Use last-of-type to target the actual last data cell */
+        border-bottom: none;
+      }
+
+      /* Specific styling for important cells in card view */
+      table td[data-label="Day Summary"],
+      table td[data-label="Activities"] {
+        flex-direction: column; /* Stack label and data vertically for long text */
+        align-items: flex-start;
+      }
+      table td[data-label="Day Summary"]::before,
+      table td[data-label="Activities"]::before {
+        flex-basis: auto; /* Label takes full width */
+        margin-bottom: var(--spacing-xs);
+        font-size: 0.9em;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      table td[data-label="Day Summary"] > *:not(::before),
+      table td[data-label="Activities"] > *:not(::before) {
+        flex-basis: auto; /* Data takes full width */
+        text-align: left;
+      }
     }
     @media (max-width: 480px) {
         table { font-size: 0.85rem; }
-        table td { padding: var(--spacing-xs) var(--spacing-sm); }
-        table td::before { margin-right: var(--spacing-sm); }
+        table td { padding: var(--spacing-sm) var(--spacing-md); }
+        table td::before { margin-right: var(--spacing-xs); }
+        table td[data-label="Day Summary"]::before,
+        table td[data-label="Activities"]::before {
+           font-size: 0.85em;
+        }
     }
 
   </style>
@@ -382,7 +437,7 @@
       </thead>
       <tbody>
         <tr>
-          <td data-label="Day">1</td>
+          <td data-label="Day"><span>1</span></td>
           <td data-label="Date">18 June</td>
           <td data-label="Start">After arrival</td>
           <td data-label="Activities">Rest, Leh market, Shanti Stupa (evening)</td>
@@ -395,7 +450,7 @@
           <td data-label="Permit" class="permit">None for Leh</td>
         </tr>
         <tr>
-          <td data-label="Day">2</td>
+          <td data-label="Day"><span>2</span></td>
           <td data-label="Date">19 June</td>
           <td data-label="Start">8:30 AM</td>
           <td data-label="Activities">Sham Valley: Magnetic Hill, Sangam, Pathar Sahib, Leh Palace, Thiksey Monastery</td>
@@ -408,7 +463,7 @@
           <td data-label="Permit" class="permit">None needed</td>
         </tr>
         <tr>
-          <td data-label="Day">3</td>
+          <td data-label="Day"><span>3</span></td>
           <td data-label="Date">20 June</td>
           <td data-label="Start">7:30 AM</td>
           <td data-label="Activities">Leh → Nubra via Khardung La, Diskit, Hunder Sand Dunes</td>
@@ -421,7 +476,7 @@
           <td data-label="Permit" class="permit"><b>ILP Required</b></td>
         </tr>
         <tr>
-          <td data-label="Day">4</td>
+          <td data-label="Day"><span>4</span></td>
           <td data-label="Date">21 June</td>
           <td data-label="Start">7:00 AM</td>
           <td data-label="Activities">Turtuk day trip; optional camel ride at Hunder</td>
@@ -434,7 +489,7 @@
           <td data-label="Permit" class="permit"><b>ILP covers Turtuk</b> (check status)</td>
         </tr>
         <tr>
-          <td data-label="Day">5</td>
+          <td data-label="Day"><span>5</span></td>
           <td data-label="Date">22 June</td>
           <td data-label="Start">6:30 AM</td>
           <td data-label="Activities">Nubra → Pangong Lake via Shyok River</td>
@@ -447,7 +502,7 @@
           <td data-label="Permit" class="permit"><b>ILP Required</b></td>
         </tr>
         <tr>
-          <td data-label="Day">6</td>
+          <td data-label="Day"><span>6</span></td>
           <td data-label="Date">23 June</td>
           <td data-label="Start">7:00 AM</td>
           <td data-label="Activities">Pangong → Leh via Chang La, then airport drop</td>
@@ -488,7 +543,7 @@
         </thead>
         <tbody>
           <tr>
-            <td data-label="Day">1</td>
+            <td data-label="Day"><span>1</span></td>
             <td data-label="Date">17 June</td>
             <td data-label="Start">Arrival</td>
             <td data-label="Activities">Rest, Leh market, Shanti Stupa</td>
@@ -501,7 +556,7 @@
             <td data-label="Permit" class="permit">None for Leh</td>
           </tr>
           <tr>
-            <td data-label="Day">2</td>
+            <td data-label="Day"><span>2</span></td>
             <td data-label="Date">18 June</td>
             <td data-label="Start">8:30 AM</td>
             <td data-label="Activities">Sham Valley, Leh Palace</td>
@@ -514,7 +569,7 @@
             <td data-label="Permit" class="permit">None needed</td>
           </tr>
           <tr>
-            <td data-label="Day">3</td>
+            <td data-label="Day"><span>3</span></td>
             <td data-label="Date">19 June</td>
             <td data-label="Start">7:30 AM</td>
             <td data-label="Activities">Leh → Nubra via Khardung La, Diskit, Hunder</td>
@@ -527,7 +582,7 @@
             <td data-label="Permit" class="permit"><b>ILP Required</b></td>
           </tr>
           <tr>
-            <td data-label="Day">4</td>
+            <td data-label="Day"><span>4</span></td>
             <td data-label="Date">20 June</td>
             <td data-label="Start">7:00 AM</td>
             <td data-label="Activities">Turtuk day trip</td>
@@ -540,7 +595,7 @@
             <td data-label="Permit" class="permit"><b>ILP covers Turtuk</b> (check status)</td>
           </tr>
           <tr>
-            <td data-label="Day">5</td>
+            <td data-label="Day"><span>5</span></td>
             <td data-label="Date">21 June</td>
             <td data-label="Start">6:30 AM</td>
             <td data-label="Activities">Nubra → Pangong via Shyok</td>
@@ -553,7 +608,7 @@
             <td data-label="Permit" class="permit"><b>ILP Required</b></td>
           </tr>
           <tr>
-            <td data-label="Day">6</td>
+            <td data-label="Day"><span>6</span></td>
             <td data-label="Date">22 June</td>
             <td data-label="Start">7:00 AM</td>
             <td data-label="Activities">Pangong → Leh via Chang La, visit Hemis & Thiksey</td>
@@ -566,7 +621,7 @@
             <td data-label="Permit" class="permit">—</td>
           </tr>
           <tr>
-            <td data-label="Day">7</td>
+            <td data-label="Day"><span>7</span></td>
             <td data-label="Date">23 June</td>
             <td data-label="Start">9:00 AM</td>
             <td data-label="Activities">Leh local (Shey, Sindhu Ghat), airport drop</td>
@@ -604,7 +659,7 @@
       </thead>
       <tbody>
         <tr>
-          <td data-label="Day">1</td>
+          <td data-label="Day"><span>1</span></td>
           <td data-label="Date">17 June</td>
           <td data-label="Start">Arrival</td>
           <td data-label="Activities">Rest, Leh market, Shanti Stupa</td>
@@ -617,7 +672,7 @@
           <td data-label="Permit" class="permit">None for Leh</td>
         </tr>
         <tr>
-          <td data-label="Day">2</td>
+          <td data-label="Day"><span>2</span></td>
           <td data-label="Date">18 June</td>
           <td data-label="Start">8:30 AM</td>
           <td data-label="Activities">Sham Valley, Leh Palace</td>
@@ -630,7 +685,7 @@
           <td data-label="Permit" class="permit">None needed</td>
         </tr>
         <tr>
-          <td data-label="Day">3</td>
+          <td data-label="Day"><span>3</span></td>
           <td data-label="Date">19 June</td>
           <td data-label="Start">7:30 AM</td>
           <td data-label="Activities">Leh → Nubra via Khardung La, Diskit, Hunder</td>
@@ -643,7 +698,7 @@
           <td data-label="Permit" class="permit"><b>ILP Required</b></td>
         </tr>
         <tr>
-          <td data-label="Day">4</td>
+          <td data-label="Day"><span>4</span></td>
           <td data-label="Date">20 June</td>
           <td data-label="Start">7:00 AM</td>
           <td data-label="Activities">Turtuk day trip</td>
@@ -656,7 +711,7 @@
           <td data-label="Permit" class="permit"><b>ILP covers Turtuk</b> (check status)</td>
         </tr>
         <tr>
-          <td data-label="Day">5</td>
+          <td data-label="Day"><span>5</span></td>
           <td data-label="Date">21 June</td>
           <td data-label="Start">6:30 AM</td>
           <td data-label="Activities">Nubra → Pangong via Shyok</td>
@@ -669,7 +724,7 @@
           <td data-label="Permit" class="permit"><b>ILP Required</b></td>
         </tr>
         <tr>
-          <td data-label="Day">6</td>
+          <td data-label="Day"><span>6</span></td>
           <td data-label="Date">22 June</td>
           <td data-label="Start">7:00 AM</td>
           <td data-label="Activities">Pangong → Leh via Chang La, visit Hemis & Thiksey</td>
@@ -682,7 +737,7 @@
           <td data-label="Permit" class="permit">None for Leh</td>
         </tr>
         <tr>
-          <td data-label="Day">7</td>
+          <td data-label="Day"><span>7</span></td>
           <td data-label="Date">23 June</td>
           <td data-label="Start">9:00 AM</td>
           <td data-label="Activities">Leh local (Shey, Sindhu Ghat, cafes)</td>
@@ -695,7 +750,7 @@
           <td data-label="Permit" class="permit">None needed</td>
         </tr>
         <tr>
-          <td data-label="Day">8</td>
+          <td data-label="Day"><span>8</span></td>
           <td data-label="Date">24 June</td>
           <td data-label="Start">2.5hr pre-flight</td>
           <td data-label="Activities">Airport drop</td>
@@ -734,7 +789,7 @@
       </thead>
       <tbody>
         <tr>
-          <td data-label="Day">1</td>
+          <td data-label="Day"><span>1</span></td>
           <td data-label="Date">17 June</td>
           <td data-label="Start">Arrival</td>
           <td data-label="Activities">Rest, Leh market, Shanti Stupa</td>
@@ -747,7 +802,7 @@
           <td data-label="Permit" class="permit">None for Leh</td>
         </tr>
         <tr>
-          <td data-label="Day">2</td>
+          <td data-label="Day"><span>2</span></td>
           <td data-label="Date">18 June</td>
           <td data-label="Start">8:30 AM</td>
           <td data-label="Activities">Sham Valley, Leh Palace</td>
@@ -760,7 +815,7 @@
           <td data-label="Permit" class="permit">None needed</td>
         </tr>
         <tr>
-          <td data-label="Day">3</td>
+          <td data-label="Day"><span>3</span></td>
           <td data-label="Date">19 June</td>
           <td data-label="Start">7:00 AM</td>
           <td data-label="Activities">Leh → Nubra via Khardung La, Diskit, Hunder</td>
@@ -773,7 +828,7 @@
           <td data-label="Permit" class="permit"><b>ILP Required</b></td>
         </tr>
         <tr>
-          <td data-label="Day">4</td>
+          <td data-label="Day"><span>4</span></td>
           <td data-label="Date">20 June</td>
           <td data-label="Start">6:30 AM</td>
           <td data-label="Activities">Nubra → Hanle (7-8 hrs), Hanle Observatory (if open)</td>
@@ -786,7 +841,7 @@
           <td data-label="Permit" class="permit"><b>ILP for Hanle</b> (Observatory specific?)</td>
         </tr>
         <tr>
-          <td data-label="Day">5</td>
+          <td data-label="Day"><span>5</span></td>
           <td data-label="Date">21 June</td>
           <td data-label="Start">7:00 AM</td>
           <td data-label="Activities">Hanle → Pangong Lake (5-6 hrs)</td>
@@ -799,7 +854,7 @@
           <td data-label="Permit" class="permit"><b>ILP for Pangong</b> (Hanle route covered?)</td>
         </tr>
         <tr>
-          <td data-label="Day">6</td>
+          <td data-label="Day"><span>6</span></td>
           <td data-label="Date">22 June</td>
           <td data-label="Start">7:00 AM</td>
           <td data-label="Activities">Pangong → Leh via Chang La, visit Hemis & Thiksey</td>
@@ -812,7 +867,7 @@
           <td data-label="Permit" class="permit">None for Leh</td>
         </tr>
         <tr>
-          <td data-label="Day">7</td>
+          <td data-label="Day"><span>7</span></td>
           <td data-label="Date">23 June</td>
           <td data-label="Start">9:00 AM</td>
           <td data-label="Activities">Leh local (Shey, Sindhu Ghat, cafes)</td>
@@ -825,7 +880,7 @@
           <td data-label="Permit" class="permit">None needed</td>
         </tr>
         <tr>
-          <td data-label="Day">8</td>
+          <td data-label="Day"><span>8</span></td>
           <td data-label="Date">24 June</td>
           <td data-label="Start">2.5hr pre-flight</td>
           <td data-label="Activities">Airport drop</td>
