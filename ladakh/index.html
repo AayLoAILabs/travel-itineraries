@@ -14,34 +14,34 @@
       --font-serif: 'Lora', Georgia, serif;
 
       /* Core Colors */
-      --color-primary: #2c3e50;
+      --color-primary: #2c3e50; 
       --color-primary-light: #34495e;
-      --color-secondary: #8ca0b3;
-      --color-accent: #00a896;
+      --color-secondary: #8ca0b3; 
+      --color-accent: #00a896;  
       --color-accent-hover: #007e70;
 
       /* Background Colors */
-      --color-bg-body: #f4f7f9;
+      --color-bg-body: #f4f7f9; 
       --color-bg-container: #ffffff;
-      --color-bg-subtle: #e9edf2;
+      --color-bg-subtle: #e9edf2; 
       --color-bg-card-header-mobile: var(--color-bg-subtle);
       --color-bg-nav-dropdown: var(--color-bg-container);
 
       /* Text Colors */
-      --color-text-base: #333f50;
+      --color-text-base: #333f50; 
       --color-text-muted: #6c7a89;
       --color-text-headings: var(--color-primary);
       --color-text-on-accent-bg: #ffffff;
       --color-text-label-mobile: var(--color-primary);
 
       /* Semantic Colors */
-      --color-info: #3498db;
-      --color-info-bg: #eaf5fc;
-      --color-success: #2ecc71;
-      --color-success-bg: #eafaf1;
+      --color-info: #2693c9;
+      --color-info-bg: #e9f4fa;
+      --color-success: #27ae60;
+      --color-success-bg: #e9f7ef;
       --color-warning: #f39c12;
       --color-warning-bg: #fef6e7;
-      --color-danger: #e74c3c;
+      --color-danger: #c0392b;
       --color-danger-bg: #fdedec;
 
       /* Spacing & Sizing */
@@ -56,9 +56,9 @@
       --spacing-xxl: calc(var(--spacing-base) * 4);
 
       /* Borders */
-      --border-radius: 6px;
+      --border-radius: 6px; 
       --border-radius-large: 8px;
-      --border-color: #dce4ec;
+      --border-color: #dce4ec; 
       --border-width: 1px;
       --border-width-strong: 2px;
 
@@ -100,11 +100,11 @@
     }
 
     /* Typography */
-    h1, h2, h3 {
+    h1, h2, h3, h4 { /* Added h4 */
       font-family: var(--font-serif);
       color: var(--color-text-headings);
       line-height: 1.3;
-      margin-bottom: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg); /* Default bottom margin */
     }
     h1 {
       font-size: clamp(1.8rem, 4vw, 2.6rem);
@@ -123,13 +123,21 @@
       border-bottom: var(--border-width) solid var(--border-color);
     }
     h2:first-of-type { margin-top: var(--spacing-xl); }
-    h3 {
+    h3 { /* Used in Recommendation Section */
       font-family: var(--font-sans);
       font-size: clamp(1.2rem, 2.5vw, 1.4rem);
       color: var(--color-primary-light);
       font-weight: 600;
-      margin-top: var(--spacing-xl);
+      margin-top: var(--spacing-xl); /* Default top margin */
       margin-bottom: var(--spacing-md);
+    }
+    h4 { /* For sub-parts of recommendation */
+        font-family: var(--font-sans);
+        font-size: clamp(1.1rem, 2.2vw, 1.25rem);
+        color: var(--color-primary);
+        margin-top: 0; /* Remove top margin if it's the first child in its box */
+        margin-bottom: var(--spacing-sm);
+        font-weight: 600;
     }
     p { margin-bottom: var(--spacing-md); font-size: 1rem; }
     ul, ol { margin-bottom: var(--spacing-md); padding-left: var(--spacing-lg); }
@@ -240,7 +248,7 @@
             transform: none;
             opacity: 1; 
             visibility: visible;
-            /* display: none; /* Controlled by JS for mobile toggle */
+            /* display: none; /* Initially hide for JS toggle */
             box-shadow: none;
             background-color: transparent;
             padding-left: var(--spacing-lg);
@@ -266,23 +274,107 @@
     .advice strong, .advice b { color: var(--color-info); }
     .danger { border-left-color: var(--color-danger); background-color: var(--color-danger-bg); }
     .danger strong, .danger b { color: var(--color-danger); }
-    .recommend { border-left-color: var(--color-success); background-color: var(--color-success-bg); }
-    .recommend strong, .recommend b { color: var(--color-success); }
-    .highlight { border-left-color: var(--color-warning); background-color: var(--color-warning-bg); }
-    .highlight strong, .highlight b { color: var(--color-warning); }
-    .miss { border-left-color: var(--color-danger); background-color: var(--color-danger-bg); font-weight: 500; }
-    .miss strong, .miss b { color: var(--color-danger); }
+    
+    /* Summary Box Specifics - for "What's Good/Bad" */
     .summarybox { border-left-color: var(--color-primary); background-color: var(--color-bg-subtle); }
-    .summarybox b, .summarybox strong {
-        display: block;
+    .summarybox b, .summarybox strong { /* The "What's Good/Bad" titles */
+        display: block; /* Make them block to ensure they are on their own line */
         color: var(--color-primary);
-        margin-top: var(--spacing-sm);
-        margin-bottom: var(--spacing-xs);
+        margin-top: var(--spacing-md); /* Space above this title */
+        margin-bottom: var(--spacing-xs); /* Space between title and its content */
         font-weight: 600;
+        font-size: 1.05em; /* Slightly larger for emphasis */
     }
-    .summarybox b:first-of-type, .summarybox strong:first-of-type { margin-top: 0; }
-    .summarybox .data-value { margin-bottom: var(--spacing-md); }
-    .summarybox .data-value:last-of-type { margin-bottom: 0; }
+    .summarybox b:first-of-type, .summarybox strong:first-of-type { margin-top: 0; } /* No top margin for the very first title */
+    .summarybox .data-value { /* The paragraph content following the bold title */
+        display: block; /* Ensures it flows below the title */
+        margin-bottom: var(--spacing-md); /* Space after the paragraph */
+    }
+    .summarybox .data-value:last-of-type { margin-bottom: 0; } /* No bottom margin for the last paragraph */
+
+
+    /* --- Recommendation Section --- */
+    .recommend-section {
+      margin-top: var(--spacing-xl);
+      border-top: var(--border-width) solid var(--border-color);
+      padding-top: var(--spacing-xl);
+    }
+    .recommendation-main.callout { /* Main recommendation styled prominently */
+      border-left-color: var(--color-success);
+      background-color: var(--color-success-bg);
+      padding: var(--spacing-lg) var(--spacing-xl);
+      margin-bottom: var(--spacing-xl);
+    }
+    .recommendation-main h3 { /* "Overall Best Choice" */
+      font-family: var(--font-serif);
+      color: var(--color-success); 
+      font-size: clamp(1.3rem, 2.8vw, 1.6rem);
+      margin-top: 0;
+      margin-bottom: var(--spacing-md);
+      border-bottom: 1px solid var(--color-success);
+      padding-bottom: var(--spacing-sm);
+    }
+    .recommendation-main p strong { /* The main recommendation text, e.g., "Option 3A..." */
+      font-size: 1.1em; 
+      color: var(--color-primary-light); /* Distinct strong color */
+    }
+    .recommendation-main ul {
+      list-style-type: disc; 
+      padding-left: var(--spacing-lg);
+      margin-top: var(--spacing-md);
+    }
+    .recommendation-main ul li {
+      margin-bottom: var(--spacing-sm);
+      line-height: 1.6;
+    }
+    .recommendation-main ul li strong { /* "Optimal Balance:", "Reduced Risk:" */
+      color: var(--color-primary); /* Back to primary for list item leads */
+      font-weight: 600;
+    }
+    .recommendation-alternatives {
+      display: grid;
+      grid-template-columns: 1fr; 
+      gap: var(--spacing-lg);
+    }
+    @media (min-width: 600px) { /* Two columns for alternatives on slightly wider screens */
+      .recommendation-alternatives {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .choose-if.callout { 
+      border-left-color: var(--color-info);
+      background-color: var(--color-info-bg);
+    }
+    .avoid-unless.callout.danger { /* Already styled by .danger and .callout */
+      /* No additional styles needed unless override is required */
+    }
+    .recommendation-alternatives .callout h4 { /* "Consider Option X if..." */
+      margin-top: 0; /* Already handled by h4 base */
+      margin-bottom: var(--spacing-sm);
+      color: var(--color-primary-light); /* Consistent with other h4-like elements */
+    }
+    .recommendation-alternatives .callout ul {
+      list-style-type: disc;
+      padding-left: var(--spacing-lg);
+      margin-top: var(--spacing-xs);
+    }
+    .recommendation-alternatives .callout ul li {
+      margin-bottom: var(--spacing-xs);
+      font-size: 0.95rem; 
+      line-height: 1.6;
+    }
+    /* Final highlight callout after recommendations */
+    #recommend + .highlight.callout, 
+    .recommend-section + .highlight.callout { /* Target based on new structure */
+      margin-top: var(--spacing-xl);
+      border-left-color: var(--color-warning);
+      background-color: var(--color-warning-bg);
+      font-size: 1rem;
+    }
+    #recommend + .highlight.callout b,
+    .recommend-section + .highlight.callout b {
+      color: var(--color-warning);
+    }
 
 
     /* --- Desktop Table Styles --- */
@@ -960,31 +1052,47 @@
   </div>
 
   <h2 id="recommend">Summary & Reviewer Recommendation</h2>
-  <div class="recommend callout">
-    For a first-time visitor wanting a comprehensive, enjoyable, and relatively comfortable experience of Leh-Ladakh's main attractions in June, <b>Option 3A (7 Nights, Best Option with Turtuk) still stands out as the most recommended itinerary.</b>
-    <ul>
-      <li><b>Optimal Balance:</b> It offers the best balance of sightseeing, acclimatization, comfortable pacing, and cultural immersion (with Turtuk).</li>
-      <li><b>Reduced Risk:</b> Sufficient time for acclimatization minimizes AMS risk significantly, and the dedicated airport drop day avoids travel-related stress on departure.</li>
-      <li><b>Full Experience:</b> You get to see the key monasteries, high passes, stunning lakes, unique valleys, and experience Leh town thoroughly at a manageable pace.</li>
-    </ul>
-    <b>Choose Option 3B if:</b>
-    <ul>
-      <li>Visiting Hanle (especially for its observatory, dark skies, and remote experience) is a primary, non-negotiable goal for your trip.</li>
-      <li>You are well-prepared for very long, arduous driving days and very basic accommodation (possibly no electricity, running water, or attached toilets) in Hanle, with no immediate medical support and no phone/internet connectivity.</li>
-      <li>You are okay with skipping the cultural experience of Turtuk.</li>
-      <li>You are physically fit, have prior high-altitude experience, and understand the increased risks of AMS in such remote, high locations.</li>
-    </ul>
-    <b>Avoid Option 1 unless:</b>
-    <ul>
-      <li>You have absolutely no more than 5 nights and are willing to accept the high risks (AMS, flight miss) and extremely rushed nature. (I would generally advise extending your trip if possible rather than choosing this).</li>
-    </ul>
-    <b>Option 2 is a good middle ground if:</b>
-    <ul>
-      <li>You cannot spare 7 nights but want a more reasonable and safer experience than Option 1, covering most key highlights.</li>
-    </ul>
+  <div class="recommend-section"> 
+
+    <div class="recommendation-main callout"> 
+      <h3>Overall Best Choice</h3>
+      <p>For a first-time visitor wanting a comprehensive, enjoyable, and relatively comfortable experience of Leh-Ladakh's main attractions in June, <strong>Option 3A (7 Nights, Best Option with Turtuk) still stands out as the most recommended itinerary.</strong></p>
+      <ul>
+        <li><strong>Optimal Balance:</strong> Offers the best mix of sightseeing, acclimatization, comfortable pacing, and cultural immersion (with Turtuk).</li>
+        <li><strong>Reduced Risk:</strong> Sufficient acclimatization minimizes AMS risk, and a dedicated airport drop day avoids departure stress.</li>
+        <li><strong>Full Experience:</strong> Covers key monasteries, high passes, stunning lakes, unique valleys, and thorough Leh town exploration at a manageable pace.</li>
+      </ul>
+    </div>
+
+    <div class="recommendation-alternatives">
+      <div class="choose-if callout"> 
+        <h4>Consider Option 3B (Stargazer's Special) If:</h4>
+        <ul>
+          <li>Visiting Hanle (observatory, dark skies, remote experience) is a primary, non-negotiable goal.</li>
+          <li>You are well-prepared for long drives and very basic accommodation in Hanle (limited amenities, no immediate medical aid, no connectivity).</li>
+          <li>You are okay with skipping the cultural experience of Turtuk.</li>
+          <li>You are physically fit, have prior high-altitude experience, and understand the increased AMS risks.</li>
+        </ul>
+      </div>
+
+      <div class="choose-if callout">
+          <h4>Consider Option 2 (Balanced Short Trip) If:</h4>
+          <ul>
+              <li>You cannot spare 7 nights but want a more reasonable and safer experience than Option 1, covering most key highlights.</li>
+          </ul>
+      </div>
+
+      <div class="avoid-unless callout danger"> 
+        <h4>Avoid Option 1 (Express Tour) Unless:</h4>
+        <ul>
+          <li>You have absolutely no more than 5 nights and are willing to accept the high risks (AMS, flight miss) and extremely rushed nature. (Extending your trip is generally advised over choosing this).</li>
+        </ul>
+      </div>
+    </div>
   </div>
+
   <div class="highlight callout">
-    Book accommodations and transportation (especially drivers for multi-day trips) well in advance, particularly for June travel. Consider immersive add-ons like local cooking classes or heritage walks at least 2 weeks in advance. Always check the latest permit requirements, road conditions, and AMS advisories before and during your trip. <b>Julley! (Hello/Greetings in Ladakhi)</b>
+    <b>Final Travel Tips:</b> <span class="data-value">Book accommodations and transportation (especially drivers for multi-day trips) well in advance, particularly for June travel. Consider immersive add-ons like local cooking classes or heritage walks at least 2 weeks in advance. Always check the latest permit requirements, road conditions, and AMS advisories before and during your trip. <b>Julley! (Hello/Greetings in Ladakhi)</b></span>
   </div>
 
   <footer>
@@ -994,7 +1102,6 @@
 </div> <!-- end .content-wrapper -->
 
 <script>
-  // JavaScript from the PREVIOUS response (for submenu toggle and scroll-spy)
   document.addEventListener('DOMContentLoaded', function() {
     // Submenu Toggle
     const submenuToggles = document.querySelectorAll('.has-submenu > a');
@@ -1004,14 +1111,16 @@
          if (window.innerWidth <= 768) { 
             submenu.style.display = 'none'; 
          } else { 
-            submenu.style.display = ''; // CSS hover for desktop
+            // For desktop, CSS handles hover/focus, so JS doesn't need to set display
+            // but we ensure the arrow is correct if JS wasn't to run for mobile for some reason
+            submenu.style.display = ''; // Let CSS take over for desktop
          }
         let arrow = toggle.querySelector('.arrow');
         if (arrow) arrow.innerHTML = '&#9662;'; 
 
         toggle.addEventListener('click', function(event) {
-          if (window.innerWidth <= 768 ) { 
-            event.preventDefault(); 
+          if (window.innerWidth <= 768 ) { // Only apply click toggle logic for mobile
+            event.preventDefault(); // Prevent default link navigation on mobile for parent
             const isSubmenuVisible = submenu.style.display === 'flex' || submenu.style.display === 'block';
             
             document.querySelectorAll('#page-nav .submenu').forEach(otherSubmenu => {
@@ -1029,14 +1138,16 @@
                 submenu.style.display = 'none';
                 if(arrow) arrow.innerHTML = '&#9662;'; 
             } else {
-                submenu.style.display = 'flex'; 
+                submenu.style.display = 'flex'; // Use flex as per mobile CSS
                 if(arrow) arrow.innerHTML = '&#9652;'; 
             }
             event.stopPropagation(); 
-          } else { 
-            if (!this.getAttribute('href') || this.getAttribute('href') === '#') {
-                 event.preventDefault();
-            }
+          } 
+          // For desktop, allow default navigation for the main link if it has a valid href
+          // The CSS :hover will handle showing the submenu.
+          // If the main link is just a placeholder (e.g. href="#"), then preventDefault.
+          else if (this.getAttribute('href') === '#') {
+             event.preventDefault();
           }
         });
       }
@@ -1046,14 +1157,19 @@
     const navLinks = document.querySelectorAll('#page-nav a.nav-link');
     const sections = [];
     const navElement = document.getElementById('page-nav');
-    const navHeight = navElement ? navElement.offsetHeight + 30 : 80; 
+    // Adjust navHeight offset based on whether nav is fixed or sticky, and its actual height
+    const navHeight = navElement ? navElement.getBoundingClientRect().height + 40 : 80; // Dynamic nav height + offset
 
     navLinks.forEach(link => {
       const sectionId = link.getAttribute('href');
-      if (sectionId && sectionId.startsWith('#') && sectionId.length > 1) {
-        const section = document.querySelector(sectionId);
-        if (section) {
-          sections.push({link: link, section: section});
+      if (sectionId && sectionId.startsWith('#') && sectionId.length > 1) { // Ensure it's a valid ID selector
+        try {
+          const section = document.querySelector(sectionId);
+          if (section) {
+            sections.push({link: link, section: section});
+          }
+        } catch (e) {
+          console.error("Invalid selector for scroll-spy:", sectionId, e);
         }
       }
     });
@@ -1098,9 +1214,20 @@
         }
       });
     }
-    window.addEventListener('scroll', highlightNavLink, { passive: true });
-    setTimeout(highlightNavLink, 100); 
-    window.dispatchEvent(new Event('scroll')); 
+    // Debounce scroll handler for performance
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(highlightNavLink, 50); // Adjust delay as needed
+    }, { passive: true });
+
+    // Initial call to set active state on page load
+    // Use a small delay to ensure all elements are laid out
+    setTimeout(() => {
+        highlightNavLink();
+        // Also trigger scroll event once after a short delay to ensure JS calculations are based on final layout
+        // window.dispatchEvent(new Event('scroll')); // This might be redundant if highlightNavLink is called
+    }, 150);
   });
 </script>
 
