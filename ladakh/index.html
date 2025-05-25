@@ -377,20 +377,34 @@
 
     /* --- Desktop Table Styles --- */
     .table-container {
-      margin-top: var(--spacing-lg);
-      margin-bottom: var(--spacing-lg);
       overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      border: var(--border-width) solid var(--border-color);
-      border-radius: var(--border-radius);
+      width: 100%;
+      max-width: 100vw;
     }
     table {
+      min-width: 2200px;
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.875rem;
+      font-size: 0.95rem;
       table-layout: auto;
     }
-    /* No table caption styles */
+    th {
+      padding: 0.75em 0.5em;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid #dce4ec;
+      white-space: nowrap;
+      word-break: normal;
+      font-size: 0.92em;
+    }
+    td {
+      padding: 0.75em 0.5em;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid #dce4ec;
+      white-space: normal;
+      word-break: normal;
+    }
 
     table thead th {
       background-color: var(--color-bg-subtle);
@@ -404,6 +418,7 @@
       border-bottom: var(--border-width-strong) solid var(--color-secondary);
       white-space: normal;
     }
+
     table tbody td {
       padding: var(--spacing-table-cell-padding-y-desktop) var(--spacing-table-cell-padding-x-desktop);
       text-align: left;
@@ -627,92 +642,106 @@
   </div>
   <div class="table-container">
     <table>
-      <!-- NO CAPTION -->
       <thead>
         <tr>
-          <th>Day</th><th>Date</th><th>Start</th><th>Activities</th><th>Day Summary</th>
-          <th class="hotel5">Hotel (5★)</th><th class="hotel4">Hotel (4★)</th>
-          <th>Food</th><th>Car</th><th class="healthcell">Health Tip</th><th class="permit">Permit</th>
+          <th>Day</th>
+          <th>Date</th>
+          <th>Start</th>
+          <th>Activities</th>
+          <th>Day Summary</th>
+          <th class="hotel5">Hotel (5★)</th>
+          <th class="hotel4">Hotel (4★)</th>
+          <th>Food</th>
+          <th>Car</th>
+          <th class="healthcell">Health Tip</th>
+          <th class="permit">Permit</th>
+          <th>Details</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td data-label="Day"><span class="card-label-group"><span class="data-value">1</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-          <td data-label="Date" class="card-item"><span class="data-value">18 June</span></td>
-          <td data-label="Start" class="card-item"><span class="data-value">After arrival</span></td>
-          <td data-label="Activities" class="card-item"><span class="data-value">Rest, Leh market, Shanti Stupa (evening)</span></td>
-          <td data-label="Day Summary" class="card-item"><span class="data-value">Arrival in Leh (11,500 ft), focus on crucial acclimatization. Evening exploration of Leh Market and Shanti Stupa.</span></td>
-          <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">The Grand Dragon Leh</span></td>
-          <td data-label="Hotel (4★)" class="hotel4 card-item"><span class="data-value">The Abduz, Leh</span></td>
-          <td data-label="Food" class="card-item"><span class="data-value">Tibetan thukpa</span></td>
-          <td data-label="Car" class="card-item"><span class="data-value">Hire driver</span></td>
-          <td data-label="Health Tip" class="healthcell card-item"><span class="data-value">Rest well. Hydrate. Altitude: ~11,500 ft.</span></td>
-          <td data-label="Permit" class="permit card-item"><span class="data-value">None for Leh</span></td>
+          <td>1</td>
+          <td>18 June</td>
+          <td>After arrival</td>
+          <td>Rest, Leh market, Shanti Stupa (evening)</td>
+          <td>Arrival in Leh (11,500 ft), focus on crucial acclimatization. Evening exploration of Leh Market and Shanti Stupa.</td>
+          <td>The Grand Dragon Leh</td>
+          <td>The Abduz, Leh</td>
+          <td>Tibetan thukpa</td>
+          <td>Hire driver</td>
+          <td>Rest well. Hydrate. Altitude: ~11,500 ft.</td>
+          <td>None for Leh</td>
+          <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
         </tr>
         <tr>
-          <td data-label="Day"><span class="card-label-group"><span class="data-value">2</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-          <td data-label="Date" class="card-item"><span class="data-value">19 June</span></td>
-          <td data-label="Start" class="card-item"><span class="data-value">8:30 AM</span></td>
-          <td data-label="Activities" class="card-item"><span class="data-value">Sham Valley: Magnetic Hill, Sangam, Pathar Sahib, Leh Palace, Thiksey Monastery</span></td>
-          <td data-label="Day Summary" class="card-item"><span class="data-value">Packed day: Sham Valley wonders, Leh Palace, Thiksey Monastery.</span></td>
-          <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">The Grand Dragon Leh</span></td>
-          <td data-label="Hotel (4★)" class="hotel4 card-item"><span class="data-value">The Abduz, Leh</span></td>
-          <td data-label="Food" class="card-item"><span class="data-value">Butter tea, momos</span></td>
-          <td data-label="Car" class="card-item"><span class="data-value">Self-drive/Hire</span></td>
-          <td data-label="Health Tip" class="healthcell card-item"><span class="data-value">Pace yourself. Avoid overexertion.</span></td>
-          <td data-label="Permit" class="permit card-item"><span class="data-value">None needed</span></td>
+          <td>2</td>
+          <td>19 June</td>
+          <td>8:30 AM</td>
+          <td>Sham Valley: Magnetic Hill, Sangam, Pathar Sahib, Leh Palace, Thiksey Monastery</td>
+          <td>Packed day: Sham Valley wonders, Leh Palace, Thiksey Monastery.</td>
+          <td>The Grand Dragon Leh</td>
+          <td>The Abduz, Leh</td>
+          <td>Butter tea, momos</td>
+          <td>Self-drive/Hire</td>
+          <td>Pace yourself. Avoid overexertion.</td>
+          <td>None needed</td>
+          <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
         </tr>
         <tr>
-          <td data-label="Day"><span class="card-label-group"><span class="data-value">3</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-          <td data-label="Date" class="card-item"><span class="data-value">20 June</span></td>
-          <td data-label="Start" class="card-item"><span class="data-value">7:30 AM</span></td>
-          <td data-label="Activities" class="card-item"><span class="data-value">Leh → Nubra via Khardung La, Diskit, Hunder Sand Dunes</span></td>
-          <td data-label="Day Summary" class="card-item"><span class="data-value">Journey to Nubra Valley over Khardung La (~17,582 ft). Visit Diskit Monastery, Hunder Dunes.</span></td>
-          <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">Stone Hedge / Nubra Ecolodge</span></td>
-          <td data-label="Hotel (4★)" class="hotel4 card-item"><span class="data-value">Lchang Nang Retreat</span></td>
-          <td data-label="Food" class="card-item"><span class="data-value">Skew, apricot juice</span></td>
-          <td data-label="Car" class="card-item"><span class="data-value">Driver recommended</span></td>
-          <td data-label="Health Tip" class="healthcell card-item"><span class="data-value">Khardung La: don't linger. Hydrate.</span></td>
-          <td data-label="Permit" class="permit card-item"><span class="data-value"><b>ILP Required</b></span></td>
+          <td>3</td>
+          <td>20 June</td>
+          <td>7:30 AM</td>
+          <td>Leh → Nubra via Khardung La, Diskit, Hunder Sand Dunes</td>
+          <td>Journey to Nubra Valley over Khardung La (~17,582 ft). Visit Diskit Monastery, Hunder Dunes.</td>
+          <td>Stone Hedge / Nubra Ecolodge</td>
+          <td>Lchang Nang Retreat</td>
+          <td>Skew, apricot juice</td>
+          <td>Driver recommended</td>
+          <td>Khardung La: don't linger. Hydrate.</td>
+          <td><b>ILP Required</b></td>
+          <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
         </tr>
         <tr>
-          <td data-label="Day"><span class="card-label-group"><span class="data-value">4</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-          <td data-label="Date" class="card-item"><span class="data-value">21 June</span></td>
-          <td data-label="Start" class="card-item"><span class="data-value">7:00 AM</span></td>
-          <td data-label="Activities" class="card-item"><span class="data-value">Turtuk day trip; optional camel ride at Hunder</span></td>
-          <td data-label="Day Summary" class="card-item"><span class="data-value">Excursion to Turtuk village. Optional Hunder camel ride.</span></td>
-          <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">Same as Day 3</span></td>
-          <td data-label="Hotel (4★)" class="hotel4 card-item"><span class="data-value">Same as Day 3</span></td>
-          <td data-label="Food" class="card-item"><span class="data-value">Balti cuisine</span></td>
-          <td data-label="Car" class="card-item"><span class="data-value">Driver only</span></td>
-          <td data-label="Health Tip" class="healthcell card-item"><span class="data-value">Long driving day. Stay hydrated.</span></td>
-          <td data-label="Permit" class="permit card-item"><span class="data-value"><b>ILP covers Turtuk</b> (check status)</span></td>
+          <td>4</td>
+          <td>21 June</td>
+          <td>7:00 AM</td>
+          <td>Turtuk day trip; optional camel ride at Hunder</td>
+          <td>Excursion to Turtuk village. Optional Hunder camel ride.</td>
+          <td>Same as Day 3</td>
+          <td>Same as Day 3</td>
+          <td>Balti cuisine</td>
+          <td>Driver only</td>
+          <td>Long driving day. Stay hydrated.</td>
+          <td><b>ILP covers Turtuk</b> (check status)</td>
+          <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
         </tr>
         <tr>
-          <td data-label="Day"><span class="card-label-group"><span class="data-value">5</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-          <td data-label="Date" class="card-item"><span class="data-value">22 June</span></td>
-          <td data-label="Start" class="card-item"><span class="data-value">6:30 AM</span></td>
-          <td data-label="Activities" class="card-item"><span class="data-value">Nubra → Pangong Lake via Shyok River</span></td>
-          <td data-label="Day Summary" class="card-item"><span class="data-value">Scenic drive to Pangong Tso (~14,270 ft) via Shyok River.</span></td>
-          <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">The Hermitage / Pangong Retreat</span></td>
-          <td data-label="Hotel (4★)" class="hotel4 card-item"><span class="data-value">Pangong Lake View Cottages</span></td>
-          <td data-label="Food" class="card-item"><span class="data-value">Maggi with eggs</span></td>
-          <td data-label="Car" class="card-item"><span class="data-value">Driver only</span></td>
-          <td data-label="Health Tip" class="healthcell card-item"><span class="data-value">Night at high altitude. Cold. Descend if AMS worsens.</span></td>
-          <td data-label="Permit" class="permit card-item"><span class="data-value"><b>ILP Required</b></span></td>
+          <td>5</td>
+          <td>22 June</td>
+          <td>6:30 AM</td>
+          <td>Nubra → Pangong Lake via Shyok River</td>
+          <td>Scenic drive to Pangong Tso (~14,270 ft) via Shyok River.</td>
+          <td>The Hermitage / Pangong Retreat</td>
+          <td>Pangong Lake View Cottages</td>
+          <td>Maggi with eggs</td>
+          <td>Driver only</td>
+          <td>Night at high altitude. Cold. Descend if AMS worsens.</td>
+          <td><b>ILP Required</b></td>
+          <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
         </tr>
         <tr>
-          <td data-label="Day"><span class="card-label-group"><span class="data-value">6</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-          <td data-label="Date" class="card-item"><span class="data-value">23 June</span></td>
-          <td data-label="Start" class="card-item"><span class="data-value">7:00 AM</span></td>
-          <td data-label="Activities" class="card-item"><span class="data-value">Pangong → Leh via Chang La, then airport drop</span></td>
-          <td data-label="Day Summary" class="card-item"><span class="data-value">Morning at Pangong, then drive to Leh via Chang La (~17,590 ft). Airport transfer. <b>Risky timing.</b></span></td>
-          <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">—</span></td>
-          <td data-label="Hotel (4★)" class="hotel4 card-item"><span class="data-value">—</span></td>
-          <td data-label="Food" class="card-item"><span class="data-value">Ladakhi buffet (if time)</span></td>
-          <td data-label="Car" class="card-item"><span class="data-value">Driver only</span></td>
-          <td data-label="Health Tip" class="healthcell card-item"><span class="data-value">Early start, high pass. <b>Risky for flight.</b></span></td>
-          <td data-label="Permit" class="permit card-item"><span class="data-value">None for Leh</span></td>
+          <td>6</td>
+          <td>23 June</td>
+          <td>7:00 AM</td>
+          <td>Pangong → Leh via Chang La, then airport drop</td>
+          <td>Morning at Pangong, then drive to Leh via Chang La (~17,590 ft). Airport transfer. <b>Risky timing.</b></td>
+          <td>—</td>
+          <td>—</td>
+          <td>Ladakhi buffet (if time)</td>
+          <td>Driver only</td>
+          <td>Early start, high pass. <b>Risky for flight.</b></td>
+          <td>None for Leh</td>
+          <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
         </tr>
       </tbody>
     </table>
@@ -730,106 +759,111 @@
   <h2 id="option2">🏔️ Option 2: June 17–23 (6 Nights) - The Balanced Short Trip</h2>
   <div class="table-container">
       <table>
-        <!-- NO CAPTION -->
         <thead>
           <tr>
             <th>Day</th><th>Date</th><th>Start</th><th>Activities</th><th>Day Summary</th>
             <th class="hotel5">Hotel (5★)</th><th class="hotel4">Hotel (4★)</th>
-            <th>Food</th><th>Car</th>
-            <th class="healthcell">AMS/Health</th><th class="permit">Permit Note</th>
+            <th>Food</th><th>Car</th><th class="healthcell">AMS/Health</th><th class="permit">Permit Note</th><th>Details</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td data-label="Day"><span class="card-label-group"><span class="data-value">1</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-            <td data-label="Date" class="card-item"><span class="data-value">17 June</span></td>
-            <td data-label="Start" class="card-item"><span class="data-value">Arrival by noon</span></td>
-            <td data-label="Activities" class="card-item"><span class="data-value">Rest, Leh market, Shanti Stupa (evening)</span></td>
-            <td data-label="Day Summary" class="card-item"><span class="data-value">Arrival in Leh (11,500 ft), focus on crucial acclimatization. Evening exploration of Leh Market's vibrant atmosphere and a peaceful visit to Shanti Stupa for panoramic sunset views. Easy day, stay hydrated.</span></td>
-            <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">The Grand Dragon Leh</span></td>
-            <td data-label="Hotel (4★)" class="hotel4 card-item"><span class="data-value">The Abduz, Leh</span></td>
-            <td data-label="Food" class="card-item"><span class="data-value">Thukpa at Lamayuru restaurant</span></td>
-            <td data-label="Car" class="card-item"><span class="data-value">Hire driver; no self-drive on day 1</span></td>
-            <td data-label="AMS/Health" class="healthcell card-item"><span class="data-value">Rest well. Hydrate. Altitude: ~11,500 ft. This is your primary acclimatization buffer.</span></td>
-            <td data-label="Permit Note" class="permit card-item"><span class="data-value">None needed for Leh town</span></td>
+            <td>1</td>
+            <td>17 June</td>
+            <td>Arrival by noon</td>
+            <td>Rest, Leh market, Shanti Stupa (evening)</td>
+            <td>Arrival in Leh (11,500 ft), focus on crucial acclimatization. Evening exploration of Leh Market's vibrant atmosphere and a peaceful visit to Shanti Stupa for panoramic sunset views. Easy day, stay hydrated.</td>
+            <td class="hotel5">The Grand Dragon Leh</td>
+            <td class="hotel4">The Abduz, Leh</td>
+            <td>Thukpa at Lamayuru restaurant</td>
+            <td>Hire driver; no self-drive on day 1</td>
+            <td class="healthcell">Rest well. Hydrate. Altitude: ~11,500 ft. This is your primary acclimatization buffer.</td>
+            <td class="permit">None needed for Leh town</td>
+            <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
           </tr>
           <tr>
-            <td data-label="Day"><span class="card-label-group"><span class="data-value">2</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-            <td data-label="Date" class="card-item"><span class="data-value">18 June</span></td>
-            <td data-label="Start" class="card-item"><span class="data-value">8:30 AM</span></td>
-            <td data-label="Activities" class="card-item"><span class="data-value">Sham Valley (Magnetic Hill, Sangam, Pathar Sahib), Leh Palace</span></td>
-            <td data-label="Day Summary" class="card-item"><span class="data-value">Discover Leh's heritage: the historic Leh Palace offering city views, and explore Sham Valley's highlights: Magnetic Hill's optical illusion, Sangam (Indus-Zanskar confluence), and the revered Pathar Sahib Gurudwara.</span></td>
-            <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">The Grand Dragon Leh</span></td>
-            <td data-label="Hotel (4★)" class="hotel4 card-item"><span class="data-value">The Abduz, Leh</span></td>
-            <td data-label="Food" class="card-item"><span class="data-value">Chang (local barley beer - try in moderation after acclimatization), momos</span></td>
-            <td data-label="Car" class="card-item"><span class="data-value">Self-drive possible or hire driver</span></td>
-            <td data-label="AMS/Health" class="healthcell card-item"><span class="data-value">Active day. Pace yourself. Avoid overexertion. Continue hydrating.</span></td>
-            <td data-label="Permit Note" class="permit card-item"><span class="data-value">None needed</span></td>
+            <td>2</td>
+            <td>18 June</td>
+            <td>8:30 AM</td>
+            <td>Sham Valley (Magnetic Hill, Sangam, Pathar Sahib), Leh Palace</td>
+            <td>Discover Leh's heritage: the historic Leh Palace offering city views, and explore Sham Valley's highlights: Magnetic Hill's optical illusion, Sangam (Indus-Zanskar confluence), and the revered Pathar Sahib Gurudwara.</td>
+            <td class="hotel5">The Grand Dragon Leh</td>
+            <td class="hotel4">The Abduz, Leh</td>
+            <td>Chang (local barley beer - try in moderation after acclimatization), momos</td>
+            <td>Self-drive possible or hire driver</td>
+            <td class="healthcell">Active day. Pace yourself. Avoid overexertion. Continue hydrating.</td>
+            <td class="permit">None needed</td>
+            <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
           </tr>
           <tr>
-            <td data-label="Day"><span class="card-label-group"><span class="data-value">3</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-            <td data-label="Date" class="card-item"><span class="data-value">19 June</span></td>
-            <td data-label="Start" class="card-item"><span class="data-value">7:30 AM</span></td>
-            <td data-label="Activities" class="card-item"><span class="data-value">Leh → Nubra via Khardung La, Diskit, Hunder</span></td>
-            <td data-label="Day Summary" class="card-item"><span class="data-value">Journey to Nubra Valley, crossing the mighty Khardung La (~17,582 ft). Visit Diskit Monastery with its iconic Buddha statue and enjoy the Hunder Sand Dunes, with options for a Bactrian camel safari.</span></td>
-            <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">Stone Hedge or Nubra Ecolodge</span></td>
-            <td data-label="Hotel (4★)" class="hotel4 card-item"><span class="data-value">Lchang Nang Retreat</span></td>
-            <td data-label="Food" class="card-item"><span class="data-value">Yarkandi pulao</span></td>
-            <td data-label="Car" class="card-item"><span class="data-value">Driver preferred/recommended</span></td>
-            <td data-label="AMS/Health" class="healthcell card-item"><span class="data-value">Ascend to Khardung La (~17,582 ft). Don't linger too long at the pass to avoid AMS. Nubra is at a lower altitude than Leh.</span></td>
-            <td data-label="Permit Note" class="permit card-item"><span class="data-value">ILP Required for Nubra</span></td>
+            <td>3</td>
+            <td>19 June</td>
+            <td>7:30 AM</td>
+            <td>Leh → Nubra via Khardung La, Diskit, Hunder</td>
+            <td>Journey to Nubra Valley, crossing the mighty Khardung La (~17,582 ft). Visit Diskit Monastery with its iconic Buddha statue and enjoy the Hunder Sand Dunes, with options for a Bactrian camel safari.</td>
+            <td class="hotel5">Stone Hedge or Nubra Ecolodge</td>
+            <td class="hotel4">Lchang Nang Retreat</td>
+            <td>Yarkandi pulao</td>
+            <td>Driver preferred/recommended</td>
+            <td class="healthcell">Ascend to Khardung La (~17,582 ft). Don't linger too long at the pass to avoid AMS. Nubra is at a lower altitude than Leh.</td>
+            <td class="permit">ILP Required for Nubra</td>
+            <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
           </tr>
           <tr>
-            <td data-label="Day"><span class="card-label-group"><span class="data-value">4</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-            <td data-label="Date" class="card-item"><span class="data-value">20 June</span></td>
-            <td data-label="Start" class="card-item"><span class="data-value">7:00 AM</span></td>
-            <td data-label="Activities" class="card-item"><span class="data-value">Turtuk day trip</span></td>
-            <td data-label="Day Summary" class="card-item"><span class="data-value">Full day excursion to Turtuk, a culturally unique Balti village near the LoC, experiencing its distinct heritage, apricot orchards, and local life. Potential for trying local Balti cuisine.</span></td>
-            <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">Same as Day 3</span></td>
-            <td data-label="Hotel (4★)" class="hotel4 card-item"><span class="data-value">Same as Day 3</span></td>
-            <td data-label="Food" class="card-item"><span class="data-value">Apricot cake, Balti lamb curry</span></td>
-            <td data-label="Car" class="card-item"><span class="data-value">Driver only; long drive</span></td>
-            <td data-label="AMS/Health" class="healthcell card-item"><span class="data-value">Long driving sessions. Stay hydrated. Enjoy the unique culture.</span></td>
-            <td data-label="Permit Note" class="permit card-item"><span class="data-value">ILP covers Turtuk (check current status)</span></td>
+            <td>4</td>
+            <td>20 June</td>
+            <td>7:00 AM</td>
+            <td>Turtuk day trip</td>
+            <td>Full day excursion to Turtuk, a culturally unique Balti village near the LoC, experiencing its distinct heritage, apricot orchards, and local life. Potential for trying local Balti cuisine.</td>
+            <td class="hotel5">Same as Day 3</td>
+            <td class="hotel4">Same as Day 3</td>
+            <td>Apricot cake, Balti lamb curry</td>
+            <td>Driver only; long drive</td>
+            <td class="healthcell">Long driving sessions. Stay hydrated. Enjoy the unique culture.</td>
+            <td class="permit">ILP covers Turtuk (check current status)</td>
+            <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
           </tr>
           <tr>
-            <td data-label="Day"><span class="card-label-group"><span class="data-value">5</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-            <td data-label="Date" class="card-item"><span class="data-value">21 June</span></td>
-            <td data-label="Start" class="card-item"><span class="data-value">6:30 AM</span></td>
-            <td data-label="Activities" class="card-item"><span class="data-value">Nubra → Pangong via Shyok</span></td>
-            <td data-label="Day Summary" class="card-item"><span class="data-value">Scenic drive from Nubra Valley to the stunning Pangong Tso (approx. 14,270 ft) along the Shyok River. Settle in and marvel at the lake's mesmerizing beauty and color changes.</span></td>
-            <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">The Hermitage Pangong or Pangong Retreat</span></td>
-            <td data-label="Hotel (4★)" class="hotel4 card-item"><span class="data-value">Pangong Lake View Cottages</span></td>
-            <td data-label="Food" class="card-item"><span class="data-value">Hot tea and butter roti at Pangong local stays</span></td>
-            <td data-label="Car" class="card-item"><span class="data-value">Driver only</span></td>
-            <td data-label="AMS/Health" class="healthcell card-item"><span class="data-value">Night at high altitude (~14,270 ft). Will be very cold, especially at night. Monitor for AMS.</span></td>
-            <td data-label="Permit Note" class="permit card-item"><span class="data-value">ILP Required for Pangong</span></td>
+            <td>5</td>
+            <td>21 June</td>
+            <td>6:30 AM</td>
+            <td>Nubra → Pangong via Shyok</td>
+            <td>Scenic drive from Nubra Valley to the stunning Pangong Tso (approx. 14,270 ft) along the Shyok River. Settle in and marvel at the lake's mesmerizing beauty and color changes.</td>
+            <td class="hotel5">The Hermitage Pangong or Pangong Retreat</td>
+            <td class="hotel4">Pangong Lake View Cottages</td>
+            <td>Hot tea and butter roti at Pangong local stays</td>
+            <td>Driver only</td>
+            <td class="healthcell">Night at high altitude (~14,270 ft). Will be very cold, especially at night. Monitor for AMS.</td>
+            <td class="permit">ILP Required for Pangong</td>
+            <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
           </tr>
           <tr>
-            <td data-label="Day"><span class="card-label-group"><span class="data-value">6</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-            <td data-label="Date" class="card-item"><span class="data-value">22 June</span></td>
-            <td data-label="Start" class="card-item"><span class="data-value">7:00 AM</span></td>
-            <td data-label="Activities" class="card-item"><span class="data-value">Pangong → Leh via Chang La, visit Hemis & Thiksey Monasteries</span></td>
-            <td data-label="Day Summary" class="card-item"><span class="data-value">After soaking in morning views of Pangong Tso, drive back to Leh via Chang La pass (~17,590 ft). En route, visit two of Ladakh's most important monasteries: Hemis (largest and wealthiest, Drukpa lineage) and Thiksey (grand, Potala-like structure).</span></td>
-            <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">The Grand Dragon Leh</span></td>
-            <td data-label="Hotel (4★)" class="hotel4 card-item"><span class="data-value">The Abduz, Leh</span></td>
-            <td data-label="Food" class="card-item"><span class="data-value">Traditional Ladakhi thali at Chopsticks Noodle Bar or similar</span></td>
-            <td data-label="Car" class="card-item"><span class="data-value">Driver or experienced self-drive</span></td>
-            <td data-label="AMS/Health" class="healthcell card-item"><span class="data-value">Early start, high pass (Chang La ~17,590 ft). Descend to Leh for better sleep.</span></td>
-            <td data-label="Permit Note" class="permit card-item"><span class="data-value">—</span></td>
+            <td>6</td>
+            <td>22 June</td>
+            <td>7:00 AM</td>
+            <td>Pangong → Leh via Chang La, visit Hemis & Thiksey Monasteries</td>
+            <td>After soaking in morning views of Pangong Tso, drive back to Leh via Chang La pass (~17,590 ft). En route, visit two of Ladakh's most important monasteries: Hemis (largest and wealthiest, Drukpa lineage) and Thiksey (grand, Potala-like structure).</td>
+            <td class="hotel5">The Grand Dragon Leh</td>
+            <td class="hotel4">The Abduz, Leh</td>
+            <td>Traditional Ladakhi thali at Chopsticks Noodle Bar or similar</td>
+            <td>Driver or experienced self-drive</td>
+            <td class="healthcell">Early start, high pass (Chang La ~17,590 ft). Descend to Leh for better sleep.</td>
+            <td class="permit">—</td>
+            <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
           </tr>
           <tr>
-            <td data-label="Day"><span class="card-label-group"><span class="data-value">7</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-            <td data-label="Date" class="card-item"><span class="data-value">23 June</span></td>
-            <td data-label="Start" class="card-item"><span class="data-value">9:00 AM</span></td>
-            <td data-label="Activities" class="card-item"><span class="data-value">Leh local (Shey Palace, Sindhu Ghat, cafes), drop at airport</span></td>
-            <td data-label="Day Summary" class="card-item"><span class="data-value">Morning exploration of more Leh local sights like Shey Palace (former summer capital) and Sindhu Ghat (banks of Indus River), with time for cafe hopping or last-minute souvenir shopping before airport drop.</span></td>
-            <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">—</span></td>
-            <td data-label="Hotel (4★)" class="hotel4 card-item"><span class="data-value">—</span></td>
-            <td data-label="Food" class="card-item"><span class="data-value">Coffee and pastries at Leh Cafe Cloud or similar</span></td>
-            <td data-label="Car" class="card-item"><span class="data-value">Self-drive or driver for local commute</span></td>
-            <td data-label="AMS/Health" class="healthcell card-item"><span class="data-value">Enjoy Leh before flight. Ensure timely airport transfer.</span></td>
-            <td data-label="Permit Note" class="permit card-item"><span class="data-value">—</span></td>
+            <td>7</td>
+            <td>23 June</td>
+            <td>9:00 AM</td>
+            <td>Leh local (Shey Palace, Sindhu Ghat, cafes), drop at airport</td>
+            <td>Morning exploration of more Leh local sights like Shey Palace (former summer capital) and Sindhu Ghat (banks of Indus River), with time for cafe hopping or last-minute souvenir shopping before airport drop.</td>
+            <td class="hotel5">—</td>
+            <td class="hotel4">—</td>
+            <td>Coffee and pastries at Leh Cafe Cloud or similar</td>
+            <td>Self-drive or driver for local commute</td>
+            <td class="healthcell">Enjoy Leh before flight. Ensure timely airport transfer.</td>
+            <td class="permit">—</td>
+            <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
           </tr>
         </tbody>
       </table>
@@ -847,118 +881,125 @@
   <h2 id="option3a">🌿 Option 3A: June 17–24 (7 Nights, Best Option with Turtuk) – The Recommended Classic</h2>
   <div class="table-container">
     <table>
-      <!-- NO CAPTION -->
       <thead>
         <tr>
           <th>Day</th><th>Date</th><th>Start</th><th>Activities</th><th>Day Summary</th>
           <th class="hotel5">Hotel (5★)</th><th class="hotel4">Hotel (4★)</th>
-          <th>Food</th><th>Car</th><th class="healthcell">AMS/Health</th><th class="permit">Permit Note</th>
+          <th>Food</th><th>Car</th><th class="healthcell">AMS/Health</th><th class="permit">Permit Note</th><th>Details</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td data-label="Day"><span class="card-label-group"><span class="data-value">1</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-          <td data-label="Date" class="card-item"><span class="data-value">17 June</span></td>
-          <td data-label="Start" class="card-item"><span class="data-value">Arrival by noon</span></td>
-          <td data-label="Activities" class="card-item"><span class="data-value">Rest, Leh market, Shanti Stupa (evening)</span></td>
-          <td data-label="Day Summary" class="card-item"><span class="data-value">Arrival in Leh (11,500 ft), prioritize rest and acclimatization. Gentle evening walk through Leh Market and visit Shanti Stupa for sunset views over Leh city.</span></td>
-          <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">The Grand Dragon Leh</span></td>
-          <td data-label="Hotel (4★)" class="hotel4 card-item"><span class="data-value">The Abduz, Leh</span></td>
-          <td data-label="Food" class="card-item"><span class="data-value">Yak cheese pizza at Open Hand Cafe or Gesmo</span></td>
-          <td data-label="Car" class="card-item"><span class="data-value">Hire driver; no self-drive on day 1</span></td>
-          <td data-label="AMS/Health" class="healthcell card-item"><span class="data-value">Rest well. Hydrate. Altitude: ~11,500 ft. Crucial first day for acclimatization.</span></td>
-          <td data-label="Permit Note" class="permit card-item"><span class="data-value">None needed for Leh town</span></td>
+          <td>1</td>
+          <td>17 June</td>
+          <td>Arrival by noon</td>
+          <td>Rest, Leh market, Shanti Stupa (evening)</td>
+          <td>Arrival in Leh (11,500 ft), prioritize rest and acclimatization. Gentle evening walk through Leh Market and visit Shanti Stupa for sunset views over Leh city.</td>
+          <td class="hotel5">The Grand Dragon Leh</td>
+          <td class="hotel4">The Abduz, Leh</td>
+          <td>Yak cheese pizza at Open Hand Cafe or Gesmo</td>
+          <td>Hire driver; no self-drive on day 1</td>
+          <td class="healthcell">Rest well. Hydrate. Altitude: ~11,500 ft. Crucial first day for acclimatization.</td>
+          <td class="permit">None needed for Leh town</td>
+          <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
         </tr>
         <tr>
-          <td data-label="Day"><span class="card-label-group"><span class="data-value">2</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-          <td data-label="Date" class="card-item"><span class="data-value">18 June</span></td>
-          <td data-label="Start" class="card-item"><span class="data-value">8:30 AM</span></td>
-          <td data-label="Activities" class="card-item"><span class="data-value">Sham Valley (Magnetic Hill, Sangam, Pathar Sahib), Leh Palace</span></td>
-          <td data-label="Day Summary" class="card-item"><span class="data-value">Explore Leh's heritage with a visit to Leh Palace overlooking the city. Continue to Sham Valley, experiencing Magnetic Hill's optical illusion, Sangam (confluence of Indus & Zanskar rivers), and the revered Pathar Sahib Gurudwara.</span></td>
-          <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">The Grand Dragon Leh</span></td>
-          <td data-label="Hotel (4★)" class="hotel4 card-item"><span class="data-value">The Abduz, Leh</span></td>
-          <td data-label="Food" class="card-item"><span class="data-value">Ladakhi butter tea, fried rice at a local eatery</span></td>
-          <td data-label="Car" class="card-item"><span class="data-value">Self-drive possible or hire driver</span></td>
-          <td data-label="AMS/Health" class="healthcell card-item"><span class="data-value">Active day. Pace yourself. Avoid overexertion. Keep hydrating.</span></td>
-          <td data-label="Permit Note" class="permit card-item"><span class="data-value">None needed</span></td>
+          <td>2</td>
+          <td>18 June</td>
+          <td>8:30 AM</td>
+          <td>Sham Valley (Magnetic Hill, Sangam, Pathar Sahib), Leh Palace</td>
+          <td>Explore Leh's heritage with a visit to Leh Palace overlooking the city. Continue to Sham Valley, experiencing Magnetic Hill's optical illusion, Sangam (confluence of Indus & Zanskar rivers), and the revered Pathar Sahib Gurudwara.</td>
+          <td class="hotel5">The Grand Dragon Leh</td>
+          <td class="hotel4">The Abduz, Leh</td>
+          <td>Ladakhi butter tea, fried rice at a local eatery</td>
+          <td>Self-drive possible or hire driver</td>
+          <td class="healthcell">Active day. Pace yourself. Avoid overexertion. Keep hydrating.</td>
+          <td class="permit">None needed</td>
+          <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
         </tr>
         <tr>
-          <td data-label="Day"><span class="card-label-group"><span class="data-value">3</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-          <td data-label="Date" class="card-item"><span class="data-value">19 June</span></td>
-          <td data-label="Start" class="card-item"><span class="data-value">7:30 AM</span></td>
-          <td data-label="Activities" class="card-item"><span class="data-value">Leh → Nubra via Khardung La, Diskit, Hunder</span></td>
-          <td data-label="Day Summary" class="card-item"><span class="data-value">Embark on the journey to Nubra Valley, crossing the formidable Khardung La pass (~17,582 ft). In Nubra, visit Diskit Monastery and its large Maitreya Buddha statue, followed by the Hunder Sand Dunes for a possible Bactrian camel ride. Nubra valley is at a lower altitude than Leh.</span></td>
-          <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">Stone Hedge or Nubra Ecolodge</span></td>
-          <td data-label="Hotel (4★)" class="hotel4 card-item"><span class="data-value">Lchang Nang Retreat</span></td>
-          <td data-label="Food" class="card-item"><span class="data-value">Mutton momos or local thukpa</span></td>
-          <td data-label="Car" class="card-item"><span class="data-value">Driver recommended for Khardung La</span></td>
-          <td data-label="AMS/Health" class="healthcell card-item"><span class="data-value">Ascend to Khardung La (~17,582 ft). Don't linger too long at the pass. Descend into Nubra.</span></td>
-          <td data-label="Permit Note" class="permit card-item"><span class="data-value">ILP Required for Nubra</span></td>
+          <td>3</td>
+          <td>19 June</td>
+          <td>7:30 AM</td>
+          <td>Leh → Nubra via Khardung La, Diskit, Hunder</td>
+          <td>Embark on the journey to Nubra Valley, crossing the formidable Khardung La pass (~17,582 ft). In Nubra, visit Diskit Monastery and its large Maitreya Buddha statue, followed by the Hunder Sand Dunes for a possible Bactrian camel ride. Nubra valley is at a lower altitude than Leh.</td>
+          <td class="hotel5">Stone Hedge or Nubra Ecolodge</td>
+          <td class="hotel4">Lchang Nang Retreat</td>
+          <td>Mutton momos or local thukpa</td>
+          <td>Driver recommended for Khardung La</td>
+          <td class="healthcell">Ascend to Khardung La (~17,582 ft). Don't linger too long at the pass. Descend into Nubra.</td>
+          <td class="permit">ILP Required for Nubra</td>
+          <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
         </tr>
         <tr>
-          <td data-label="Day"><span class="card-label-group"><span class="data-value">4</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-          <td data-label="Date" class="card-item"><span class="data-value">20 June</span></td>
-          <td data-label="Start" class="card-item"><span class="data-value">7:00 AM</span></td>
-          <td data-label="Activities" class="card-item"><span class="data-value">Turtuk day trip</span></td>
-          <td data-label="Day Summary" class="card-item"><span class="data-value">Full day trip to Turtuk, a serene and culturally rich Balti village near the Line of Control, known for its unique traditions, apricot groves, and stunning landscapes. Immerse in the local culture.</span></td>
-          <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">Same as Day 3</span></td>
-          <td data-label="Hotel (4★)" class="hotel4 card-item"><span class="data-value">Same as Day 3</span></td>
-          <td data-label="Food" class="card-item"><span class="data-value">Buckwheat pancakes (Kisir) with apricot jam/honey in Turtuk</span></td>
-          <td data-label="Car" class="card-item"><span class="data-value">Driver only; long drive</span></td>
-          <td data-label="AMS/Health" class="healthcell card-item"><span class="data-value">Long driving day. Stay hydrated. Enjoy the scenic beauty and cultural shift.</span></td>
-          <td data-label="Permit Note" class="permit card-item"><span class="data-value">ILP covers Turtuk (check current status)</span></td>
+          <td>4</td>
+          <td>20 June</td>
+          <td>7:00 AM</td>
+          <td>Turtuk day trip</td>
+          <td>Full day trip to Turtuk, a serene and culturally rich Balti village near the Line of Control, known for its unique traditions, apricot groves, and stunning landscapes. Immerse in the local culture.</td>
+          <td class="hotel5">Same as Day 3</td>
+          <td class="hotel4">Same as Day 3</td>
+          <td>Buckwheat pancakes (Kisir) with apricot jam/honey in Turtuk</td>
+          <td>Driver only; long drive</td>
+          <td class="healthcell">Long driving day. Stay hydrated. Enjoy the scenic beauty and cultural shift.</td>
+          <td class="permit">ILP covers Turtuk (check current status)</td>
+          <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
         </tr>
         <tr>
-          <td data-label="Day"><span class="card-label-group"><span class="data-value">5</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-          <td data-label="Date" class="card-item"><span class="data-value">21 June</span></td>
-          <td data-label="Start" class="card-item"><span class="data-value">6:30 AM</span></td>
-          <td data-label="Activities" class="card-item"><span class="data-value">Nubra → Pangong via Shyok</span></td>
-          <td data-label="Day Summary" class="card-item"><span class="data-value">Travel from Nubra Valley to the magnificent Pangong Tso (approx. 14,270 ft) via the beautiful Shyok river valley route. Spend the evening by the lake, observing its mesmerizing changing colors.</span></td>
-          <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">The Hermitage Pangong or Pangong Retreat</span></td>
-          <td data-label="Hotel (4★)" class="hotel4 card-item"><span class="data-value">Pangong Lake View Cottages or similar camp/guesthouse</span></td>
-          <td data-label="Food" class="card-item"><span class="data-value">Egg curry + rice (common at local dhabas/camps) or Dal-Roti</span></td>
-          <td data-label="Car" class="card-item"><span class="data-value">Driver only</span></td>
-          <td data-label="AMS/Health" class="healthcell card-item"><span class="data-value">Night at high altitude (~14,270 ft). Will be very cold. Monitor for AMS.</span></td>
-          <td data-label="Permit Note" class="permit card-item"><span class="data-value">ILP Required for Pangong</span></td>
+          <td>5</td>
+          <td>21 June</td>
+          <td>6:30 AM</td>
+          <td>Nubra → Pangong via Shyok</td>
+          <td>Travel from Nubra Valley to the magnificent Pangong Tso (approx. 14,270 ft) via the beautiful Shyok river valley route. Spend the evening by the lake, observing its mesmerizing changing colors.</td>
+          <td class="hotel5">The Hermitage Pangong or Pangong Retreat</td>
+          <td class="hotel4">Pangong Lake View Cottages or similar camp/guesthouse</td>
+          <td>Egg curry + rice (common at local dhabas/camps) or Dal-Roti</td>
+          <td>Driver only</td>
+          <td class="healthcell">Night at high altitude (~14,270 ft). Will be very cold. Monitor for AMS.</td>
+          <td class="permit">ILP Required for Pangong</td>
+          <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
         </tr>
         <tr>
-          <td data-label="Day"><span class="card-label-group"><span class="data-value">6</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-          <td data-label="Date" class="card-item"><span class="data-value">22 June</span></td>
-          <td data-label="Start" class="card-item"><span class="data-value">7:00 AM</span></td>
-          <td data-label="Activities" class="card-item"><span class="data-value">Pangong → Leh via Chang La, visit Hemis & Thiksey Monasteries</span></td>
-          <td data-label="Day Summary" class="card-item"><span class="data-value">Morning at Pangong Tso to witness sunrise. Drive back to Leh via Chang La pass (~17,590 ft). On the way, visit the renowned Hemis Monastery (Drukpa lineage, largest in Ladakh) and the impressive Thiksey Monastery.</span></td>
-          <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">The Grand Dragon Leh</span></td>
-          <td data-label="Hotel (4★)" class="hotel4 card-item"><span class="data-value">The Abduz, Leh</span></td>
-          <td data-label="Food" class="card-item"><span class="data-value">Local platter at Namza Dining or similar Ladakhi specialty restaurant</span></td>
-          <td data-label="Car" class="card-item"><span class="data-value">Driver or experienced self-drive</span></td>
-          <td data-label="AMS/Health" class="healthcell card-item"><span class="data-value">Early start, high pass (Chang La ~17,590 ft). Descend to Leh.</span></td>
-          <td data-label="Permit Note" class="permit card-item"><span class="data-value">None needed for return to Leh</span></td>
+          <td>6</td>
+          <td>22 June</td>
+          <td>7:00 AM</td>
+          <td>Pangong → Leh via Chang La, visit Hemis & Thiksey Monasteries</td>
+          <td>Morning at Pangong Tso to witness sunrise. Drive back to Leh via Chang La pass (~17,590 ft). On the way, visit the renowned Hemis Monastery (Drukpa lineage, largest in Ladakh) and the impressive Thiksey Monastery.</td>
+          <td class="hotel5">The Grand Dragon Leh</td>
+          <td class="hotel4">The Abduz, Leh</td>
+          <td>Local platter at Namza Dining or similar Ladakhi specialty restaurant</td>
+          <td class="card-item"><span class="data-value">Driver or experienced self-drive</span></td>
+          <td class="healthcell card-item"><span class="data-value">Early start, high pass (Chang La ~17,590 ft). Descend to Leh.</span></td>
+          <td class="permit card-item"><span class="data-value">None needed for return to Leh</span></td>
+          <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
         </tr>
         <tr>
-          <td data-label="Day"><span class="card-label-group"><span class="data-value">7</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-          <td data-label="Date" class="card-item"><span class="data-value">23 June</span></td>
-          <td data-label="Start" class="card-item"><span class="data-value">9:00 AM</span></td>
-          <td data-label="Activities" class="card-item"><span class="data-value">Leh local day (Shey Palace, Sindhu Ghat, cafes, final shopping)</span></td>
-          <td data-label="Day Summary" class="card-item"><span class="data-value">Dedicated day for relaxed Leh local sightseeing: Shey Palace and Monastery (former summer capital), Sindhu Ghat for views of the Indus River. Enjoy time at Leh's cafes or for last-minute souvenir shopping.</span></td>
-          <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">The Grand Dragon Leh</span></td>
-          <td data-label="Hotel (4★)" class="hotel4 card-item"><span class="data-value">The Abduz, Leh</span></td>
-          <td data-label="Food" class="card-item"><span class="data-value">Israeli food at Jeevan Cafe or explore other cafes</span></td>
-          <td data-label="Car" class="card-item"><span class="data-value">Self-drive or local driver/taxi</span></td>
-          <td data-label="AMS/Health" class="healthcell card-item"><span class="data-value">Enjoy remaining Leh sights at a relaxed pace. Good buffer day.</span></td>
-          <td data-label="Permit Note" class="permit card-item"><span class="data-value">None needed</span></td>
+          <td>7</td>
+          <td>23 June</td>
+          <td>9:00 AM</td>
+          <td>Leh local day (Shey Palace, Sindhu Ghat, cafes, final shopping)</td>
+          <td>Dedicated day for relaxed Leh local sightseeing: Shey Palace and Monastery (former summer capital), Sindhu Ghat for views of the Indus River. Enjoy time at Leh's cafes or for last-minute souvenir shopping. Buffer built-in.</td>
+          <td class="hotel5">The Grand Dragon Leh</td>
+          <td class="hotel4">The Abduz, Leh</td>
+          <td>Israeli food at Jeevan Cafe or explore other cafes</td>
+          <td class="card-item"><span class="data-value">Self-drive or local driver/taxi</span></td>
+          <td class="healthcell card-item"><span class="data-value">Enjoy remaining Leh sights at a relaxed pace. Good buffer day.</span></td>
+          <td class="permit card-item"><span class="data-value">None needed</span></td>
+          <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
         </tr>
         <tr>
-          <td data-label="Day"><span class="card-label-group"><span class="data-value">8</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-          <td data-label="Date" class="card-item"><span class="data-value">24 June</span></td>
-          <td data-label="Start" class="card-item"><span class="data-value">2.5 hr before flight</span></td>
-          <td data-label="Activities" class="card-item"><span class="data-value">Airport drop</span></td>
-          <td data-label="Day Summary" class="card-item"><span class="data-value">Leisurely morning followed by a timely transfer to Leh Kushok Bakula Rimpochee Airport for your departure.</span></td>
-          <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">—</span></td>
-          <td data-label="Hotel (4★)" class="hotel4 card-item"><span class="data-value">—</span></td>
-          <td data-label="Food" class="card-item"><span class="data-value">—</span></td>
-          <td data-label="Car" class="card-item"><span class="data-value">Pre-arranged taxi/driver</span></td>
-          <td data-label="AMS/Health" class="healthcell card-item"><span class="data-value">Safe travels! Buffer for airport check-in procedures.</span></td>
-          <td data-label="Permit Note" class="permit card-item"><span class="data-value">None</span></td>
+          <td>8</td>
+          <td>24 June</td>
+          <td>2.5 hr before flight</td>
+          <td>Airport drop</td>
+          <td>Leisurely morning followed by a timely transfer to Leh Kushok Bakula Rimpochee Airport for your departure.</td>
+          <td class="hotel5">—</td>
+          <td class="hotel4">—</td>
+          <td>—</td>
+          <td>Pre-arranged taxi/driver</td>
+          <td class="healthcell">Safe travels! Buffer for airport check-in procedures.</td>
+          <td class="permit">None</td>
+          <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
         </tr>
       </tbody>
     </table>
@@ -973,122 +1014,128 @@
     <span class="data-value">Requires a longer duration (7 nights), which may not be feasible for everyone. Does not include highly specialized/remote locations like Hanle or the Kargil/Drass region.</span>
   </div>
 
-  <h2 id="option3b">✨ Option 3B: June 17–24 (7 Nights, with Hanle – Extended Adventure) – The Stargazer's Special</h2>
+  <h2 id="option3b">🌿 Option 3B: June 17–24 (7 Nights, Best Option with Tso Moriri) – The Recommended Classic</h2>
   <div class="table-container">
     <table>
-      <!-- NO CAPTION -->
       <thead>
         <tr>
           <th>Day</th><th>Date</th><th>Start</th><th>Activities</th><th>Day Summary</th>
-          <th class="hotel5">Hotel (5★)</th><th class="hotel4">Hotel (4★)/Basic</th>
-          <th>Food</th><th>Car</th>
-          <th class="healthcell">AMS/Health</th><th class="permit">Permit Note</th>
+          <th class="hotel5">Hotel (5★)</th><th class="hotel4">Hotel (4★)</th>
+          <th>Food</th><th>Car</th><th class="healthcell">AMS/Health</th><th class="permit">Permit Note</th><th>Details</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td data-label="Day"><span class="card-label-group"><span class="data-value">1</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-          <td data-label="Date" class="card-item"><span class="data-value">17 June</span></td>
-          <td data-label="Start" class="card-item"><span class="data-value">Arrival by noon</span></td>
-          <td data-label="Activities" class="card-item"><span class="data-value">Rest, Leh market, Shanti Stupa (evening)</span></td>
-          <td data-label="Day Summary" class="card-item"><span class="data-value">Arrival in Leh (11,500 ft), prioritize rest and acclimatization. Gentle evening walk through Leh Market and visit Shanti Stupa for sunset views over Leh city. Only minimal exertion.</span></td>
-          <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">The Grand Dragon Leh</span></td>
-          <td data-label="Hotel (4★)/Basic" class="hotel4 card-item"><span class="data-value">The Abduz, Leh</span></td>
-          <td data-label="Food" class="card-item"><span class="data-value">Yak cheese pizza at Open Hand Cafe</span></td>
-          <td data-label="Car" class="card-item"><span class="data-value">Hire driver; no self-drive day 1</span></td>
-          <td data-label="AMS/Health" class="healthcell card-item"><span class="data-value">Rest well. Hydrate. Altitude: ~11,500 ft. Crucial for acclimatization before Hanle.</span></td>
-          <td data-label="Permit Note" class="permit card-item"><span class="data-value">None needed for Leh town</span></td>
+          <td>1</td>
+          <td>17 June</td>
+          <td>Arrival by noon</td>
+          <td>Rest, Leh market, Shanti Stupa (evening)</td>
+          <td>Arrival in Leh (11,500 ft), prioritize rest and acclimatization. Gentle evening walk through Leh Market and visit Shanti Stupa for sunset views over Leh city.</td>
+          <td class="hotel5">The Grand Dragon Leh</td>
+          <td class="hotel4">The Abduz, Leh</td>
+          <td>Yak cheese pizza at Open Hand Cafe or Gesmo</td>
+          <td>Hire driver; no self-drive on day 1</td>
+          <td class="healthcell">Rest well. Hydrate. Altitude: ~11,500 ft. Crucial first day for acclimatization.</td>
+          <td class="permit">None needed for Leh town</td>
+          <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
         </tr>
         <tr>
-          <td data-label="Day"><span class="card-label-group"><span class="data-value">2</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-          <td data-label="Date" class="card-item"><span class="data-value">18 June</span></td>
-          <td data-label="Start" class="card-item"><span class="data-value">8:30 AM</span></td>
-          <td data-label="Activities" class="card-item"><span class="data-value">Sham Valley (Magnetic Hill, Sangam, Pathar Sahib), Leh Palace</span></td>
-          <td data-label="Day Summary" class="card-item"><span class="data-value">Explore Leh's heritage with a visit to Leh Palace. Continue to Sham Valley, experiencing Magnetic Hill, Sangam (confluence of Indus & Zanskar rivers), and Pathar Sahib Gurudwara. Try local momos/butter tea.</span></td>
-          <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">The Grand Dragon Leh</span></td>
-          <td data-label="Hotel (4★)/Basic" class="hotel4 card-item"><span class="data-value">The Abduz, Leh</span></td>
-          <td data-label="Food" class="card-item"><span class="data-value">Ladakhi butter tea, momos</span></td>
-          <td data-label="Car" class="card-item"><span class="data-value">Self-drive possible or hire driver</span></td>
-          <td data-label="AMS/Health" class="healthcell card-item"><span class="data-value">Active day. Pace gently. Avoid overexertion. This day also aids acclimatization.</span></td>
-          <td data-label="Permit Note" class="permit card-item"><span class="data-value">None needed</span></td>
+          <td>2</td>
+          <td>18 June</td>
+          <td>8:30 AM</td>
+          <td>Sham Valley (Magnetic Hill, Sangam, Pathar Sahib), Leh Palace</td>
+          <td>Explore Leh's heritage with a visit to Leh Palace overlooking the city. Continue to Sham Valley, experiencing Magnetic Hill's optical illusion, Sangam (confluence of Indus & Zanskar rivers), and the revered Pathar Sahib Gurudwara.</td>
+          <td class="hotel5">The Grand Dragon Leh</td>
+          <td class="hotel4">The Abduz, Leh</td>
+          <td>Ladakhi butter tea, fried rice at a local eatery</td>
+          <td>Self-drive possible or hire driver</td>
+          <td class="healthcell">Active day. Pace yourself. Avoid overexertion. Keep hydrating.</td>
+          <td class="permit">None needed</td>
+          <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
         </tr>
         <tr>
-          <td data-label="Day"><span class="card-label-group"><span class="data-value">3</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-          <td data-label="Date" class="card-item"><span class="data-value">19 June</span></td>
-          <td data-label="Start" class="card-item"><span class="data-value">7:00 AM</span></td>
-          <td data-label="Activities" class="card-item"><span class="data-value">Leh → Nubra via Khardung La, Diskit, Hunder Sand Dunes</span></td>
-          <td data-label="Day Summary" class="card-item"><span class="data-value">Embark on the journey to Nubra Valley, crossing the formidable Khardung La pass (~17,582 ft). In Nubra, visit Diskit Monastery and its large Maitreya Buddha, followed by the Hunder Sand Dunes. Possible camel ride.</span></td>
-          <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">Stone Hedge or Nubra Ecolodge</span></td>
-          <td data-label="Hotel (4★)/Basic" class="hotel4 card-item"><span class="data-value">Lchang Nang Retreat</span></td>
-          <td data-label="Food" class="card-item"><span class="data-value">Mutton momos or local cuisine</span></td>
-          <td data-label="Car" class="card-item"><span class="data-value">Driver recommended</span></td>
-          <td data-label="AMS/Health" class="healthcell card-item"><span class="data-value">Ascend to Khardung La (~17,582 ft). Don't linger too long. Hydrate. Nubra is lower altitude.</span></td>
-          <td data-label="Permit Note" class="permit card-item"><span class="data-value">ILP Required for Nubra</span></td>
+          <td>3</td>
+          <td>19 June</td>
+          <td>7:30 AM</td>
+          <td>Leh → Nubra via Khardung La, Diskit, Hunder</td>
+          <td>Embark on the journey to Nubra Valley, crossing the formidable Khardung La pass (~17,582 ft). In Nubra, visit Diskit Monastery and its large Maitreya Buddha statue, followed by the Hunder Sand Dunes for a possible Bactrian camel ride. Nubra valley is at a lower altitude than Leh.</td>
+          <td class="hotel5">Stone Hedge or Nubra Ecolodge</td>
+          <td class="hotel4">Lchang Nang Retreat</td>
+          <td>Mutton momos or local thukpa</td>
+          <td>Driver recommended for Khardung La</td>
+          <td class="healthcell">Ascend to Khardung La (~17,582 ft). Don't linger too long at the pass. Descend into Nubra.</td>
+          <td class="permit">ILP Required for Nubra</td>
+          <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
         </tr>
         <tr>
-          <td data-label="Day"><span class="card-label-group"><span class="data-value">4</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-          <td data-label="Date" class="card-item"><span class="data-value">20 June</span></td>
-          <td data-label="Start" class="card-item"><span class="data-value">6:30 AM</span></td>
-          <td data-label="Activities" class="card-item"><span class="data-value">Nubra → Hanle (approx. 7-8 hrs drive), visit Hanle Observatory (if permitted/open)</span></td>
-          <td data-label="Day Summary" class="card-item"><span class="data-value">Long and adventurous drive from Nubra Valley to the remote Hanle (approx. 14,764 ft) in the Changthang region. Visit the Indian Astronomical Observatory in Hanle (subject to permissions for visitors), renowned for its clear night skies. Epic remote drive; prepare for basic accommodation and facilities. <b style="color:#b21736;">IMPORTANT: NO phone connectivity in Hanle, extremely limited/NO immediate health aid facilities.</b> Night stargazing (weather permitting).</span></td>
-          <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">—</span></td>
-          <td data-label="Hotel (4★)/Basic" class="hotel4 card-item"><span class="data-value">Basic guesthouse/homestay in Hanle (e.g., Hanle guesthouse/cottages - book in advance)</span></td>
-          <td data-label="Food" class="card-item"><span class="data-value">Local Tibetan bread (Khambir) and butter tea; simple meals at homestay.</span></td>
-          <td data-label="Car" class="card-item"><span class="data-value">Driver only; very long and challenging drive.</span></td>
-          <td data-label="AMS/Health" class="healthcell card-item"><span class="data-value">Very long drive. Night at very high altitude (~14,764 ft). Ensure good acclimatization prior. Will be very cold. Basic facilities. High AMS risk.</span></td>
-          <td data-label="Permit Note" class="permit card-item"><span class="data-value">ILP Required for Hanle (specific permission might be needed for observatory visit)</span></td>
+          <td>4</td>
+          <td>20 June</td>
+          <td>7:00 AM</td>
+          <td>Nubra → Pangong via Shyok</td>
+          <td>Travel from Nubra Valley to the magnificent Pangong Tso (approx. 14,270 ft) via the beautiful Shyok river valley route. Spend the evening by the lake, observing its mesmerizing changing colors.</td>
+          <td class="hotel5">The Hermitage Pangong or Pangong Retreat</td>
+          <td class="hotel4">Pangong Lake View Cottages or similar camp/guesthouse</td>
+          <td>Egg curry + rice (common at local dhabas/camps) or Dal-Roti</td>
+          <td>Driver only</td>
+          <td class="healthcell">Night at high altitude (~14,270 ft). Will be very cold. Monitor for AMS.</td>
+          <td class="permit">ILP Required for Pangong</td>
+          <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
         </tr>
         <tr>
-          <td data-label="Day"><span class="card-label-group"><span class="data-value">5</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-          <td data-label="Date" class="card-item"><span class="data-value">21 June</span></td>
-          <td data-label="Start" class="card-item"><span class="data-value">7:00 AM</span></td>
-          <td data-label="Activities" class="card-item"><span class="data-value">Hanle → Pangong Lake (approx. 5-6 hrs drive), relax at Pangong</span></td>
-          <td data-label="Day Summary" class="card-item"><span class="data-value">Drive from Hanle to the breathtaking Pangong Tso (approx. 14,270 ft), traversing stunning high-altitude landscapes of the Changthang plateau. Relax and enjoy the serene beauty of the lake and its color changes. More stargazing opportunities if skies are clear.</span></td>
-          <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">The Hermitage Pangong or Pangong Retreat</span></td>
-          <td data-label="Hotel (4★)/Basic" class="hotel4 card-item"><span class="data-value">Pangong Lake View Cottages or similar camp/guesthouse</span></td>
-          <td data-label="Food" class="card-item"><span class="data-value">Local trout fish (seasonal, if available) or standard camp food.</span></td>
-          <td data-label="Car" class="card-item"><span class="data-value">Driver only</span></td>
-          <td data-label="AMS/Health" class="healthcell card-item"><span class="data-value">Long drive. Night at Pangong (~14,270 ft). Still very high and cold. Monitor for AMS.</span></td>
-          <td data-label="Permit Note" class="permit card-item"><span class="data-value">ILP for Pangong (ensure route via Hanle is covered if applicable)</span></td>
+          <td>5</td>
+          <td>21 June</td>
+          <td>7:00 AM</td>
+          <td>Pangong → Leh via Chang La, visit Hemis & Thiksey Monasteries</td>
+          <td>Morning at Pangong Tso to witness sunrise. Drive back to Leh via Chang La pass (~17,590 ft). On the way, visit the renowned Hemis Monastery (Drukpa lineage, largest in Ladakh) and the impressive Thiksey Monastery.</td>
+          <td class="hotel5">The Grand Dragon Leh</td>
+          <td class="hotel4">The Abduz, Leh</td>
+          <td>Local platter at Namza Dining or similar Ladakhi specialty restaurant</td>
+          <td>Driver or experienced self-drive</td>
+          <td class="healthcell">Early start, high pass (Chang La ~17,590 ft). Descend to Leh.</td>
+          <td class="permit">None needed for return to Leh</td>
+          <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
         </tr>
         <tr>
-          <td data-label="Day"><span class="card-label-group"><span class="data-value">6</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-          <td data-label="Date" class="card-item"><span class="data-value">22 June</span></td>
-          <td data-label="Start" class="card-item"><span class="data-value">7:00 AM</span></td>
-          <td data-label="Activities" class="card-item"><span class="data-value">Pangong → Leh via Chang La Pass, visit Hemis & Thiksey Monasteries</span></td>
-          <td data-label="Day Summary" class="card-item"><span class="data-value">Morning at Pangong Tso. Drive back to Leh via Chang La pass (~17,590 ft). On the way, visit the renowned Hemis Monastery (Drukpa lineage) and the impressive Thiksey Monastery. Easy day after arrival in Leh.</span></td>
-          <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">The Grand Dragon Leh</span></td>
-          <td data-label="Hotel (4★)/Basic" class="hotel4 card-item"><span class="data-value">The Abduz, Leh</span></td>
-          <td data-label="Food" class="card-item"><span class="data-value">Traditional Ladakhi thali</span></td>
-          <td data-label="Car" class="card-item"><span class="data-value">Driver or experienced self-drive</span></td>
-          <td data-label="AMS/Health" class="healthcell card-item"><span class="data-value">Early start, high pass (Chang La ~17,590 ft). Hydrate; buffer if tired upon reaching Leh.</span></td>
-          <td data-label="Permit Note" class="permit card-item"><span class="data-value">None needed for return to Leh</span></td>
+          <td>6</td>
+          <td>22 June</td>
+          <td>6:30 AM</td>
+          <td>Leh → Tso Moriri via Chumathang hot springs</td>
+          <td>Early morning departure for Tso Moriri (15,075 ft), a pristine high-altitude lake in the Changthang region. En route, stop at Chumathang hot springs for a relaxing dip. Arrive at Tso Moriri by evening to witness its stunning beauty.</td>
+          <td class="hotel5">Tso Moriri Camp or similar luxury camp</td>
+          <td class="hotel4">Tso Moriri Camp or similar standard camp</td>
+          <td>Simple meals at the camp</td>
+          <td>Driver only</td>
+          <td class="healthcell">Highest altitude stay (~15,075 ft). Monitor for AMS. Keep warm.</td>
+          <td class="permit">ILP Required for Tso Moriri</td>
+          <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
         </tr>
         <tr>
-          <td data-label="Day"><span class="card-label-group"><span class="data-value">7</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-          <td data-label="Date" class="card-item"><span class="data-value">23 June</span></td>
-          <td data-label="Start" class="card-item"><span class="data-value">9:00 AM</span></td>
-          <td data-label="Activities" class="card-item"><span class="data-value">Leh local sightseeing (Shey Palace, Sindhu Ghat, cafes), final shopping</span></td>
-          <td data-label="Day Summary" class="card-item"><span class="data-value">Dedicated day for relaxed Leh local sightseeing: Shey Palace and Monastery, Sindhu Ghat for views of the Indus River. Enjoy time at Leh's cafes or for souvenir shopping. Buffer built-in.</span></td>
-          <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">The Grand Dragon Leh</span></td>
-          <td data-label="Hotel (4★)/Basic" class="hotel4 card-item"><span class="data-value">The Abduz, Leh</span></td>
-          <td data-label="Food" class="card-item"><span class="data-value">Israeli food at Jeevan Cafe or explore other options</span></td>
-          <td data-label="Car" class="card-item"><span class="data-value">Self-drive or local driver/taxi</span></td>
-          <td data-label="AMS/Health" class="healthcell card-item"><span class="data-value">Relaxed day in Leh. Good AMS buffer and rest before flight.</span></td>
-          <td data-label="Permit Note" class="permit card-item"><span class="data-value">None needed</span></td>
+          <td>7</td>
+          <td>23 June</td>
+          <td>7:00 AM</td>
+          <td>Tso Moriri → Leh via Mahe Bridge</td>
+          <td>Morning at Tso Moriri for sunrise and bird watching. Drive back to Leh via Mahe Bridge, enjoying the scenic landscapes of the Changthang region. Evening in Leh for final shopping and relaxation.</td>
+          <td class="hotel5">The Grand Dragon Leh</td>
+          <td class="hotel4">The Abduz, Leh</td>
+          <td>Israeli food at Jeevan Cafe or explore other cafes</td>
+          <td>Driver only</td>
+          <td class="healthcell">Long drive back to Leh. Good to be back at lower altitude.</td>
+          <td class="permit">None needed for return to Leh</td>
+          <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
         </tr>
         <tr>
-          <td data-label="Day"><span class="card-label-group"><span class="data-value">8</span></span> <span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
-          <td data-label="Date" class="card-item"><span class="data-value">24 June</span></td>
-          <td data-label="Start" class="card-item"><span class="data-value">2.5hr before flight</span></td>
-          <td data-label="Activities" class="card-item"><span class="data-value">Airport drop</span></td>
-          <td data-label="Day Summary" class="card-item"><span class="data-value">Leisurely morning followed by a timely transfer to Leh Kushok Bakula Rimpochee Airport for your departure. Buffer for airport procedures.</span></td>
-          <td data-label="Hotel (5★)" class="hotel5 card-item"><span class="data-value">—</span></td>
-          <td data-label="Hotel (4★)/Basic" class="hotel4 card-item"><span class="data-value">—</span></td>
-          <td data-label="Food" class="card-item"><span class="data-value">—</span></td>
-          <td data-label="Car" class="card-item"><span class="data-value">Pre-arranged taxi/driver</span></td>
-          <td data-label="AMS/Health" class="healthcell card-item"><span class="data-value">Safe travels! Good acclimatization from previous days should make departure comfortable.</span></td>
-          <td data-label="Permit Note" class="permit card-item"><span class="data-value">None</span></td>
+          <td>8</td>
+          <td>24 June</td>
+          <td>2.5 hr before flight</td>
+          <td>Airport drop</td>
+          <td>Leisurely morning followed by a timely transfer to Leh Kushok Bakula Rimpochee Airport for your departure.</td>
+          <td class="hotel5">—</td>
+          <td class="hotel4">—</td>
+          <td>—</td>
+          <td>Pre-arranged taxi/driver</td>
+          <td class="healthcell">Safe travels! Buffer for airport check-in procedures.</td>
+          <td class="permit">None</td>
+          <td><span class="card-toggle-btn" role="button" tabindex="0">Details</span></td>
         </tr>
       </tbody>
     </table>
