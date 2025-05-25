@@ -4,592 +4,834 @@
   <meta charset="UTF-8" />
   <title>Ladakh Ultimate Itinerary Guide</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- It's recommended to load web fonts like Roboto for consistent appearance -->
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> -->
   <style>
+    :root {
+      --font-primary: 'Roboto', 'Segoe UI', Arial, sans-serif;
+
+      --color-text-primary: #212529; /* Dark gray for high readability */
+      --color-text-secondary: #495057; /* Medium gray for less emphasis */
+      --color-background-body: #f8f9fa; /* Very light gray/off-white for overall page */
+      --color-background-container: #ffffff; /* White for main content areas */
+      --color-border: #dee2e6; /* Standard border color */
+
+      --color-primary: #005A9C; /* Professional blue */
+      --color-primary-light: #e7f0f7; /* Lighter shade for backgrounds/hovers */
+      --color-primary-dark: #003D6B; /* Darker shade for emphasis/active states */
+
+      --color-accent-green: #28a745; /* Success, recommendation */
+      --color-accent-green-bg: #eaf6ec;
+      --color-accent-red: #dc3545; /* Danger, critical warnings */
+      --color-accent-red-bg: #fbecef;
+      --color-accent-yellow: #ffc107; /* Highlight, general warnings */
+      --color-accent-yellow-bg: #fff8e7;
+      --color-accent-blue: #007bff; /* Informational accents */
+      --color-accent-blue-bg: #e6f2ff;
+
+      --spacing-unit: 8px;
+      --border-radius-small: 4px;
+      --border-radius-medium: 8px;
+      --box-shadow-soft: 0 2px 6px rgba(0,0,0,0.07);
+      --box-shadow-medium: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* Reset and Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
-      background: #f4f8fd;
-      color: #213045;
-      margin: 0; 
-      padding: 0 0 48px 0;
+      font-family: var(--font-primary);
+      background-color: var(--color-background-body);
+      color: var(--color-text-primary);
+      margin: 0;
+      padding: 0;
+      line-height: 1.65;
+      font-size: 16px; /* Base font size for rem calculations */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
+    .container {
+      max-width: 1100px; /* Comfortable reading width */
+      margin: 0 auto;
+      padding: calc(var(--spacing-unit) * 4) calc(var(--spacing-unit) * 3);
+      background-color: var(--color-background-container);
+      box-shadow: var(--box-shadow-medium); /* Give container a subtle lift */
+      margin-top: calc(var(--spacing-unit) * 3);
+      margin-bottom: calc(var(--spacing-unit) * 3);
+      border-radius: var(--border-radius-medium);
+    }
+
+    /* Typography */
     h1, h2, h3 {
-      font-weight: 900;
-    }
-    h1 {
-      color: #274472;
-      font-size: 2.6em;
-      margin: 36px 0 10px 26px;
-      letter-spacing: 1px;
-    }
-    h2 {
-      color: #2978b5;
-      margin-top: 48px;
-      background: linear-gradient(88deg, #eaf6fe 87%,#e4eeff 100%);
-      padding-left: 16px;
-      border-left: 8px solid #67b2e0;
-    }
-    h3 {
-      margin-top: 38px;
-      margin-bottom: 10px;
-      color: #02887a;
-      letter-spacing: 0.3px;
+      font-weight: 700;
+      margin-top: calc(var(--spacing-unit) * 5);
+      margin-bottom: calc(var(--spacing-unit) * 2.5);
+      line-height: 1.3;
     }
 
+    h1 {
+      color: var(--color-primary-dark);
+      font-size: 2.4rem;
+      margin-top: 0; /* First element in container */
+      padding-bottom: calc(var(--spacing-unit) * 2);
+      border-bottom: 2px solid var(--color-primary-light);
+    }
+
+    h2 {
+      font-size: 1.9rem;
+      color: var(--color-primary);
+      margin-top: calc(var(--spacing-unit) * 6);
+      padding-bottom: calc(var(--spacing-unit) * 1.5);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      color: var(--color-text-secondary);
+      margin-top: calc(var(--spacing-unit) * 4);
+      font-weight: 600;
+    }
+
+    p {
+      margin-bottom: calc(var(--spacing-unit) * 2);
+    }
+
+    ul, ol {
+      margin-bottom: calc(var(--spacing-unit) * 2);
+      padding-left: calc(var(--spacing-unit) * 3.5); /* Standard list indentation */
+    }
+
+    li {
+      margin-bottom: var(--spacing-unit);
+    }
+
+    strong, b {
+      font-weight: 700;
+    }
+
+    /* Links */
+    a {
+      color: var(--color-accent-blue);
+      text-decoration: none;
+      transition: color 0.2s ease, text-decoration 0.2s ease;
+    }
+    a:hover, a:focus {
+      color: var(--color-primary-dark);
+      text-decoration: underline;
+    }
+    a:focus-visible {
+      outline: 2px solid var(--color-accent-blue);
+      outline-offset: 2px;
+      border-radius: var(--border-radius-small);
+    }
+    .delta { color: var(--color-accent-green); }
+
+
+    /* Navigation */
     nav {
-      margin: 25px 0 36px 0;
-      background: #f0f4fd;
-      border-radius: 20px;
-      box-shadow: 0 1.5px 6px 0 #bad2ef33;
+      background-color: var(--color-primary-light);
+      padding: var(--spacing-unit) 0;
+      margin-bottom: calc(var(--spacing-unit) * 5);
+      border-radius: var(--border-radius-medium);
     }
     nav ul {
       list-style: none;
-      margin: 0; 
-      padding: 0 12px;
+      margin: 0;
+      padding: var(--spacing-unit) calc(var(--spacing-unit) * 2);
       display: flex;
       flex-wrap: wrap;
       align-items: center;
+      justify-content: center;
+      gap: var(--spacing-unit);
     }
     nav ul li {
-      margin: 0 18px 0 0;
-      padding: 0;
+      margin: 0;
     }
-    nav ul li:last-child { margin-right: 0; }
     nav a {
-      color: #2483ca;
-      font-size: 1.11em;
-      font-weight: bold;
+      color: var(--color-primary);
+      font-size: 1rem;
+      font-weight: 600;
       text-decoration: none;
-      border-radius: 15px;
-      transition: background .15s;
-      padding: 8px 16px;
+      padding: calc(var(--spacing-unit) * 1.25) calc(var(--spacing-unit) * 2);
+      border-radius: var(--border-radius-small);
+      transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
       display: inline-block;
     }
     nav a:hover, nav a:focus {
-      background: #e1edfa;
-      color: #134d80;
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      text-decoration: none;
     }
-    .advice {
-      background: linear-gradient(99deg, #e0f2fa 50%, #e6f8ff 100%);
-      border-left: 8px solid #07a7c4;
-      border-radius: 12px;
-      padding: 2.3em 2.2em 1.4em 2.0em;
-      margin: 24px 0 25px 0;
-      box-shadow: 0 6px 36px #56b4f45d;
+    nav a:focus-visible { /* Override generic focus for nav items */
+      outline: 2px solid var(--color-primary-dark);
+      outline-offset: 2px;
     }
-    .danger {
-      background: linear-gradient(98deg,#fbeaec 80%,#fff3f2 100%);
-      color: #ba2228;
-      font-weight: 700;
-      border-left: 8px solid #e74141;
-      border-radius: 11px;
-      padding: 1.55em 2em 1.2em 2em;
-      margin-bottom: 22px;
-      box-shadow: 0 4px 14px #d9295a2c;
-    }
-    .recommend {
-      background: linear-gradient(99deg, #f9ffe2 60%, #e5fade 100%);
-      border-left: 8px solid #8ddf58;
-      border-radius: 10px;
-      padding: 1.35em 2em 1.05em 2em;
-      margin: 30px 0 35px 0;
-      box-shadow: 0 2.5px 12px #a0c97931;
-    }
-    .highlight {
-      background: #fffce6;
-      border-left: 7px solid #ffdf71;
-      border-radius: 7px;
-      padding: 0.7em 1.8em;
-      margin: 18px 0 14px 0;
-      font-size: 1.09em;
-      font-weight: 500;
-      color: #7b5707;
-      box-shadow: 0 1.7px 7px #ffd70016;
-    }
-    .miss, .summarybox, .whatgood, .whatbad {
-      background: #fafdff;
-      border-radius: 9px;
-      border-left: 6px solid #2978b5;
-      padding: 12px 25px;
-      margin-bottom: 15px;
-      box-shadow: 0 1.2px 7px #6c88c711;
-    }
-    .miss {
-      background: #fff6fa;
-      border-left-color: #c128a1;
-      color: #a6166f;
-      font-weight: 500;
-    }
-    table {
-      width: 100%; 
-      border-collapse: separate;
-      border-spacing: 0;
-      margin: 34px 0 14px 0;
-      background: #fbfcff;
-      border-radius: 12px;
-      box-shadow: 0 2.6px 32px #bfd4dc2c;
-      overflow-x: auto;
-      display: block;
-    }
-    th, td {
-      border: 1.5px solid #d3e1f0;
-      padding: 12px 11px;
-      text-align: left;
-      font-size: 1.03em;
-    }
-    th {
-      background: linear-gradient(88deg, #2892cd 84%, #5ad0ff 100%);
-      color: #fff;
-      font-size: 1.08em;
-      letter-spacing: 0.3px;
-      font-weight: bold;
-      border-bottom: 3.5px solid #ffeea4;
-    }
-    .hotel5 { background: #ecf7fe; font-weight: 600; color: #045387;}
-    .hotel4 { background: #f6ffe9; font-weight: 500; color: #2e633c; }
-    .permit { background: #ffedea; color: #de2d8e; font-weight: 500; }
-    .healthcell { background: #fffbe3; color: #997939; font-weight: 500;}
-    table tr:nth-child(even) td { background: #f6fbff;}
-    table tr:hover td { background: #e9f3ff; transition: background .22s;}
-    ul li {margin-bottom:6px;}
 
-    @media (max-width: 920px) {
-      table, thead, tbody, th, td, tr { display: block; }
-      th, td { padding: 13px 18vw 14px 6vw; }
-      th { background: #49baea; font-size:1.1em;}
-      h1, h2 { padding-left: 2vw;}
-      nav ul { flex-direction: column; gap: 3px;}
+    /* Informational Boxes */
+    .info-box { /* Base class (applied via specific classes like .advice) */
+      padding: calc(var(--spacing-unit) * 2.5) calc(var(--spacing-unit) * 3);
+      margin-top: calc(var(--spacing-unit) * 3);
+      margin-bottom: calc(var(--spacing-unit) * 3);
+      border-radius: var(--border-radius-medium);
+      border-left-width: 6px;
+      border-left-style: solid;
+      box-shadow: var(--box-shadow-soft);
     }
-    footer {
-      margin-top: 56px;
-      padding-top: 18px;
-      border-top: 2px solid #d2e3f5;
-      text-align: center;
-      background: #eaf5ff;
-      color: #15689b;
-      font-size: 1.08em;
+    .info-box ol, .info-box ul {
+      padding-left: calc(var(--spacing-unit) * 3);
+      margin-top: var(--spacing-unit);
+    }
+    .info-box ol li, .info-box ul li {
+      margin-bottom: var(--spacing-unit);
+      line-height: 1.7;
+    }
+    .info-box ul li {
+      margin-bottom: calc(var(--spacing-unit) * 0.75);
+    }
+    .info-box strong, .info-box b { /* Ensure bold text within boxes stands out */
+       color: inherit; /* Will be overridden by specific box styles */
+    }
+
+    .advice {
+      border-left-color: var(--color-accent-blue);
+      background-color: var(--color-accent-blue-bg);
+      color: var(--color-text-primary);
+    }
+    .advice strong, .advice b {
+      color: var(--color-primary-dark);
+    }
+
+    .danger {
+      border-left-color: var(--color-accent-red);
+      background-color: var(--color-accent-red-bg);
+      color: var(--color-accent-red);
+    }
+    .danger strong, .danger b {
+      color: #a71d2a; /* Darker red for emphasis */
+    }
+
+    .recommend {
+      border-left-color: var(--color-accent-green);
+      background-color: var(--color-accent-green-bg);
+      color: var(--color-text-primary);
+    }
+    .recommend strong, .recommend b {
+      color: #1c7430; /* Darker green */
+    }
+
+    .highlight {
+      border-left-color: var(--color-accent-yellow);
+      background-color: var(--color-accent-yellow-bg);
+      color: #856404; /* Dark yellow for text */
+      font-weight: 500;
+      padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 2.5);
+    }
+    .highlight strong, .highlight b {
+      color: #664d03; /* Darker yellow for bold */
+    }
+
+    .miss {
+      border-left-color: var(--color-accent-red); /* Using red palette for "miss" */
+      background-color: var(--color-accent-red-bg);
+      color: var(--color-accent-red);
+      font-weight: 500;
+      padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 2.5);
+      margin-bottom: calc(var(--spacing-unit) * 2.5);
+    }
+
+    .summarybox {
+      border-left-color: var(--color-primary);
+      background-color: var(--color-primary-light);
+      color: var(--color-text-primary);
+      padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 2.5);
+      margin-bottom: calc(var(--spacing-unit) * 2.5);
+    }
+    .summarybox strong, .summarybox b {
+      color: var(--color-primary-dark);
+      display: inline-block;
+      margin-top: var(--spacing-unit); /* Space out multiple bolded lines */
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: calc(var(--spacing-unit) * 4) 0;
+      background-color: var(--color-background-container);
+      border-radius: var(--border-radius-medium);
+      box-shadow: var(--box-shadow-soft);
+      font-size: 0.95rem;
+      /* Critical for responsive horizontal scrolling on smaller screens */
+      display: block; /* Ensures overflow-x works as expected */
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+
+    th, td {
+      border: 1px solid var(--color-border);
+      padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 1.75);
+      text-align: left;
+      vertical-align: top;
+      white-space: nowrap; /* Prevent text wrapping that breaks layout with horizontal scroll */
+    }
+    /* First column can wrap if needed, or specific columns if they contain longer text */
+    th:first-child, td:first-child {
+        white-space: normal; /* Allow first column (e.g., Day summary) to wrap */
+    }
+    td:nth-child(4), td:nth-child(5) { /* Activities & Day Summary */
+        white-space: normal;
+        min-width: 200px; /* Give more space to content-heavy cells */
+    }
+
+
+    th {
+      background-color: var(--color-primary);
+      color: var(--color-white);
       font-weight: 600;
-      border-radius: 12px 12px 0 0;
-      letter-spacing: .13px;
-      box-shadow: 0 2px 15px #bddfc616;
     }
-    a:any-link { color: #057caf; text-decoration: underline; }
-    .delta { color: #389519; }
+
+    .hotel5, .hotel4, .permit, .healthcell {
+      font-weight: 500;
+      color: var(--color-text-primary); /* Default text color */
+    }
+    .hotel5    { background-color: #cfe2f3; /* Lighter blue shade */ font-weight: 600; color: var(--color-primary-dark); }
+    .hotel4    { background-color: #d4edda; /* Lighter green shade */ color: #155724; }
+    .permit    { background-color: #fff3cd; /* Lighter yellow shade */ color: #856404; }
+    .healthcell{ background-color: #f8d7da; /* Lighter red shade */ color: #721c24; }
+
+
+    table tbody tr:nth-child(even) td {
+      background-color: #fdfdfe; /* Very subtle striping, almost white */
+    }
+    table tbody tr:hover td {
+      background-color: var(--color-primary-light);
+      transition: background-color 0.2s ease;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: calc(var(--spacing-unit) * 7);
+      padding: calc(var(--spacing-unit) * 3) 0; /* Padding inside the container */
+      border-top: 1px solid var(--color-border);
+      text-align: center;
+      color: var(--color-text-secondary);
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: var(--color-primary); /* Footer links can use primary color */
+      font-weight: 500;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      body {
+        font-size: 15px;
+      }
+      .container {
+        padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 2);
+        margin-top: calc(var(--spacing-unit) * 1.5);
+        margin-bottom: calc(var(--spacing-unit) * 1.5);
+        border-radius: 0; /* Full width on mobile */
+        box-shadow: none;
+      }
+
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.6rem; }
+      h3 { font-size: 1.3rem; }
+
+      nav ul {
+        flex-direction: column;
+        align-items: stretch;
+        gap: calc(var(--spacing-unit) * 0.5);
+      }
+      nav ul li a {
+        display: block;
+        text-align: center;
+      }
+      /* For tables on mobile, horizontal scrolling is handled by overflow-x on table element.
+         No need to stack table cells if horizontal scroll is preferred.
+         The existing padding on th, td in the user's CSS for mobile was using vw units and was excessive.
+         Standard padding will work fine with horizontal scroll.
+      */
+      th, td {
+        padding: var(--spacing-unit) calc(var(--spacing-unit) * 1.25);
+        font-size: 0.9rem; /* Slightly smaller font in table cells on mobile */
+      }
+    }
   </style>
 </head>
 <body>
 
-<h1>Ladakh — The Ultimate Itinerary Guide (2025 Edition)</h1>
-<nav>
-  <ul>
-    <li><a href="#advice">General Advice</a></li>
-    <li><a href="#option1">Option 1: Express Tour</a></li>
-    <li><a href="#option2">Option 2: Balanced Trip</a></li>
-    <li><a href="#option3a">Option 3A: Classic (Most Recommended)</a></li>
-    <li><a href="#option3b">Option 3B: Stargazer</a></li>
-    <li><a href="#recommend">Summary/Recommendation</a></li>
-  </ul>
-</nav>
+<div class="container">
 
-<h2 id="advice">Important General Advice for Your Ladakh Trip</h2>
-<div class="advice">
-  <ol>
-    <li><b>Acclimatization:</b> Leh is at approx 11,500 ft. Spend day one (ideally two) with <b>low activity</b>. Avoid alcohol and smoking. Hydrate constantly.</li>
-    <li><b>ILP (Inner Line Permit):</b> Required for Indians (Nubra, Pangong, Tso Moriri, Hanle, Turtuk, etc) — can get online or in Leh. Foreigners <b>PAP</b> (via operator). Carry many photocopies.</li>
-    <li><b>AMS:</b> Know symptoms (headache, dizziness, nausea, fatigue). <strong>Descend</strong> and seek help if serious. Diamox can be considered (~consult your doctor).</li>
-    <li><b>Cash:</b> ATMs only in Leh, may run dry. Take enough for the whole circuit (including small notes).</li>
-    <li><b>Connectivity:</b> Patchy. BSNL/Airtel postpaid best in Leh, Jio at a few spots. Internet may be slow.</li>
-    <li><b>Packing essentials:</b>
-      <ul>
-        <li>Thermal, fleece, windproof jacket, woolen cap/gloves/socks.</li>
-        <li>Sunscreen, sunglasses, wide-brimmed hat.</li>
-        <li>Sturdy walking shoes. Pain relievers, stomach meds, band-aids, etc.</li>
-        <li>Reusable water bottle, power bank, lip balm, moisturizer.</li>
-      </ul>
-    </li>
-    <li><b>Responsible Tourism:</b> Respect local culture. Avoid litter, minimize plastic, always ask before photos.</li>
-    <li><b>Car & Driver:</b> Hire a skilled local (SUV/MUV). Self-drive only if you have Himalayan experience.</li>
-    <li><b>Kargil/Drass:</b> Not in below itineraries. Separate trip/extension needed for Suru, Zojila, War Memorial.</li>
-  </ol>
-</div>
+  <h1>Ladakh — The Ultimate Itinerary Guide (2025 Edition)</h1>
+  <nav>
+    <ul>
+      <li><a href="#advice">General Advice</a></li>
+      <li><a href="#option1">Option 1: Express Tour</a></li>
+      <li><a href="#option2">Option 2: Balanced Trip</a></li>
+      <li><a href="#option3a">Option 3A: Classic (Most Recommended)</a></li>
+      <li><a href="#option3b">Option 3B: Stargazer</a></li>
+      <li><a href="#recommend">Summary/Recommendation</a></li>
+    </ul>
+  </nav>
 
-<!-- Option 1 Table, in section -->
-<h2 id="option1">🌽 Option 1: June 18 – 23 (5 Nights) - The Express Tour</h2>
-<div class="danger">
-  <b>This is very rushed; high AMS/flight risk. Only consider if you truly can't extend.</b>
-</div>
-<table>
-  <thead>
-    <tr>
-      <th>Day</th><th>Date</th><th>Start</th><th>Activities</th><th>Summary</th>
-      <th class="hotel5">Hotel (5★)</th><th class="hotel4">Hotel (4★)</th>
-      <th>Good Food</th><th>Car</th><th class="healthcell">AMS/Health</th><th class="permit">Permit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td><td>18 Jun</td><td>After arrival</td>
-      <td>Rest, Leh market, Shanti Stupa</td>
-      <td>Arrive/acclimatize, market, sunset at Stupa.</td>
-      <td class="hotel5">Grand Dragon</td>
-      <td class="hotel4">Abduz</td>
-      <td>Tibetan thukpa (Gesmo)</td>
-      <td>Driver only</td>
-      <td class="healthcell">Hydrate; no self-drive</td>
-      <td class="permit">None</td>
-    </tr>
-    <tr>
-      <td>2</td><td>19 Jun</td><td>8:30 AM</td>
-      <td>Sham Valley, Leh Palace, Thiksey</td>
-      <td>Outskirts, Magnetic Hill, Sangam, Pathar Sahib, Leh Palace, grand Thiksey</td>
-      <td class="hotel5">Grand Dragon</td><td class="hotel4">Abduz</td>
-      <td>Butter tea, momos</td>
-      <td>Self/driver</td>
-      <td class="healthcell">Go slow, don't overexert.</td>
-      <td class="permit">None</td>
-    </tr>
-    <tr>
-      <td>3</td><td>20 Jun</td><td>7:30 AM</td>
-      <td>Khardung La, Nubra, Diskit & Hunder dunes</td>
-      <td>Cross one of world's highest passes (17,582 ft), monastery, dunes, camels.</td>
-      <td class="hotel5">Stone Hedge / Nubra Ecolodge</td><td class="hotel4">Lchang Nang</td>
-      <td>Skew stew, apricot juice</td>
-      <td>Driver only</td>
-      <td class="healthcell">Limit pass time. Hydrate.</td>
-      <td class="permit">ILP Nubra</td>
-    </tr>
-    <tr>
-      <td>4</td><td>21 Jun</td><td>7:00 AM</td>
-      <td>Turtuk (Balti village/LOC) + (opt) camel ride</td>
-      <td>Cultural Turtuk tour, possible camel at Hunder</td>
-      <td class="hotel5">same as Day 3</td><td class="hotel4">same as Day 3</td>
-      <td>Balti cuisine</td>
-      <td>Driver only</td>
-      <td class="healthcell">Long day; hydrate</td>
-      <td class="permit">ILP Turtuk</td>
-    </tr>
-    <tr>
-      <td>5</td><td>22 Jun</td><td>6:30 AM</td>
-      <td>Nubra→Pangong (Shyok)</td>
-      <td>Scenic river drive to Pangong (14,270ft), color-changing lake</td>
-      <td class="hotel5">Hermitage Pangong/Retreat</td><td class="hotel4">Pangong Lake View</td>
-      <td>Maggi + eggs</td>
-      <td>Driver only</td>
-      <td class="healthcell">High, cold, acclimatize</td>
-      <td class="permit">ILP Pangong</td>
-    </tr>
-    <tr>
-      <td>6</td><td>23 Jun</td><td>7:00 AM</td>
-      <td>Pangong→Leh (Chang La), airport</td>
-      <td>Early drive via pass (Chang La, 17,590 ft) to Leh & airport – <b style="color:#9d2207;">Risk!</b></td>
-      <td class="hotel5">-</td><td class="hotel4">-</td>
-      <td>Ladakhi buffet (Bon Appetit)</td>
-      <td>Driver</td>
-      <td class="healthcell">Start early, buffer for delays</td>
-      <td class="permit">None</td>
-    </tr>
-  </tbody>
-</table>
-<div class="highlight">
-  <b>Return Flight:</b> Book after 3:00PM from Leh. (Morning flights very risky)
-</div>
-<div class="miss"><b>What you'll miss:</b> Hemis, full Leh, buffer day, Hanle, Kargil/Drass</div>
-<div class="summarybox"><b>What's Good:</b> Highlights; fast!<br>
-  <b>What's Bad:</b> Rushed, AMS risk high, bad if delay to airport, minimal immersion.
-</div>
+  <h2 id="advice">Important General Advice for Your Ladakh Trip</h2>
+  <div class="advice info-box"> <!-- Added info-box base class -->
+    <ol>
+      <li><b>Acclimatization is Key:</b> Leh is at approximately 11,500 ft. Spend your first day (ideally two full days) in Leh with <b>minimal physical exertion</b>. Avoid alcohol and smoking, especially in the initial days. Stay hydrated constantly by drinking plenty of water.</li>
+      <li><b>Inner Line Permits (ILP):</b> Required for Indian nationals to visit Nubra Valley, Pangong Tso, Tso Moriri, Hanle, Turtuk, and other restricted areas. These can be obtained online in advance or through local travel agents in Leh. Foreign nationals (except those from listed countries) require a Protected Area Permit (PAP), usually arranged by tour operators. Keep multiple photocopies of your permits and ID.</li>
+      <li><b>Acute Mountain Sickness (AMS):</b> Be aware of symptoms (headache, nausea, dizziness, fatigue, loss of appetite, shortness of breath). If symptoms are severe or worsen, <strong>descend immediately</strong> to a lower altitude and seek medical attention. Diamox (acetazolamide) can be considered as a prophylactic (preventive measure), but consult your doctor first for advice on dosage and suitability.</li>
+      <li><b>Cash:</b> While Leh has ATMs, they can be unreliable, crowded, or run out of cash. Carry sufficient cash, especially for areas outside Leh where digital payments (UPI, cards) might not work or network connectivity is poor. Include small denomination notes for convenience.</li>
+      <li><b>Connectivity:</b> Mobile networks are patchy outside Leh. BSNL and Airtel postpaid generally have the best coverage in and around Leh and some major tourist spots. Jio works in Leh and some other specific spots. Internet speed can be slow, especially for uploads. Consider informing your family about potential communication blackouts.</li>
+      <li><b>Packing Essentials:</b>
+        <ul>
+          <li><b>Warm Layers:</b> Thermals (top and bottom), fleece jackets, a good windproof and water-resistant outer jacket, woolen cap/beanie, gloves or mittens, warm woolen socks (even in summer, high-altitude passes like Khardung La, Chang La, and areas like Pangong Tso and Hanle get very cold, especially in the mornings, evenings, and at night).</li>
+          <li><b>Sun Protection:</b> High SPF sunscreen (SPF 30 or higher), sunglasses with UV protection, and a wide-brimmed hat or cap (the sun is very harsh at high altitudes).</li>
+          <li><b>Comfortable Footwear:</b> Sturdy, broken-in walking shoes or hiking boots with good grip.</li>
+          <li><b>Basic Medical Kit:</b> Pain relievers (e.g., ibuprofen, paracetamol), medication for upset stomach/diarrhea, antacids, band-aids, antiseptic wipes or solution, motion sickness medication if needed, and any personal medications you require.</li>
+          <li><b>Reusable Water Bottle:</b> To stay hydrated and help reduce plastic waste. You can refill it at many guesthouses or use water purification tablets/a filter bottle.</li>
+          <li><b>Power Bank:</b> Electricity can be erratic or unavailable in remote areas and during travel. A fully charged power bank is essential for charging phones and cameras.</li>
+          <li><b>Lip Balm & Moisturizer:</b> The air at high altitudes is very dry, so lip balm (with SPF) and a good moisturizer are crucial to prevent chapped lips and dry skin.</li>
+        </ul>
+      </li>
+      <li><b>Responsible Tourism:</b> Respect local culture, traditions, and religious sentiments. Dress modestly, especially when visiting monasteries. Avoid littering; carry your non-biodegradable waste back with you if dustbins are not available. Minimize plastic use. Always ask for permission before photographing people or their property.</li>
+      <li><b>Car and Driver:</b> For most routes, especially challenging high-altitude passes like Khardung La and Chang La, and remote areas like Hanle, hiring an experienced local driver with a suitable vehicle (SUV/MUV like Innova, Xylo, Scorpio, or similar) is highly recommended. Local drivers are accustomed to the terrain and conditions. Self-driving is possible but requires significant experience with mountain driving, vehicle maintenance knowledge, and awareness of local road conditions.</li>
+      <li><b>Kargil/Drass Sector:</b> Please note that none of the itineraries below cover the Kargil, Drass, or Suru Valley regions. These areas offer different historical (e.g., Kargil War Memorial) and scenic experiences (e.g., Zojila Pass route from Srinagar, Nun Kun peaks). Visiting these areas typically requires a separate itinerary or an extension, often when traveling to or from Srinagar via road.</li>
+    </ol>
+  </div>
 
-<!-- Option 2 Table -->
-<h2 id="option2">🏔️ Option 2: June 17–23 (6 Nights) - The Balanced Short Trip</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Day</th><th>Date</th><th>Start</th><th>Activities</th><th>Summary</th>
-      <th class="hotel5">Hotel (5★)</th><th class="hotel4">Hotel (4★)</th>
-      <th>Good Food</th><th>Car</th>
-      <th class="healthcell">AMS/Health</th><th class="permit">Permit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td><td>17 Jun</td><td>Arrive, noon</td>
-      <td>Rest, market, Stupa</td>
-      <td>Easy day Leh, buffer/stay hydrated</td>
-      <td class="hotel5">Grand Dragon</td><td class="hotel4">Abduz</td>
-      <td>Thukpa (Lamayuru)</td>
-      <td>Driver only</td>
-      <td class="healthcell">Rest, buffer</td>
-      <td class="permit">None</td>
-    </tr>
-    <tr>
-      <td>2</td><td>18 Jun</td><td>8:30 AM</td>
-      <td>Sham Valley, Palace</td>
-      <td>Magnetic Hill, Sangam, Gurudwara, Palace</td>
-      <td class="hotel5">Grand Dragon</td><td class="hotel4">Abduz</td>
-      <td>Chang, momos</td>
-      <td>Self/driver</td>
-      <td class="healthcell">Pace, don't overexert</td>
-      <td class="permit">None</td>
-    </tr>
-    <tr>
-      <td>3</td><td>19 Jun</td><td>7:30 AM</td>
-      <td>Khardung La, Nubra (Diskit, Hunder)</td>
-      <td>Khardung La (17,582 ft), Diskit Buddha, Hunder dunes/camel</td>
-      <td class="hotel5">Stone Hedge/Ecolodge</td><td class="hotel4">Lchang Nang</td>
-      <td>Yarkandi pulao</td><td>Driver</td>
-      <td class="healthcell">Don't linger at pass</td>
-      <td class="permit">ILP Nubra</td>
-    </tr>
-    <tr>
-      <td>4</td><td>20 Jun</td><td>7:00 AM</td>
-      <td>Turtuk day</td>
-      <td>Balti village (LoC), orchard/craft/local lunch</td>
-      <td class="hotel5">Same as Day 3</td><td class="hotel4">Same as Day 3</td>
-      <td>Apricot cake, Balti lamb</td>
-      <td>Driver only</td>
-      <td class="healthcell">Long sessions, hydrate</td>
-      <td class="permit">ILP Turtuk</td>
-    </tr>
-    <tr>
-      <td>5</td><td>21 Jun</td><td>6:30 AM</td>
-      <td>Nubra→Pangong (Shyok)</td>
-      <td>Scenic, Pangong relax</td>
-      <td class="hotel5">Hermitage Pangong/Retreat</td><td class="hotel4">Pangong Lake View</td>
-      <td>Hot tea, butter roti</td>
-      <td>Driver only</td>
-      <td class="healthcell">Night at altitude/cold</td>
-      <td class="permit">ILP Pangong</td>
-    </tr>
-    <tr>
-      <td>6</td><td>22 Jun</td><td>7:00 AM</td>
-      <td>Pangong→Leh (Chang La), Hemis & Thiksey</td>
-      <td>Start at lake, high pass, two monasteries, return Leh</td>
-      <td class="hotel5">Grand Dragon</td><td class="hotel4">Abduz</td>
-      <td>Ladakhi thali (Chopsticks)</td><td>Driver/self</td>
-      <td class="healthcell">Early, cold pass</td>
-      <td class="permit">—</td>
-    </tr>
-    <tr>
-      <td>7</td><td>23 Jun</td><td>9:00 AM</td>
-      <td>Leh local (Shey, Sindhu, cafes), airport</td>
-      <td>Easy Leh, Shey palace, Sindhu Ghat, cafe crawl, easy buffer</td>
-      <td class="hotel5">-</td><td class="hotel4">-</td>
-      <td>Coffee & pastry (Leh Cafe Cloud)</td>
-      <td>Driver/self</td>
-      <td class="healthcell">Leh before flight</td>
-      <td class="permit">-</td>
-    </tr>
-  </tbody>
-</table>
+  <!-- Option 1 Table, in section -->
+  <h2 id="option1">🌽 Option 1: June 18 – 23 (5 Nights) - The Express Tour</h2>
+  <div class="danger info-box"> <!-- Added info-box base class -->
+    <b>This option is very rushed and carries a higher risk, especially the departure day. Consider carefully. Only consider if you truly can't extend.</b>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Day</th><th>Date</th><th>Start</th><th>Activities</th><th>Day Summary</th>
+        <th class="hotel5">Hotel (5★)</th><th class="hotel4">Hotel (4★)</th>
+        <th>Good Food to Try</th><th>Car Advice</th><th class="healthcell">Altitude & Health Tip</th><th class="permit">Permit Note</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td><td>18 June</td><td>After arrival</td>
+        <td>Rest, Leh market, Shanti Stupa (evening)</td>
+        <td>Arrival in Leh (11,500 ft), focus on crucial acclimatization. Evening exploration of Leh Market's vibrant atmosphere and a peaceful visit to Shanti Stupa for panoramic sunset views.</td>
+        <td class="hotel5">The Grand Dragon Leh</td>
+        <td class="hotel4">The Abduz, Leh</td>
+        <td>Tibetan thukpa at Gesmo</td>
+        <td>Hire driver; no self-drive on day 1</td>
+        <td class="healthcell">Rest well. Hydrate. Altitude: ~11,500 ft. No self-drive on day 1.</td>
+        <td class="permit">None needed for Leh town</td>
+      </tr>
+      <tr>
+        <td>2</td><td>19 June</td><td>8:30 AM</td>
+        <td>Sham Valley: Magnetic Hill, Sangam, Pathar Sahib, Leh Palace, Thiksey Monastery</td>
+        <td>Explore Leh's outskirts with Sham Valley's wonders: Magnetic Hill's optical illusion, Sangam (Indus-Zanskar confluence), sacred Pathar Sahib Gurudwara. Also visit the historic Leh Palace overlooking the city and the grand Thiksey Monastery, resembling Potala Palace. (This is a very packed day).</td>
+        <td class="hotel5">The Grand Dragon Leh</td><td class="hotel4">The Abduz, Leh</td>
+        <td>Butter tea, momos at Tibetan Kitchen</td>
+        <td>Self-drive possible or hire driver</td>
+        <td class="healthcell">Active day. Pace yourself. Avoid overexertion.</td>
+        <td class="permit">None needed</td>
+      </tr>
+      <tr>
+        <td>3</td><td>20 June</td><td>7:30 AM</td>
+        <td>Leh → Nubra via Khardung La, Diskit, Hunder Sand Dunes</td>
+        <td>Journey to Nubra Valley, crossing the mighty Khardung La (one of the world's highest motorable passes at ~17,582 ft). Visit Diskit Monastery with its towering Maitreya Buddha statue, and experience the unique Hunder Sand Dunes, home to double-humped Bactrian camels.</td>
+        <td class="hotel5">Stone Hedge or Nubra Ecolodge</td><td class="hotel4">Lchang Nang Retreat</td>
+        <td>Skew (local stew), apricot juice</td>
+        <td>Driver recommended</td>
+        <td class="healthcell">Ascend to Khardung La (~17,582 ft). Don't linger too long at the pass. Hydrate.</td>
+        <td class="permit">ILP Required for Nubra</td>
+      </tr>
+      <tr>
+        <td>4</td><td>21 June</td><td>7:00 AM</td>
+        <td>Turtuk day trip; optional camel ride at Hunder in evening</td>
+        <td>Full day excursion to Turtuk, a culturally distinct Balti village near the Line of Control, offering a glimpse into a unique way of life. Optionally, enjoy a Bactrian camel ride at Hunder in the evening.</td>
+        <td class="hotel5">Same as Day 3</td><td class="hotel4">Same as Day 3</td>
+        <td>Balti cuisine in Turtuk</td>
+        <td>Driver only; long drive</td>
+        <td class="healthcell">Long driving day. Stay hydrated.</td>
+        <td class="permit">ILP covers Turtuk (check current status)</td>
+      </tr>
+      <tr>
+        <td>5</td><td>22 June</td><td>6:30 AM</td>
+        <td>Nubra → Pangong Lake via Shyok River</td>
+        <td>Scenic drive from Nubra Valley to the breathtaking Pangong Tso (approx. 14,270 ft) via the picturesque Shyok River route. Witness the lake's mesmerizing color changes.</td>
+        <td class="hotel5">The Hermitage Pangong or Pangong Retreat</td><td class="hotel4">Pangong Lake View Cottages</td>
+        <td>Maggi with eggs at roadside dhaba</td>
+        <td>Driver only</td>
+        <td class="healthcell">Night at high altitude (~14,270 ft). Cold. Acclimatize well, descend if AMS symptoms worsen.</td>
+        <td class="permit">ILP Required for Pangong</td>
+      </tr>
+      <tr>
+        <td>6</td><td>23 June</td><td>7:00 AM</td>
+        <td>Pangong → Leh via Chang La, then drop at airport</td>
+        <td>Morning views of Pangong Tso, then a challenging drive back to Leh via Chang La pass (another high-altitude pass, ~17,590 ft). Direct transfer to Leh airport for departure. <b style="color:#9d2207;">Very risky timing due to potential road delays.</b></td>
+        <td class="hotel5">—</td><td class="hotel4">—</td>
+        <td>Local Ladakhi buffet at Bon Appetit (if time permits)</td>
+        <td>Driver only</td>
+        <td class="healthcell">Early start, high pass (Chang La ~17,590 ft). Very risky for same-day flight. Have buffer for delays.</td>
+        <td class="permit">None needed for return to Leh</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="highlight info-box"> <!-- Added info-box base class -->
+    <b>Return Flight Advice:</b> Book a flight after 3:00 PM from Leh. (Morning flights are extremely risky with this itinerary).
+  </div>
+  <div class="miss info-box"><b>What you'll miss:</b> Hemis Monastery, Full Leh local circuit (relaxed pace), Buffer/rest day before flight, Hanle (remote astronomical site), Kargil/Drass region, Tso Moriri.</div>
+  <div class="summarybox info-box"> <!-- Added info-box base class -->
+    <b>What's Good about Option 1:</b><br>
+    Covers major highlights (Leh, Sham Valley glimpses, Nubra, Turtuk, Pangong) in the shortest possible time frame.<br><br>
+    <b>What's Bad about Option 1:</b><br>
+    Extremely rushed pace, very high risk of AMS due to poor acclimatization schedule.<br>
+    Day 2 (Sham Valley, Leh Palace, Thiksey) is excessively packed.<br>
+    Departure day (Day 6) is highly risky: Driving from Pangong to Leh and catching a flight on the same day is prone to delays (road conditions, pass closures, vehicle issues) and can lead to missing your flight.<br>
+    Skips Hemis Monastery and lacks any buffer time for unforeseen circumstances.<br>
+    Minimal time to actually enjoy the places; more time spent traveling.<br>
+    Doesn't include Hanle or the Kargil/Drass region.
+  </div>
 
-<div class="highlight"><b>Return Flight:</b> Book after 11:00 AM</div>
-<div class="miss"><b>Misses:</b> Hanle, more buffer if delays, less downtime than a longer exploration.</div>
-<div class="summarybox"><b>What's Good:</b> Good acclimatization, hits most highlights, manageable last day.<br>
-  <b>What's Bad:</b> Still compact, not as immersive, skips Hanle and Kargil.
-</div>
+  <!-- Option 2 Table -->
+  <h2 id="option2">🏔️ Option 2: June 17–23 (6 Nights) - The Balanced Short Trip</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Day</th><th>Date</th><th>Start</th><th>Activities</th><th>Day Summary</th>
+        <th class="hotel5">Hotel (5★)</th><th class="hotel4">Hotel (4★)</th>
+        <th>Good Food to Try</th><th>Car Advice</th>
+        <th class="healthcell">AMS/Health</th><th class="permit">Permit Note</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td><td>17 June</td><td>Arrival by noon</td>
+        <td>Rest, Leh market, Shanti Stupa (evening)</td>
+        <td>Arrival in Leh (11,500 ft), focus on crucial acclimatization. Evening exploration of Leh Market's vibrant atmosphere and a peaceful visit to Shanti Stupa for panoramic sunset views. Easy day, stay hydrated.</td>
+        <td class="hotel5">The Grand Dragon Leh</td><td class="hotel4">The Abduz, Leh</td>
+        <td>Thukpa at Lamayuru restaurant</td>
+        <td>Hire driver; no self-drive on day 1</td>
+        <td class="healthcell">Rest well. Hydrate. Altitude: ~11,500 ft. This is your primary acclimatization buffer.</td>
+        <td class="permit">None needed for Leh town</td>
+      </tr>
+      <tr>
+        <td>2</td><td>18 June</td><td>8:30 AM</td>
+        <td>Sham Valley (Magnetic Hill, Sangam, Pathar Sahib), Leh Palace</td>
+        <td>Discover Leh's heritage: the historic Leh Palace offering city views, and explore Sham Valley's highlights: Magnetic Hill's optical illusion, Sangam (Indus-Zanskar confluence), and the revered Pathar Sahib Gurudwara.</td>
+        <td class="hotel5">The Grand Dragon Leh</td><td class="hotel4">The Abduz, Leh</td>
+        <td>Chang (local barley beer - try in moderation after acclimatization), momos</td>
+        <td>Self-drive possible or hire driver</td>
+        <td class="healthcell">Active day. Pace yourself. Avoid overexertion. Continue hydrating.</td>
+        <td class="permit">None needed</td>
+      </tr>
+      <tr>
+        <td>3</td><td>19 June</td><td>7:30 AM</td>
+        <td>Leh → Nubra via Khardung La, Diskit, Hunder</td>
+        <td>Journey to Nubra Valley, crossing the mighty Khardung La (~17,582 ft). Visit Diskit Monastery with its iconic Buddha statue and enjoy the Hunder Sand Dunes, with options for a Bactrian camel safari.</td>
+        <td class="hotel5">Stone Hedge or Nubra Ecolodge</td><td class="hotel4">Lchang Nang Retreat</td>
+        <td>Yarkandi pulao</td><td>Driver preferred/recommended</td>
+        <td class="healthcell">Ascend to Khardung La (~17,582 ft). Don't linger too long at the pass to avoid AMS. Nubra is at a lower altitude than Leh.</td>
+        <td class="permit">ILP Required for Nubra</td>
+      </tr>
+      <tr>
+        <td>4</td><td>20 June</td><td>7:00 AM</td>
+        <td>Turtuk day trip</td>
+        <td>Full day excursion to Turtuk, a culturally unique Balti village near the LoC, experiencing its distinct heritage, apricot orchards, and local life. Potential for trying local Balti cuisine.</td>
+        <td class="hotel5">Same as Day 3</td><td class="hotel4">Same as Day 3</td>
+        <td>Apricot cake, Balti lamb curry</td>
+        <td>Driver only; long drive</td>
+        <td class="healthcell">Long driving sessions. Stay hydrated. Enjoy the unique culture.</td>
+        <td class="permit">ILP covers Turtuk (check current status)</td>
+      </tr>
+      <tr>
+        <td>5</td><td>21 June</td><td>6:30 AM</td>
+        <td>Nubra → Pangong via Shyok</td>
+        <td>Scenic drive from Nubra Valley to the stunning Pangong Tso (approx. 14,270 ft) along the Shyok River. Settle in and marvel at the lake's mesmerizing beauty and color changes.</td>
+        <td class="hotel5">The Hermitage Pangong or Pangong Retreat</td><td class="hotel4">Pangong Lake View Cottages</td>
+        <td>Hot tea and butter roti at Pangong local stays</td>
+        <td>Driver only</td>
+        <td class="healthcell">Night at high altitude (~14,270 ft). Will be very cold, especially at night. Monitor for AMS.</td>
+        <td class="permit">ILP Required for Pangong</td>
+      </tr>
+      <tr>
+        <td>6</td><td>22 June</td><td>7:00 AM</td>
+        <td>Pangong → Leh via Chang La, visit Hemis & Thiksey Monasteries</td>
+        <td>After soaking in morning views of Pangong Tso, drive back to Leh via Chang La pass (~17,590 ft). En route, visit two of Ladakh's most important monasteries: Hemis (largest and wealthiest, Drukpa lineage) and Thiksey (grand, Potala-like structure).</td>
+        <td class="hotel5">The Grand Dragon Leh</td><td class="hotel4">The Abduz, Leh</td>
+        <td>Traditional Ladakhi thali at Chopsticks Noodle Bar or similar</td><td>Driver or experienced self-drive</td>
+        <td class="healthcell">Early start, high pass (Chang La ~17,590 ft). Descend to Leh for better sleep.</td>
+        <td class="permit">—</td>
+      </tr>
+      <tr>
+        <td>7</td><td>23 June</td><td>9:00 AM</td>
+        <td>Leh local (Shey Palace, Sindhu Ghat, cafes), drop at airport</td>
+        <td>Morning exploration of more Leh local sights like Shey Palace (former summer capital) and Sindhu Ghat (banks of Indus River), with time for cafe hopping or last-minute souvenir shopping before airport drop.</td>
+        <td class="hotel5">—</td><td class="hotel4">—</td>
+        <td>Coffee and pastries at Leh Cafe Cloud or similar</td>
+        <td>Self-drive or driver for local commute</td>
+        <td class="healthcell">Enjoy Leh before flight. Ensure timely airport transfer.</td>
+        <td class="permit">—</td>
+      </tr>
+    </tbody>
+  </table>
 
-<!-- Option 3A Table -->
-<h2 id="option3a">🌿 Option 3A: June 17–24 (7 Nights, Best Option with Turtuk) – The Recommended Classic</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Day</th><th>Date</th><th>Start</th><th>Activities</th><th>Summary</th>
-      <th class="hotel5">Hotel (5★)</th><th class="hotel4">Hotel (4★)</th>
-      <th>Good Food</th><th>Car</th><th class="healthcell">AMS/Health</th><th class="permit">Permit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td><td>17 June</td><td>Noon</td>
-      <td>Rest, Leh market, Stupa</td>
-      <td>Arrival, overnight rest/acclimatize; gentle walk to Stupa/market</td>
-      <td class="hotel5">Grand Dragon</td><td class="hotel4">Abduz</td>
-      <td>Yak cheese pizza (Open Hand Cafe)</td>
-      <td>Hire driver</td>
-      <td class="healthcell">Hydrate/relax</td>
-      <td class="permit">None</td>
-    </tr>
-    <tr>
-      <td>2</td><td>18 Jun</td><td>8:30 AM</td>
-      <td>Sham Valley, Palace</td>
-      <td>Classic circuit: Magnetic Hill, Sangam, Pathar Sahib, Palace</td>
-      <td class="hotel5">Grand Dragon</td><td class="hotel4">Abduz</td>
-      <td>Ladakhi butter tea, fried rice</td><td>Self/driver</td>
-      <td class="healthcell">Go slow, avoid overexertion</td>
-      <td class="permit">None</td>
-    </tr>
-    <tr>
-      <td>3</td><td>19 Jun</td><td>7:30 AM</td>
-      <td>Khardung La, Nubra, Diskit + Hunder</td>
-      <td>Khardung La (17,582 ft), monastery, camel ride/dunes, homestay option</td>
-      <td class="hotel5">Stone Hedge/Ecolodge</td><td class="hotel4">Lchang Nang</td>
-      <td>Mutton momos</td><td>Driver</td>
-      <td class="healthcell">Limit pass stop; hydrate</td>
-      <td class="permit">ILP Nubra</td>
-    </tr>
-    <tr>
-      <td>4</td><td>20 Jun</td><td>7:00 AM</td>
-      <td>Turtuk (Balti village, orchards)</td>
-      <td>Culture deep-dive, crafts, apricot, local food</td>
-      <td class="hotel5">Same as Day 3</td><td class="hotel4">Same as Day 3</td>
-      <td>Buckwheat az and honey</td>
-      <td>Driver only</td>
-      <td class="healthcell">Hydrate, relax</td>
-      <td class="permit">ILP Turtuk</td>
-    </tr>
-    <tr>
-      <td>5</td><td>21 Jun</td><td>6:30 AM</td>
-      <td>Nubra→Pangong (Shyok)</td>
-      <td>Shyok valley, Pangong Tso color changes</td>
-      <td class="hotel5">Hermitage/Pangong Retreat</td><td class="hotel4">Pangong Lake Cottages</td>
-      <td>Egg curry + rice</td><td>Driver only</td>
-      <td class="healthcell">Night at high altitude, cold</td>
-      <td class="permit">ILP Pangong</td>
-    </tr>
-    <tr>
-      <td>6</td><td>22 Jun</td><td>7:00 AM</td>
-      <td>Pangong→Leh, Hemis & Thiksey</td>
-      <td>Lake AM, Chang La, monasteries</td>
-      <td class="hotel5">Grand Dragon</td><td class="hotel4">Abduz</td>
-      <td>Namza platter</td>
-      <td>Driver/self</td>
-      <td class="healthcell">Early/high pass</td>
-      <td class="permit">None</td>
-    </tr>
-    <tr>
-      <td>7</td><td>23 Jun</td><td>9:00 AM</td>
-      <td>Leh local (Shey, Sindhu, shop/cafe)</td>
-      <td>Shey Palace, Sindhu Ghat, cafes/market day</td>
-      <td class="hotel5">Grand Dragon</td><td class="hotel4">Abduz</td>
-      <td>Israeli food at Jeevan Cafe</td>
-      <td>Self/driver</td>
-      <td class="healthcell">Enjoy, buffer day</td>
-      <td class="permit">None</td>
-    </tr>
-    <tr>
-      <td>8</td><td>24 Jun</td><td>2.5hr before flight</td>
-      <td>Airport drop</td>
-      <td>Stress-free transfer; buffer for Leh airport</td>
-      <td class="hotel5">-</td><td class="hotel4">-</td><td>-</td><td>-</td>
-      <td class="healthcell">Buffer for check-in</td>
-      <td class="permit">None</td>
-    </tr>
-  </tbody>
-</table>
-<div class="highlight"><b>Return Flight:</b> Book after 8:30 AM</div>
-<div class="miss"><b>What you'll miss:</b> Hanle (astro), Kargil/Drass.</div>
-<div class="summarybox"><b>What's Good:</b> Pacing, acclimatization. Dedicated local/last-day, buffer for flight. Full circuit immersion.
-  <br><b>What's Bad:</b> Longest trip.
-</div>
+  <div class="highlight info-box"><b>Return Flight Advice:</b> Book a flight after 11:00 AM from Leh. This gives some buffer.</div>
+  <div class="miss info-box"><b>What you'll miss:</b> Nothing major for a compact trip of this duration, but less downtime or flexibility. Hanle (remote astronomical site), Tso Moriri, Kargil/Drass region.</div>
+  <div class="summarybox info-box">
+    <b>What's Good about Option 2:</b><br>
+    Better acclimatization and pacing than Option 1.<br>
+    Covers most key sights including Hemis and Thiksey monasteries.<br>
+    More manageable departure day with some morning sightseeing.<br><br>
+    <b>What's Bad about Option 2:</b><br>
+    Still relatively compact; less buffer time if significant delays occur.<br>
+    Day 2 (Sham Valley and Leh Palace) is still quite full.<br>
+    Departure day includes sightseeing, requiring good time management to reach the airport.<br>
+    Doesn't include Hanle or the Kargil/Drass region.
+  </div>
 
-<!-- Option 3B Table -->
-<h2 id="option3b">✨ Option 3B: June 17–24 (7 Nights) – Stargazer's Special</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Day</th><th>Date</th><th>Start</th><th>Activities</th><th>Summary</th>
-      <th class="hotel5">Hotel (5★)</th><th class="hotel4">Hotel (4★)/Basic</th>
-      <th>Good Food</th><th>Car</th>
-      <th class="healthcell">AMS/Health</th><th class="permit">Permit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td><td>17 June</td><td>Arrival noon</td>
-      <td>Rest, Leh market, Stupa</td>
-      <td>Prioritize rest, only minimal exertion</td>
-      <td class="hotel5">Grand Dragon</td><td class="hotel4">Abduz</td>
-      <td>Yak cheese pizza (Open Hand Cafe)</td>
-      <td>Hire driver</td>
-      <td class="healthcell">Rest, hydrate</td>
-      <td class="permit">None</td>
-    </tr>
-    <tr>
-      <td>2</td><td>18 Jun</td><td>8:30</td>
-      <td>Sham Valley, Palace</td>
-      <td>Classic local circuit, try momos/butter tea</td>
-      <td class="hotel5">Grand Dragon</td><td class="hotel4">Abduz</td>
-      <td>Ladakhi butter tea, momos</td>
-      <td>Self/driver</td>
-      <td class="healthcell">Active. Pace gently.</td>
-      <td class="permit">None</td>
-    </tr>
-    <tr>
-      <td>3</td><td>19 Jun</td><td>7:00</td>
-      <td>Khardung La, Nubra, Diskit + Hunder dunes</td>
-      <td>High pass, Diskit Buddha, Hunder dunes, camels</td>
-      <td class="hotel5">Stone Hedge/Ecolodge</td><td class="hotel4">Lchang Nang</td>
-      <td>Mutton momos</td><td>Driver</td>
-      <td class="healthcell">Limit at pass, hydrate</td>
-      <td class="permit">ILP Nubra</td>
-    </tr>
-    <tr>
-      <td>4</td><td>20 Jun</td><td>6:30</td>
-      <td>Nubra→Hanle (7-8 hrs). Observatory.</td>
-      <td>Epic remote drive, Hanle village, star tour. Basic accommodation, <b style="color:#b21736;">NO phone, no health aid</b></td>
-      <td class="hotel5">-</td><td class="hotel4">Hanle guesthouse/camp</td>
-      <td>Tibetan bread, butter tea</td><td>Driver only</td>
-      <td class="healthcell">Very high, cold, basic</td>
-      <td class="permit">ILP Hanle</td>
-    </tr>
-    <tr>
-      <td>5</td><td>21 Jun</td><td>7:00</td>
-      <td>Hanle → Pangong (5–6 hrs), lakeside</td>
-      <td>Plateau drive, arrive lake, stargazing</td>
-      <td class="hotel5">Hermitage/Pangong Retreat</td><td class="hotel4">Pangong Cottages</td>
-      <td>Trout (seasonal)</td><td>Driver only</td>
-      <td class="healthcell">Cold, high AMS risk</td>
-      <td class="permit">ILP Pangong (via Hanle)</td>
-    </tr>
-    <tr>
-      <td>6</td><td>22 Jun</td><td>7:00</td>
-      <td>Pangong→Leh, Hemis & Thiksey</td>
-      <td>Start at lake, Chang La, monasteries, easy day</td>
-      <td class="hotel5">Grand Dragon</td><td class="hotel4">Abduz</td>
-      <td>Ladakhi thali</td><td>Driver/self</td>
-      <td class="healthcell">Hydrate; buffer if tired</td>
-      <td class="permit">None</td>
-    </tr>
-    <tr>
-      <td>7</td><td>23 Jun</td><td>9:00</td>
-      <td>Leh local (Shey, Sindhu, cafes, shopping)</td>
-      <td>Final market, shops, relax. Buffer built-in</td>
-      <td class="hotel5">Grand Dragon</td><td class="hotel4">Abduz</td>
-      <td>Israeli food at Jeevan Cafe</td><td>Self/driver</td>
-      <td class="healthcell">Relaxed</td><td class="permit">None</td>
-    </tr>
-    <tr>
-      <td>8</td><td>24 Jun</td><td>2.5hr before flight</td>
-      <td>Airport drop</td>
-      <td>Buffer, stress-free</td>
-      <td class="hotel5">-</td><td class="hotel4">-</td><td>-</td><td>-</td>
-      <td class="healthcell">AMS buffer</td>
-      <td class="permit">None</td>
-    </tr>
-  </tbody>
-</table>
-<div class="highlight"><b>Return Flight:</b> After 11:00 AM</div>
-<div class="miss"><b>What you'll miss:</b> Turtuk, extra Nubra, more down-time. Adventure only.</div>
-<div class="summarybox"><b>What's Good:</b> Hanle/astro; classic sights. <br>
-<b>What's Bad:</b> Very remote, basic; long, hard drives, no extra buffer.
-</div>
+  <!-- Option 3A Table -->
+  <h2 id="option3a">🌿 Option 3A: June 17–24 (7 Nights, Best Option with Turtuk) – The Recommended Classic</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Day</th><th>Date</th><th>Start</th><th>Activities</th><th>Day Summary</th>
+        <th class="hotel5">Hotel (5★)</th><th class="hotel4">Hotel (4★)</th>
+        <th>Good Food to Try</th><th>Car Advice</th><th class="healthcell">AMS/Health</th><th class="permit">Permit Note</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td><td>17 June</td><td>Arrival by noon</td>
+        <td>Rest, Leh market, Shanti Stupa (evening)</td>
+        <td>Arrival in Leh (11,500 ft), prioritize rest and acclimatization. Gentle evening walk through Leh Market and visit Shanti Stupa for sunset views over Leh city.</td>
+        <td class="hotel5">The Grand Dragon Leh</td><td class="hotel4">The Abduz, Leh</td>
+        <td>Yak cheese pizza at Open Hand Cafe or Gesmo</td>
+        <td>Hire driver; no self-drive on day 1</td>
+        <td class="healthcell">Rest well. Hydrate. Altitude: ~11,500 ft. Crucial first day for acclimatization.</td>
+        <td class="permit">None needed for Leh town</td>
+      </tr>
+      <tr>
+        <td>2</td><td>18 June</td><td>8:30 AM</td>
+        <td>Sham Valley (Magnetic Hill, Sangam, Pathar Sahib), Leh Palace</td>
+        <td>Explore Leh's heritage with a visit to Leh Palace overlooking the city. Continue to Sham Valley, experiencing Magnetic Hill's optical illusion, Sangam (confluence of Indus & Zanskar rivers), and the revered Pathar Sahib Gurudwara.</td>
+        <td class="hotel5">The Grand Dragon Leh</td><td class="hotel4">The Abduz, Leh</td>
+        <td>Ladakhi butter tea, fried rice at a local eatery</td><td>Self-drive possible or hire driver</td>
+        <td class="healthcell">Active day. Pace yourself. Avoid overexertion. Keep hydrating.</td>
+        <td class="permit">None needed</td>
+      </tr>
+      <tr>
+        <td>3</td><td>19 June</td><td>7:30 AM</td>
+        <td>Leh → Nubra via Khardung La, Diskit, Hunder</td>
+        <td>Embark on the journey to Nubra Valley, crossing the formidable Khardung La pass (~17,582 ft). In Nubra, visit Diskit Monastery and its large Maitreya Buddha statue, followed by the Hunder Sand Dunes for a possible Bactrian camel ride. Nubra valley is at a lower altitude than Leh.</td>
+        <td class="hotel5">Stone Hedge or Nubra Ecolodge</td><td class="hotel4">Lchang Nang Retreat</td>
+        <td>Mutton momos or local thukpa</td><td>Driver recommended for Khardung La</td>
+        <td class="healthcell">Ascend to Khardung La (~17,582 ft). Don't linger too long at the pass. Descend into Nubra.</td>
+        <td class="permit">ILP Required for Nubra</td>
+      </tr>
+      <tr>
+        <td>4</td><td>20 June</td><td>7:00 AM</td>
+        <td>Turtuk day trip</td>
+        <td>Full day trip to Turtuk, a serene and culturally rich Balti village near the Line of Control, known for its unique traditions, apricot groves, and stunning landscapes. Immerse in the local culture.</td>
+        <td class="hotel5">Same as Day 3</td><td class="hotel4">Same as Day 3</td>
+        <td>Buckwheat pancakes (Kisir) with apricot jam/honey in Turtuk</td>
+        <td>Driver only; long drive</td>
+        <td class="healthcell">Long driving day. Stay hydrated. Enjoy the scenic beauty and cultural shift.</td>
+        <td class="permit">ILP covers Turtuk (check current status)</td>
+      </tr>
+      <tr>
+        <td>5</td><td>21 June</td><td>6:30 AM</td>
+        <td>Nubra → Pangong via Shyok</td>
+        <td>Travel from Nubra Valley to the magnificent Pangong Tso (approx. 14,270 ft) via the beautiful Shyok river valley route. Spend the evening by the lake, observing its mesmerizing changing colors.</td>
+        <td class="hotel5">The Hermitage Pangong or Pangong Retreat</td><td class="hotel4">Pangong Lake View Cottages or similar camp/guesthouse</td>
+        <td>Egg curry + rice (common at local dhabas/camps) or Dal-Roti</td><td>Driver only</td>
+        <td class="healthcell">Night at high altitude (~14,270 ft). Will be very cold. Monitor for AMS.</td>
+        <td class="permit">ILP Required for Pangong</td>
+      </tr>
+      <tr>
+        <td>6</td><td>22 June</td><td>7:00 AM</td>
+        <td>Pangong → Leh via Chang La, visit Hemis & Thiksey Monasteries</td>
+        <td>Morning at Pangong Tso to witness sunrise. Drive back to Leh via Chang La pass (~17,590 ft). On the way, visit the renowned Hemis Monastery (Drukpa lineage, largest in Ladakh) and the impressive Thiksey Monastery.</td>
+        <td class="hotel5">The Grand Dragon Leh</td><td class="hotel4">The Abduz, Leh</td>
+        <td>Local platter at Namza Dining or similar Ladakhi specialty restaurant</td><td>Driver or experienced self-drive</td>
+        <td class="healthcell">Early start, high pass (Chang La ~17,590 ft). Descend to Leh.</td>
+        <td class="permit">None needed for return to Leh</td>
+      </tr>
+      <tr>
+        <td>7</td><td>23 June</td><td>9:00 AM</td>
+        <td>Leh local day (Shey Palace, Sindhu Ghat, cafes, final shopping)</td>
+        <td>Dedicated day for relaxed Leh local sightseeing: Shey Palace and Monastery (former summer capital), Sindhu Ghat for views of the Indus River. Enjoy time at Leh's cafes or for last-minute souvenir shopping.</td>
+        <td class="hotel5">The Grand Dragon Leh</td><td class="hotel4">The Abduz, Leh</td>
+        <td>Israeli food at Jeevan Cafe or explore other cafes</td>
+        <td>Self-drive or local driver/taxi</td>
+        <td class="healthcell">Enjoy remaining Leh sights at a relaxed pace. Good buffer day.</td>
+        <td class="permit">None needed</td>
+      </tr>
+      <tr>
+        <td>8</td><td>24 June</td><td>2.5 hr before flight</td>
+        <td>Airport drop</td>
+        <td>Leisurely morning followed by a timely transfer to Leh Kushok Bakula Rimpochee Airport for your departure.</td>
+        <td class="hotel5">—</td><td class="hotel4">—</td><td>—</td><td>Pre-arranged taxi/driver</td>
+        <td class="healthcell">Safe travels! Buffer for airport check-in procedures.</td>
+        <td class="permit">None</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="highlight info-box"><b>Return Flight Advice:</b> Book any flight after 8:30 AM (ideally later for a more relaxed morning).</div>
+  <div class="miss info-box"><b>What you'll miss:</b> Hanle (remote astronomical site), Tso Moriri, Kargil/Drass region. (This itinerary focuses on the classic circuit).</div>
+  <div class="summarybox info-box">
+    <b>What's Good about Option 3A:</b><br>
+    Excellent pacing and acclimatization schedule, minimizing AMS risk.<br>
+    Comprehensive coverage of classic Ladakh sights, including the cultural experience of Turtuk.<br>
+    Dedicated day for Leh local sightseeing and shopping, allowing for a relaxed exploration.<br>
+    Stress-free departure with a dedicated airport drop day, providing a good buffer.<br>
+    Allows for a more immersive experience due to better pacing.<br><br>
+    <b>What's Bad about Option 3A:</b><br>
+    Requires a longer duration (7 nights), which may not be feasible for everyone.<br>
+    Does not include highly specialized/remote locations like Hanle or the Kargil/Drass region.
+  </div>
 
-<!-- Recommendation Section -->
-<h2 id="recommend">Summary & Reviewer Recommendation</h2>
-<div class="recommend">
-  <b>Option 3A (7N/Turtuk) is ideal for most:</b> Best acclimatization, all major sights, local immersion, and a calm airport departure.
-  <ul>
-    <li><b>Option 3B:</b> For Hanle/astronomy/adventure lovers, but be prepared for isolation/no comms, basic accommodation, no Turtuk.</li>
-    <li><b>Option 2:</b> Good if you can't do a full week—less immersive, but covers main circuit & monasteries.</li>
-    <li><b>Option 1:</b> Only if truly rushed; accept more risk, less culture, and flight stress. </li>
-  </ul>
-</div>
-<div class="highlight">
-  Book immersive add-ons at least 2 weeks in advance. Always check latest permit/road/AMS news. <b>Julley!</b>
-</div>
+  <!-- Option 3B Table -->
+  <h2 id="option3b">✨ Option 3B: June 17–24 (7 Nights, with Hanle – Extended Adventure) – The Stargazer's Special</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Day</th><th>Date</th><th>Start</th><th>Activities</th><th>Day Summary</th>
+        <th class="hotel5">Hotel (5★)</th><th class="hotel4">Hotel (4★)/Basic</th>
+        <th>Good Food to Try</th><th>Car Advice</th>
+        <th class="healthcell">AMS/Health</th><th class="permit">Permit Note</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td><td>17 June</td><td>Arrival by noon</td>
+        <td>Rest, Leh market, Shanti Stupa (evening)</td>
+        <td>Arrival in Leh (11,500 ft), prioritize rest and acclimatization. Gentle evening walk through Leh Market and visit Shanti Stupa for sunset views over Leh city. Only minimal exertion.</td>
+        <td class="hotel5">The Grand Dragon Leh</td><td class="hotel4">The Abduz, Leh</td>
+        <td>Yak cheese pizza at Open Hand Cafe</td>
+        <td>Hire driver; no self-drive day 1</td>
+        <td class="healthcell">Rest well. Hydrate. Altitude: ~11,500 ft. Crucial for acclimatization before Hanle.</td>
+        <td class="permit">None needed for Leh town</td>
+      </tr>
+      <tr>
+        <td>2</td><td>18 June</td><td>8:30 AM</td>
+        <td>Sham Valley (Magnetic Hill, Sangam, Pathar Sahib), Leh Palace</td>
+        <td>Explore Leh's heritage with a visit to Leh Palace. Continue to Sham Valley, experiencing Magnetic Hill, Sangam (confluence of Indus & Zanskar rivers), and Pathar Sahib Gurudwara. Try local momos/butter tea.</td>
+        <td class="hotel5">The Grand Dragon Leh</td><td class="hotel4">The Abduz, Leh</td>
+        <td>Ladakhi butter tea, momos</td>
+        <td>Self-drive possible or hire driver</td>
+        <td class="healthcell">Active day. Pace gently. Avoid overexertion. This day also aids acclimatization.</td>
+        <td class="permit">None needed</td>
+      </tr>
+      <tr>
+        <td>3</td><td>19 June</td><td>7:00 AM</td>
+        <td>Leh → Nubra via Khardung La, Diskit, Hunder Sand Dunes</td>
+        <td>Embark on the journey to Nubra Valley, crossing the formidable Khardung La pass (~17,582 ft). In Nubra, visit Diskit Monastery and its large Maitreya Buddha, followed by the Hunder Sand Dunes. Possible camel ride.</td>
+        <td class="hotel5">Stone Hedge or Nubra Ecolodge</td><td class="hotel4">Lchang Nang Retreat</td>
+        <td>Mutton momos or local cuisine</td><td>Driver recommended</td>
+        <td class="healthcell">Ascend to Khardung La (~17,582 ft). Don't linger too long. Hydrate. Nubra is lower altitude.</td>
+        <td class="permit">ILP Required for Nubra</td>
+      </tr>
+      <tr>
+        <td>4</td><td>20 June</td><td>6:30 AM</td>
+        <td>Nubra → Hanle (approx. 7-8 hrs drive), visit Hanle Observatory (if permitted/open)</td>
+        <td>Long and adventurous drive from Nubra Valley to the remote Hanle (approx. 14,764 ft) in the Changthang region. Visit the Indian Astronomical Observatory in Hanle (subject to permissions for visitors), renowned for its clear night skies. Epic remote drive; prepare for basic accommodation and facilities. <b style="color:#b21736;">IMPORTANT: NO phone connectivity in Hanle, extremely limited/NO immediate health aid facilities.</b> Night stargazing (weather permitting).</td>
+        <td class="hotel5">—</td><td class="hotel4">Basic guesthouse/homestay in Hanle (e.g., Hanle guesthouse/cottages - book in advance)</td>
+        <td>Local Tibetan bread (Khambir) and butter tea; simple meals at homestay.</td><td>Driver only; very long and challenging drive.</td>
+        <td class="healthcell">Very long drive. Night at very high altitude (~14,764 ft). Ensure good acclimatization prior. Will be very cold. Basic facilities. High AMS risk.</td>
+        <td class="permit">ILP Required for Hanle (specific permission might be needed for observatory visit)</td>
+      </tr>
+      <tr>
+        <td>5</td><td>21 June</td><td>7:00 AM</td>
+        <td>Hanle → Pangong Lake (approx. 5-6 hrs drive), relax at Pangong</td>
+        <td>Drive from Hanle to the breathtaking Pangong Tso (approx. 14,270 ft), traversing stunning high-altitude landscapes of the Changthang plateau. Relax and enjoy the serene beauty of the lake and its color changes. More stargazing opportunities if skies are clear.</td>
+        <td class="hotel5">The Hermitage Pangong or Pangong Retreat</td><td class="hotel4">Pangong Lake View Cottages or similar camp/guesthouse</td>
+        <td>Local trout fish (seasonal, if available) or standard camp food.</td><td>Driver only</td>
+        <td class="healthcell">Long drive. Night at Pangong (~14,270 ft). Still very high and cold. Monitor for AMS.</td>
+        <td class="permit">ILP for Pangong (ensure route via Hanle is covered if applicable)</td>
+      </tr>
+      <tr>
+        <td>6</td><td>22 June</td><td>7:00 AM</td>
+        <td>Pangong → Leh via Chang La Pass, visit Hemis & Thiksey Monasteries</td>
+        <td>Morning at Pangong Tso. Drive back to Leh via Chang La pass (~17,590 ft). On the way, visit the renowned Hemis Monastery (Drukpa lineage) and the impressive Thiksey Monastery. Easy day after arrival in Leh.</td>
+        <td class="hotel5">The Grand Dragon Leh</td><td class="hotel4">The Abduz, Leh</td>
+        <td>Traditional Ladakhi thali</td><td>Driver or experienced self-drive</td>
+        <td class="healthcell">Early start, high pass (Chang La ~17,590 ft). Hydrate; buffer if tired upon reaching Leh.</td>
+        <td class="permit">None needed for return to Leh</td>
+      </tr>
+      <tr>
+        <td>7</td><td>23 June</td><td>9:00 AM</td>
+        <td>Leh local sightseeing (Shey Palace, Sindhu Ghat, cafes), final shopping</td>
+        <td>Dedicated day for relaxed Leh local sightseeing: Shey Palace and Monastery, Sindhu Ghat for views of the Indus River. Enjoy time at Leh's cafes or for souvenir shopping. Buffer built-in.</td>
+        <td class="hotel5">The Grand Dragon Leh</td><td class="hotel4">The Abduz, Leh</td>
+        <td>Israeli food at Jeevan Cafe or explore other options</td><td>Self-drive or local driver/taxi</td>
+        <td class="healthcell">Relaxed day in Leh. Good AMS buffer and rest before flight.</td>
+        <td class="permit">None needed</td>
+      </tr>
+      <tr>
+        <td>8</td><td>24 June</td><td>2.5hr before flight</td>
+        <td>Airport drop</td>
+        <td>Leisurely morning followed by a timely transfer to Leh Kushok Bakula Rimpochee Airport for your departure. Buffer for airport procedures.</td>
+        <td class="hotel5">—</td><td class="hotel4">—</td><td>—</td><td>Pre-arranged taxi/driver</td>
+        <td class="healthcell">Safe travels! Good acclimatization from previous days should make departure comfortable.</td>
+        <td class="permit">None</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="highlight info-box"><b>Return Flight Advice:</b> Book any flight after 11:00 AM on 24 June.</div>
+  <div class="miss info-box"><b>What you'll miss:</b> Turtuk day trip, More leisurely Nubra exploration (as Day 4 is Hanle travel), Kargil/Drass region. This is an adventure-focused itinerary.</div>
+  <div class="summarybox info-box">
+    <b>What's Good about Option 3B:</b><br>
+    Includes the unique and remote Hanle, ideal for astronomy enthusiasts and those seeking offbeat, adventurous experiences.<br>
+    Good acclimatization schedule before attempting Hanle, and relaxed departure similar to Option 3A.<br>
+    Covers other major sights like Nubra, Pangong, Hemis, Thiksey.<br><br>
+    <b>What's Bad about Option 3B:</b><br>
+    Very long and tiring driving days to and from Hanle (Days 4 & 5).<br>
+    Accommodation in Hanle is basic (guesthouses/homestays) with limited amenities and potentially no electricity/running water at times.<br>
+    Sacrifices the Turtuk visit.<br>
+    Hanle is at a very high altitude; proper acclimatization before this leg is absolutely crucial, and risk of AMS is higher.<br>
+    Less time for leisurely exploration in Nubra Valley.<br>
+    Doesn't include the Kargil/Drass region. Very remote, basic; no extra buffer days specifically for Hanle leg issues.
+  </div>
 
-<footer>
-  Ladakh Itinerary Guide © 2025 – Designed for safe, joyful journeys | <a href="https://www.instagram.com/lokis_planet/" target="_blank">lokis_planet</a>
-</footer>
+  <!-- Recommendation Section -->
+  <h2 id="recommend">Summary & Reviewer Recommendation</h2>
+  <div class="recommend info-box"> <!-- Added info-box base class -->
+    For a first-time visitor wanting a comprehensive, enjoyable, and relatively comfortable experience of Leh-Ladakh's main attractions in June, <b>Option 3A (7 Nights, Best Option with Turtuk) still stands out as the most recommended itinerary.</b>
+    <ul>
+      <li><b>Optimal Balance:</b> It offers the best balance of sightseeing, acclimatization, comfortable pacing, and cultural immersion (with Turtuk).</li>
+      <li><b>Reduced Risk:</b> Sufficient time for acclimatization minimizes AMS risk significantly, and the dedicated airport drop day avoids travel-related stress on departure.</li>
+      <li><b>Full Experience:</b> You get to see the key monasteries, high passes, stunning lakes, unique valleys, and experience Leh town thoroughly at a manageable pace.</li>
+    </ul>
+    <b>Choose Option 3B if:</b>
+    <ul>
+      <li>Visiting Hanle (especially for its observatory, dark skies, and remote experience) is a primary, non-negotiable goal for your trip.</li>
+      <li>You are well-prepared for very long, arduous driving days and very basic accommodation (possibly no electricity, running water, or attached toilets) in Hanle, with no immediate medical support and no phone/internet connectivity.</li>
+      <li>You are okay with skipping the cultural experience of Turtuk.</li>
+      <li>You are physically fit, have prior high-altitude experience, and understand the increased risks of AMS in such remote, high locations.</li>
+    </ul>
+    <b>Avoid Option 1 unless:</b>
+    <ul>
+      <li>You have absolutely no more than 5 nights and are willing to accept the high risks (AMS, flight miss) and extremely rushed nature. (I would generally advise extending your trip if possible rather than choosing this).</li>
+    </ul>
+    <b>Option 2 is a good middle ground if:</b>
+    <ul>
+      <li>You cannot spare 7 nights but want a more reasonable and safer experience than Option 1, covering most key highlights.</li>
+    </ul>
+  </div>
+  <div class="highlight info-box"> <!-- Added info-box base class -->
+    Book accommodations and transportation (especially drivers for multi-day trips) well in advance, particularly for June travel. Consider immersive add-ons like local cooking classes or heritage walks at least 2 weeks in advance. Always check the latest permit requirements, road conditions, and AMS advisories before and during your trip. <b>Julley! (Hello/Greetings in Ladakhi)</b>
+  </div>
+
+  <footer>
+    Ladakh Itinerary Guide © 2025 – Designed for safe, joyful journeys | <a href="https://www.instagram.com/lokis_planet/" target="_blank" rel="noopener noreferrer">lokis_planet</a>
+  </footer>
+
+</div> <!-- end .container -->
 
 </body>
 </html>
