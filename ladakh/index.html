@@ -100,11 +100,11 @@
     }
 
     /* Typography */
-    h1, h2, h3, h4 { /* Added h4 */
+    h1, h2, h3, h4 { 
       font-family: var(--font-serif);
       color: var(--color-text-headings);
       line-height: 1.3;
-      margin-bottom: var(--spacing-lg); /* Default bottom margin */
+      margin-bottom: var(--spacing-lg);
     }
     h1 {
       font-size: clamp(1.8rem, 4vw, 2.6rem);
@@ -123,19 +123,19 @@
       border-bottom: var(--border-width) solid var(--border-color);
     }
     h2:first-of-type { margin-top: var(--spacing-xl); }
-    h3 { /* Used in Recommendation Section */
+    h3 { 
       font-family: var(--font-sans);
       font-size: clamp(1.2rem, 2.5vw, 1.4rem);
       color: var(--color-primary-light);
       font-weight: 600;
-      margin-top: var(--spacing-xl); /* Default top margin */
+      margin-top: var(--spacing-xl); 
       margin-bottom: var(--spacing-md);
     }
-    h4 { /* For sub-parts of recommendation */
+    h4 { 
         font-family: var(--font-sans);
         font-size: clamp(1.1rem, 2.2vw, 1.25rem);
         color: var(--color-primary);
-        margin-top: 0; /* Remove top margin if it's the first child in its box */
+        margin-top: 0; 
         margin-bottom: var(--spacing-sm);
         font-weight: 600;
     }
@@ -248,7 +248,7 @@
             transform: none;
             opacity: 1; 
             visibility: visible;
-            /* display: none; /* Initially hide for JS toggle */
+            /* display: none; /* Controlled by JS for mobile toggle */
             box-shadow: none;
             background-color: transparent;
             padding-left: var(--spacing-lg);
@@ -275,22 +275,21 @@
     .danger { border-left-color: var(--color-danger); background-color: var(--color-danger-bg); }
     .danger strong, .danger b { color: var(--color-danger); }
     
-    /* Summary Box Specifics - for "What's Good/Bad" */
     .summarybox { border-left-color: var(--color-primary); background-color: var(--color-bg-subtle); }
-    .summarybox b, .summarybox strong { /* The "What's Good/Bad" titles */
-        display: block; /* Make them block to ensure they are on their own line */
+    .summarybox b, .summarybox strong {
+        display: block;
         color: var(--color-primary);
-        margin-top: var(--spacing-md); /* Space above this title */
-        margin-bottom: var(--spacing-xs); /* Space between title and its content */
+        margin-top: var(--spacing-md);
+        margin-bottom: var(--spacing-xs);
         font-weight: 600;
-        font-size: 1.05em; /* Slightly larger for emphasis */
+        font-size: 1.05em;
     }
-    .summarybox b:first-of-type, .summarybox strong:first-of-type { margin-top: 0; } /* No top margin for the very first title */
-    .summarybox .data-value { /* The paragraph content following the bold title */
-        display: block; /* Ensures it flows below the title */
-        margin-bottom: var(--spacing-md); /* Space after the paragraph */
+    .summarybox b:first-of-type, .summarybox strong:first-of-type { margin-top: 0; }
+    .summarybox .data-value { 
+        display: block; /* Ensure content flows correctly after block-level bold titles */
+        margin-bottom: var(--spacing-md); 
     }
-    .summarybox .data-value:last-of-type { margin-bottom: 0; } /* No bottom margin for the last paragraph */
+    .summarybox .data-value:last-of-type { margin-bottom: 0; }
 
 
     /* --- Recommendation Section --- */
@@ -299,13 +298,13 @@
       border-top: var(--border-width) solid var(--border-color);
       padding-top: var(--spacing-xl);
     }
-    .recommendation-main.callout { /* Main recommendation styled prominently */
+    .recommendation-main.callout {
       border-left-color: var(--color-success);
       background-color: var(--color-success-bg);
       padding: var(--spacing-lg) var(--spacing-xl);
       margin-bottom: var(--spacing-xl);
     }
-    .recommendation-main h3 { /* "Overall Best Choice" */
+    .recommendation-main h3 {
       font-family: var(--font-serif);
       color: var(--color-success); 
       font-size: clamp(1.3rem, 2.8vw, 1.6rem);
@@ -314,9 +313,9 @@
       border-bottom: 1px solid var(--color-success);
       padding-bottom: var(--spacing-sm);
     }
-    .recommendation-main p strong { /* The main recommendation text, e.g., "Option 3A..." */
+    .recommendation-main p strong {
       font-size: 1.1em; 
-      color: var(--color-primary-light); /* Distinct strong color */
+      color: var(--color-primary-light);
     }
     .recommendation-main ul {
       list-style-type: disc; 
@@ -327,8 +326,8 @@
       margin-bottom: var(--spacing-sm);
       line-height: 1.6;
     }
-    .recommendation-main ul li strong { /* "Optimal Balance:", "Reduced Risk:" */
-      color: var(--color-primary); /* Back to primary for list item leads */
+    .recommendation-main ul li strong {
+      color: var(--color-primary);
       font-weight: 600;
     }
     .recommendation-alternatives {
@@ -336,8 +335,10 @@
       grid-template-columns: 1fr; 
       gap: var(--spacing-lg);
     }
-    @media (min-width: 600px) { /* Two columns for alternatives on slightly wider screens */
+    @media (min-width: 600px) { 
       .recommendation-alternatives {
+        /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+        /* For a consistent 2-column layout for the alternatives: */
         grid-template-columns: 1fr 1fr;
       }
     }
@@ -345,13 +346,13 @@
       border-left-color: var(--color-info);
       background-color: var(--color-info-bg);
     }
-    .avoid-unless.callout.danger { /* Already styled by .danger and .callout */
-      /* No additional styles needed unless override is required */
+    .avoid-unless.callout.danger { 
+      /* Already styled by .danger and .callout */
     }
-    .recommendation-alternatives .callout h4 { /* "Consider Option X if..." */
-      margin-top: 0; /* Already handled by h4 base */
+    .recommendation-alternatives .callout h4 {
+      margin-top: 0;
       margin-bottom: var(--spacing-sm);
-      color: var(--color-primary-light); /* Consistent with other h4-like elements */
+      color: var(--color-primary-light);
     }
     .recommendation-alternatives .callout ul {
       list-style-type: disc;
@@ -363,15 +364,12 @@
       font-size: 0.95rem; 
       line-height: 1.6;
     }
-    /* Final highlight callout after recommendations */
-    #recommend + .highlight.callout, 
-    .recommend-section + .highlight.callout { /* Target based on new structure */
+    .recommend-section + .highlight.callout { 
       margin-top: var(--spacing-xl);
       border-left-color: var(--color-warning);
       background-color: var(--color-warning-bg);
       font-size: 1rem;
     }
-    #recommend + .highlight.callout b,
     .recommend-section + .highlight.callout b {
       color: var(--color-warning);
     }
@@ -1111,16 +1109,14 @@
          if (window.innerWidth <= 768) { 
             submenu.style.display = 'none'; 
          } else { 
-            // For desktop, CSS handles hover/focus, so JS doesn't need to set display
-            // but we ensure the arrow is correct if JS wasn't to run for mobile for some reason
-            submenu.style.display = ''; // Let CSS take over for desktop
+            submenu.style.display = ''; 
          }
         let arrow = toggle.querySelector('.arrow');
         if (arrow) arrow.innerHTML = '&#9662;'; 
 
         toggle.addEventListener('click', function(event) {
-          if (window.innerWidth <= 768 ) { // Only apply click toggle logic for mobile
-            event.preventDefault(); // Prevent default link navigation on mobile for parent
+          if (window.innerWidth <= 768 ) { 
+            event.preventDefault(); 
             const isSubmenuVisible = submenu.style.display === 'flex' || submenu.style.display === 'block';
             
             document.querySelectorAll('#page-nav .submenu').forEach(otherSubmenu => {
@@ -1138,15 +1134,12 @@
                 submenu.style.display = 'none';
                 if(arrow) arrow.innerHTML = '&#9662;'; 
             } else {
-                submenu.style.display = 'flex'; // Use flex as per mobile CSS
+                submenu.style.display = 'flex'; 
                 if(arrow) arrow.innerHTML = '&#9652;'; 
             }
             event.stopPropagation(); 
           } 
-          // For desktop, allow default navigation for the main link if it has a valid href
-          // The CSS :hover will handle showing the submenu.
-          // If the main link is just a placeholder (e.g. href="#"), then preventDefault.
-          else if (this.getAttribute('href') === '#') {
+          else if (this.getAttribute('href') === '#') { // For desktop, if link is just '#', prevent default
              event.preventDefault();
           }
         });
@@ -1157,12 +1150,11 @@
     const navLinks = document.querySelectorAll('#page-nav a.nav-link');
     const sections = [];
     const navElement = document.getElementById('page-nav');
-    // Adjust navHeight offset based on whether nav is fixed or sticky, and its actual height
-    const navHeight = navElement ? navElement.getBoundingClientRect().height + 40 : 80; // Dynamic nav height + offset
+    const navHeight = navElement ? navElement.getBoundingClientRect().height + 40 : 80;
 
     navLinks.forEach(link => {
       const sectionId = link.getAttribute('href');
-      if (sectionId && sectionId.startsWith('#') && sectionId.length > 1) { // Ensure it's a valid ID selector
+      if (sectionId && sectionId.startsWith('#') && sectionId.length > 1) {
         try {
           const section = document.querySelector(sectionId);
           if (section) {
@@ -1214,19 +1206,14 @@
         }
       });
     }
-    // Debounce scroll handler for performance
     let scrollTimeout;
     window.addEventListener('scroll', () => {
         clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(highlightNavLink, 50); // Adjust delay as needed
+        scrollTimeout = setTimeout(highlightNavLink, 50); 
     }, { passive: true });
 
-    // Initial call to set active state on page load
-    // Use a small delay to ensure all elements are laid out
     setTimeout(() => {
         highlightNavLink();
-        // Also trigger scroll event once after a short delay to ensure JS calculations are based on final layout
-        // window.dispatchEvent(new Event('scroll')); // This might be redundant if highlightNavLink is called
     }, 150);
   });
 </script>
