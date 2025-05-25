@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-      :root {
+    :root {
       /* Font Families */
       --font-sans: 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
       --font-serif: 'Lora', Georgia, serif;
@@ -42,7 +42,7 @@
       --color-warning: #f39c12;
       --color-warning-bg: #fef6e7;
       --color-danger: #e74c3c;
-      --color-danger-bg: #fdedec; /* Corrected from _ to - */
+      --color-danger-bg: #fdedec;
 
       /* Spacing & Sizing */
       --spacing-base: 1rem;
@@ -164,7 +164,7 @@
       padding: 0;
       display: flex;
       flex-wrap: wrap;
-      align-items: center; /* Vertical alignment */
+      align-items: center; 
       justify-content: center;
       gap: var(--spacing-xs);
     }
@@ -238,18 +238,15 @@
         nav .submenu { 
             position: static; 
             transform: none;
-            opacity: 1; /* Should be controlled by JS for mobile toggle */
-            visibility: visible; /* Should be controlled by JS for mobile toggle */
-            /* display: none; /* Initially hide for JS toggle */
+            opacity: 1; 
+            visibility: visible;
+            /* display: none; /* Controlled by JS for mobile toggle */
             box-shadow: none;
             background-color: transparent;
             padding-left: var(--spacing-lg);
             margin-top: var(--spacing-xs);
             min-width: auto;
         }
-         nav .has-submenu > a.active + .submenu li a.active {
-             /* No specific style needed here if main parent handles it*/
-         }
     }
 
     /* Callouts */
@@ -303,7 +300,7 @@
       font-size: 0.875rem;
       table-layout: auto;
     }
-    /* table caption removed from HTML */
+    /* No table caption styles */
 
     table thead th {
       background-color: var(--color-bg-subtle);
@@ -435,9 +432,6 @@
   </style>
 </head>
 <body>
-    <!-- THE FULL BODY HTML FROM THE PREVIOUS RESPONSE GOES HERE -->
-    <!-- Make sure it includes all sections: #advice, #option1, #option2, #option3a, #option3b, #recommend -->
-    <!-- And also ensure all <td> data is wrapped in <span class="data-value"> and <caption> are removed. -->
 
 <div class="content-wrapper">
 
@@ -1001,7 +995,6 @@
 
 <script>
   // JavaScript from the PREVIOUS response (for submenu toggle and scroll-spy)
-  // This JS is for enhancing navigation and should not affect content visibility.
   document.addEventListener('DOMContentLoaded', function() {
     // Submenu Toggle
     const submenuToggles = document.querySelectorAll('.has-submenu > a');
@@ -1017,11 +1010,10 @@
         if (arrow) arrow.innerHTML = '&#9662;'; 
 
         toggle.addEventListener('click', function(event) {
-          if (window.innerWidth <= 768 ) { // Only apply click toggle logic for mobile
+          if (window.innerWidth <= 768 ) { 
             event.preventDefault(); 
-            const isSubmenuVisible = submenu.style.display === 'flex' || submenu.style.display === 'block'; // Check current state
+            const isSubmenuVisible = submenu.style.display === 'flex' || submenu.style.display === 'block';
             
-            // Close other submenus
             document.querySelectorAll('#page-nav .submenu').forEach(otherSubmenu => {
               if (otherSubmenu !== submenu) {
                 otherSubmenu.style.display = 'none';
@@ -1033,18 +1025,17 @@
               }
             });
 
-            // Toggle current submenu
             if (isSubmenuVisible) {
                 submenu.style.display = 'none';
                 if(arrow) arrow.innerHTML = '&#9662;'; 
             } else {
-                submenu.style.display = 'flex'; // Use flex as per mobile CSS
+                submenu.style.display = 'flex'; 
                 if(arrow) arrow.innerHTML = '&#9652;'; 
             }
             event.stopPropagation(); 
-          } else { // Desktop: allow default link behavior if href is valid
+          } else { 
             if (!this.getAttribute('href') || this.getAttribute('href') === '#') {
-                 event.preventDefault(); // Prevent if it's just a placeholder
+                 event.preventDefault();
             }
           }
         });
@@ -1108,9 +1099,8 @@
       });
     }
     window.addEventListener('scroll', highlightNavLink, { passive: true });
-    // Initial call to set active state on page load
-    setTimeout(highlightNavLink, 100); // Small delay to ensure layout is complete
-    window.dispatchEvent(new Event('scroll')); // Also trigger immediately
+    setTimeout(highlightNavLink, 100); 
+    window.dispatchEvent(new Event('scroll')); 
   });
 </script>
 
